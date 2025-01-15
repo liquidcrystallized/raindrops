@@ -12,7 +12,16 @@ include_directories(external/SFML/include)
 add_subdirectory(external/SFML)
 
 # Build an executable called "raindrops"
-add_executable(raindrops src/main.cpp)
+add_executable(raindrops src/main.cpp
+        src/ScreenManager.hpp
+        src/ScreenManager.cpp
+        src/Screen.hpp
+        src/Screen.cpp
+        src/Application.hpp
+        src/Application.cpp
+        src/IntroScreen.hpp
+        src/IntroScreen.cpp
+)
 
 # Link dependencies
 target_link_libraries(raindrops
