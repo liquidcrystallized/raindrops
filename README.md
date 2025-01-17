@@ -2,6 +2,9 @@
 
 ## Dependencies
 
+- [SFML 3.0](https://github.com/SFML/SFML)
+- 
+
 Linux:
 
 - xorg-dev
