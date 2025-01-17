@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.28)
-project(raindrops)
+project(raindrops LANGUAGES CXX)
 
 set(CMAKE_VERBOSE_MAKEFILE on)
 
