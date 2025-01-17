@@ -2,14 +2,14 @@
 #define RAINDROPS_APPLICATION_HPP
 
 
+#include "SFML/Graphics/RenderWindow.hpp"
+
 class Application {
 public:
-    static Application& instance();
-
     void run();
 
 private:
-    static Application m_instance;
+    sf::RenderWindow m_renderWindow;
 };
 
 
