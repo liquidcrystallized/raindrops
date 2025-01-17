@@ -2,15 +2,14 @@
 #define RAINDROPS_APPLICATION_HPP
 
 
-#include "ScreenManager.hpp"
-
 class Application {
 public:
+    static Application& instance();
+
     void run();
 
 private:
-    ScreenManager m_screenManager;
-    sf::RenderWindow m_renderWindow;
+    static Application m_instance;
 };
 
 
