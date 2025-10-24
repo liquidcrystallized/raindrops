@@ -10,16 +10,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
-include_directories(external/SFML/include)
-add_subdirectory(external/SFML)
-
 # Build an executable called "raindrops"
 add_executable(raindrops src/main.cpp
         src/Application.hpp
         src/Application.cpp
 )
 
-# Link dependencies
-target_link_libraries(raindrops
-    sfml-graphics
-    sfml-system)
+# Link dependencies from vcpkg
+find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
+target_link_libraries(raindrops PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
