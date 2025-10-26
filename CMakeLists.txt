@@ -46,6 +46,9 @@ target_link_libraries(raindrops PRIVATE SFML::Graphics SFML::Window SFML::Audio 
 # Doctest
 find_package(doctest CONFIG REQUIRED)
 target_link_libraries(raindrops_tests PRIVATE doctest::doctest)
+# rtmidi
+find_package(rtmidi CONFIG REQUIRED)
+target_link_libraries(raindrops PRIVATE RtMidi::rtmidi)
 
 #---------------------------------------------------------------------------------------
 # Build flags
