@@ -16,6 +16,8 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 # raindrops application
 #---------------------------------------------------------------------------------------
 set(RAINDROPS_SOURCES
+        src/midi/MidiDevice.hpp
+        src/midi/MidiDevice.cpp
         src/Application.hpp
         src/Application.cpp
 )
@@ -43,9 +45,11 @@ add_executable(raindrops_tests
 # SFML
 find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
 target_link_libraries(raindrops PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
+
 # Doctest
 find_package(doctest CONFIG REQUIRED)
 target_link_libraries(raindrops_tests PRIVATE doctest::doctest)
+
 # rtmidi
 find_package(rtmidi CONFIG REQUIRED)
 target_link_libraries(raindrops PRIVATE RtMidi::rtmidi)
