@@ -19,7 +19,7 @@ namespace raindrops
          * @param velocity How hard/fast a key was pressed. Value between 0 and 127.
          * @param midiChannel Channel of sent event. There are 16 possible channels.
          */
-        virtual void onNoteOn(int keyNumber, int velocity, int midiChannel);
+        virtual void onNoteOn(int keyNumber, int velocity, int midiChannel) = 0;
 
         /**
          * @brief Called on a Note Off (8x) event.
@@ -27,7 +27,7 @@ namespace raindrops
          * @param velocity "Release" velocity of note. Value between 0 and 127.
          * @param midiChannel Channel of sent event. There are 16 possible channels.
          */
-        virtual void onNoteOff(int keyNumber, int velocity, int midiChannel);
+        virtual void onNoteOff(int keyNumber, int velocity, int midiChannel) = 0;
 
         /**
          * @brief Called when a midi event cannot be identified as a Note On or Off.
