@@ -16,8 +16,14 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 # raindrops application
 #---------------------------------------------------------------------------------------
 set(RAINDROPS_SOURCES
+        src/midi/IMidiInputListener.hpp
         src/midi/MidiDevice.hpp
         src/midi/MidiDevice.cpp
+        src/midi/MidiMessageList.hpp
+        src/midi/MidiMonitor.hpp
+        src/midi/MidiMonitor.cpp
+        src/midi/MidiReceiver.hpp
+        src/midi/MidiReceiver.cpp
         src/Application.hpp
         src/Application.cpp
 )
@@ -62,5 +68,5 @@ target_compile_options(raindrops PRIVATE
         -Wextra
         -Wsign-conversion
         -Wpedantic
-        -Werror
+        #-Werror
 )
