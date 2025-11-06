@@ -37,6 +37,7 @@ add_executable(raindrops
 # raindrops tests
 #---------------------------------------------------------------------------------------
 set(RAINDROPS_TESTS_SOURCES
+        tests/unit_tests/midi/MidiDeviceTests.cpp
 )
 
 add_executable(raindrops_tests
@@ -51,6 +52,7 @@ add_executable(raindrops_tests
 # SFML
 find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
 target_link_libraries(raindrops PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
+target_link_libraries(raindrops_tests PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
 
 # Doctest
 find_package(doctest CONFIG REQUIRED)
@@ -59,6 +61,7 @@ target_link_libraries(raindrops_tests PRIVATE doctest::doctest)
 # rtmidi
 find_package(rtmidi CONFIG REQUIRED)
 target_link_libraries(raindrops PRIVATE RtMidi::rtmidi)
+target_link_libraries(raindrops_tests PRIVATE RtMidi::rtmidi)
 
 #---------------------------------------------------------------------------------------
 # Build flags
