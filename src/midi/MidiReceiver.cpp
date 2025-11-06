@@ -5,7 +5,7 @@ namespace raindrops
 {
     MidiReceiver::MidiReceiver() = default;
 
-    void MidiReceiver::onNoteOn(const int keyNumber, const int velocity, const int midiChannel)
+    void MidiReceiver::onNoteOn(const unsigned int keyNumber, const unsigned int velocity, const unsigned int midiChannel)
     {
         std::cout   << "MidiReceiver::onNoteOn: keyNumber " << keyNumber
                     << " velocity: " << velocity
@@ -13,7 +13,7 @@ namespace raindrops
                     << '\n';
     }
 
-    void MidiReceiver::onNoteOff(const int keyNumber, const int velocity, const int midiChannel)
+    void MidiReceiver::onNoteOff(const unsigned int keyNumber, const unsigned int velocity, const unsigned int midiChannel)
     {
         std::cout   << "MidiReceiver::onNoteOff: keyNumber " << keyNumber
                     << " velocity: " << velocity

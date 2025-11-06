@@ -6,10 +6,10 @@
  * https://midi.org/expanded-midi-1-0-messages-list
  */
 
-#define NOTE_ON             144
-#define NOTE_OFF            128
-#define NOTE_MASK           240
-#define CHANNEL_MASK        15
+#define NOTE_ON             144U
+#define NOTE_OFF            128U
+#define NOTE_MASK           240U
+#define CHANNEL_MASK        15U
 #define MIDI_CHANNEL_1      1
 #define MIDI_CHANNEL_2      2
 #define MIDI_CHANNEL_3      3

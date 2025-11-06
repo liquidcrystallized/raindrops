@@ -96,15 +96,15 @@ namespace raindrops
 
                 if (!midiMessage.empty())
                 {
-                    const int byte1 = midiMessage[0];
+                    const unsigned int byte1 { midiMessage[0] };
 
-                    if (const int action = byte1 & NOTE_MASK; action == NOTE_ON || action == NOTE_OFF)
+                    if (const unsigned int action = byte1 & NOTE_MASK; action == NOTE_ON || action == NOTE_OFF)
                     {
-                        const int noteNumber = midiMessage[1];
-                        const int velocity = midiMessage[2];
-                        unsigned int midiChannel = (byte1 & CHANNEL_MASK) + 1;
+                        const unsigned int noteNumber { midiMessage[1] };
+                        const unsigned int velocity { midiMessage[2] };
+                        unsigned int midiChannel { (byte1 & CHANNEL_MASK) + 1 };
 
-                        if (m_midiChannel == MIDI_CHANNEL_ALL | midiChannel == m_midiChannel)
+                        if (m_midiChannel == static_cast<unsigned int>MIDI_CHANNEL_ALL | m_midiChannel == midiChannel)
                         {
                             if (action == NOTE_ON)
                             {
