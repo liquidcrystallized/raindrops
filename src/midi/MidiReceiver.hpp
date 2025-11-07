@@ -10,9 +10,9 @@ namespace raindrops
     public:
         MidiReceiver();
 
-        void onNoteOn(unsigned int keyNumber, unsigned int velocity, unsigned int midiChannel) override;
-        void onNoteOff(unsigned int keyNumber, unsigned int velocity, unsigned int midiChannel) override;
-        void onMidiEvent(std::vector<unsigned char> bytes) override;
+        bool onNoteOn(unsigned int keyNumber, unsigned int velocity, unsigned int midiChannel) override;
+        bool onNoteOff(unsigned int keyNumber, unsigned int velocity, unsigned int midiChannel) override;
+        bool onMidiEvent(std::vector<unsigned char> bytes) override;
     };
 }
 
