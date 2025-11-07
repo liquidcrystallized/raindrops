@@ -5,8 +5,8 @@
 namespace raindrops
 {
     MidiDevice::MidiDevice(std::string portName, const unsigned int portNumber)
-    : m_portName(std::move(portName))
-    , m_portNumber(portNumber)
+    : m_portName { std::move(portName) }
+    , m_portNumber { portNumber }
     {
     }
 

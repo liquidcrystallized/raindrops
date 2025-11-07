@@ -3,7 +3,7 @@
 
 namespace raindrops
 {
-    MidiMonitor::MidiMonitor() : m_running(false)
+    MidiMonitor::MidiMonitor() : m_running { false }
     {
         try
         {
