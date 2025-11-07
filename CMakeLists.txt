@@ -39,6 +39,7 @@ add_executable(raindrops
 set(RAINDROPS_TESTS_SOURCES
         tests/unit_tests/midi/MidiDeviceTests.cpp
         tests/unit_tests/midi/MidiMonitorTests.cpp
+        tests/unit_tests/midi/MidiReceiverTests.cpp
 )
 
 add_executable(raindrops_tests
