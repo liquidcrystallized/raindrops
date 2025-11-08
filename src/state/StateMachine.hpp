@@ -28,7 +28,7 @@ namespace raindrops
         void quit();
 
         template <typename T>
-        std::unique_ptr<T> build(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true);
+        static std::unique_ptr<T> build(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
 
