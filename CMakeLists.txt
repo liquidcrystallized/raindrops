@@ -24,6 +24,10 @@ set(RAINDROPS_SOURCES
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.hpp
         src/midi/MidiReceiver.cpp
+        src/state/MainMenuState.hpp
+        src/state/MainMenuState.cpp
+        src/state/PlayingState.hpp
+        src/state/PlayingState.cpp
         src/state/State.hpp
         src/state/State.cpp
         src/state/StateMachine.hpp
