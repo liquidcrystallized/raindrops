@@ -8,11 +8,13 @@ help piano players sight read. This application does not teach you how to play t
 piano, it is expected that user's already know at least the basics from a teacher
 or some other learning source.
 
-## System requirements
+## Hardware requirements
 
 - Midi keyboard/Digital piano (preferably with 88 keys)
 
-## Dependencies
+## Developers
+
+### Dependencies
 
 vcpkg is recommended for dependency management.
 
