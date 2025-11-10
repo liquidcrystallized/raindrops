@@ -25,25 +25,26 @@ namespace raindrops
 
     void MainMenuState::update()
     {
-        const std::optional event = m_renderWindow.pollEvent();
-
-        if (event->getIf<sf::Event::Closed>())
+        while (const std::optional event = m_renderWindow.pollEvent())
         {
-            m_stateMachine.quit();
-        }
-
-        if (const auto keyPressed = event->getIf<sf::Event::KeyPressed>())
-        {
-            switch (keyPressed->code)
+            if (event->getIf<sf::Event::Closed>())
             {
-                case sf::Keyboard::Key::Escape:
-                    m_stateMachine.lastState();
-                    break;
-                case sf::Keyboard::Key::M:
-                    m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderWindow, false);
-                    break;
-                default:
-                    break;
+                m_renderWindow.close();
+            }
+
+            if (const auto* keyPressed = event->getIf<sf::Event::KeyPressed>())
+            {
+                switch (keyPressed->code)
+                {
+                    case sf::Keyboard::Key::Escape:
+                        m_stateMachine.lastState();
+                        break;
+                    case sf::Keyboard::Key::M:
+                        m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderWindow, false);
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }

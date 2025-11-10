@@ -3,7 +3,8 @@
 
 #include "midi/MidiDevice.hpp"
 #include "midi/MidiMonitor.hpp"
-#include "SFML/Graphics/RenderWindow.hpp"
+#include "state/StateMachine.hpp"
+#include <SFML/Graphics/RenderWindow.hpp>
 
 namespace raindrops
 {
@@ -15,16 +16,13 @@ namespace raindrops
         void run();
 
     private:
+        StateMachine m_stateMachine;
         sf::RenderWindow m_renderWindow;
         std::vector<MidiDevice> m_midiDevices;
         std::shared_ptr<MidiMonitor> m_midiMonitor;
 
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
-
-        void input();
-        void update();
-        void render();
 
         void setMidiPort(unsigned int port);
         void setMidiChannel(unsigned int channel);

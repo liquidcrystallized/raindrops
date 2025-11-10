@@ -1,6 +1,7 @@
 #include "Application.hpp"
 
 #include "midi/MidiReceiver.hpp"
+#include "state/MainMenuState.hpp"
 
 namespace raindrops
 {
@@ -22,6 +23,9 @@ namespace raindrops
         setMidiChannel(1);
 
         monitorMidi();
+
+        // Initialise state machine
+        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, true));
     }
 
     Application::~Application()
@@ -30,28 +34,12 @@ namespace raindrops
 
     void Application::run()
     {
-        while (m_renderWindow.isOpen())
+        while (m_stateMachine.running())
         {
-            input();
-            update();
-            render();
+            m_stateMachine.nextState();
+            m_stateMachine.update();
+            m_stateMachine.draw();
         }
-     }
-
-    void Application::input()
-    {
-        //TODO
-    }
-
-    void Application::update()
-    {
-        //TODO
-    }
-
-    void Application::render()
-    {
-        m_renderWindow.clear();
-        m_renderWindow.display();
     }
 
     void Application::setMidiPort(unsigned int port)
