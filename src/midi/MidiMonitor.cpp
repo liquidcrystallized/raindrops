@@ -1,5 +1,5 @@
-#include "MidiMonitor.hpp"
-#include "MidiMessageList.hpp"
+#include "raindrops/midi/MidiMonitor.hpp"
+#include "raindrops/midi/MidiMessageList.hpp"
 
 namespace raindrops
 {

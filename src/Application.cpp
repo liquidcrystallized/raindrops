@@ -1,7 +1,6 @@
-#include "Application.hpp"
-
-#include "midi/MidiReceiver.hpp"
-#include "state/MainMenuState.hpp"
+#include "raindrops/Application.hpp"
+#include "raindrops/midi/MidiReceiver.hpp"
+#include "raindrops/state/MainMenuState.hpp"
 
 namespace raindrops
 {

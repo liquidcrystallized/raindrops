@@ -1,4 +1,4 @@
-#include "../../../src/midi/MidiDevice.hpp"
+#include "raindrops/midi/MidiDevice.hpp"
 #include "doctest/doctest.h"
 
 TEST_SUITE_BEGIN("MidiDevice");

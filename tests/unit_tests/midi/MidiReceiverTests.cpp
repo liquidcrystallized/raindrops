@@ -1,4 +1,4 @@
-#include "../../../src/midi/MidiReceiver.hpp"
+#include "raindrops/midi/MidiReceiver.hpp"
 #include "doctest/doctest.h"
 #include <memory>
 

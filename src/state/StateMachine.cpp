@@ -1,4 +1,4 @@
-#include "StateMachine.hpp"
+#include "raindrops/state/StateMachine.hpp"
 #include <iostream>
 
 namespace raindrops

@@ -15,31 +15,36 @@ option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 #---------------------------------------------------------------------------------------
 # raindrops application
 #---------------------------------------------------------------------------------------
+set(RAINDROPS_HEADERS
+        include/raindrops/midi/IMidiInputListener.hpp
+        include/raindrops/midi/MidiDevice.hpp
+        include/raindrops/midi/MidiMessageList.hpp
+        include/raindrops/midi/MidiMonitor.hpp
+        include/raindrops/midi/MidiReceiver.hpp
+        include/raindrops/state/MainMenuState.hpp
+        include/raindrops/state/PlayingState.hpp
+        include/raindrops/state/State.hpp
+        include/raindrops/state/StateMachine.hpp
+        include/raindrops/Application.hpp
+)
 set(RAINDROPS_SOURCES
-        src/midi/IMidiInputListener.hpp
-        src/midi/MidiDevice.hpp
         src/midi/MidiDevice.cpp
-        src/midi/MidiMessageList.hpp
-        src/midi/MidiMonitor.hpp
         src/midi/MidiMonitor.cpp
-        src/midi/MidiReceiver.hpp
         src/midi/MidiReceiver.cpp
-        src/state/MainMenuState.hpp
         src/state/MainMenuState.cpp
-        src/state/PlayingState.hpp
         src/state/PlayingState.cpp
-        src/state/State.hpp
         src/state/State.cpp
-        src/state/StateMachine.hpp
         src/state/StateMachine.cpp
-        src/Application.hpp
         src/Application.cpp
 )
 
 add_executable(raindrops
+        ${RAINDROPS_HEADERS}
         ${RAINDROPS_SOURCES}
         src/main.cpp
 )
+
+include_directories(raindrops PRIVATE include)
 
 #---------------------------------------------------------------------------------------
 # raindrops tests
@@ -51,10 +56,13 @@ set(RAINDROPS_TESTS_SOURCES
 )
 
 add_executable(raindrops_tests
+        ${RAINDROPS_HEADERS}
         ${RAINDROPS_SOURCES}
         ${RAINDROPS_TESTS_SOURCES}
         tests/TestMain.cpp
 )
+
+include_directories(raindrops_tests PRIVATE include)
 
 #---------------------------------------------------------------------------------------
 # Dependencies from vcpkg
