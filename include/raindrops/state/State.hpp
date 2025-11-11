@@ -9,7 +9,7 @@ namespace raindrops
 
     class State {
     public:
-        State(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true);
+        State(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true, const std::string& stateName = "");
         virtual ~State() = default;
 
         State(const State&) = delete;
@@ -24,11 +24,14 @@ namespace raindrops
         std::unique_ptr<State> next();
 
         [[nodiscard]] bool isReplacing() const;
+
+        std::string getName() const;
     protected:
         StateMachine& m_stateMachine;
         sf::RenderWindow& m_renderWindow;
 
         bool m_replacing;
+        std::string m_stateName;
 
         std::unique_ptr<State> m_next;
     };

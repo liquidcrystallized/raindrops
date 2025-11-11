@@ -6,7 +6,7 @@
 namespace raindrops
 {
     PlayingState::PlayingState(StateMachine &stateMachine, sf::RenderWindow &renderWindow, const bool replace)
-    : State { stateMachine, renderWindow, replace }
+    : State { stateMachine, renderWindow, replace, "PlayingState" }
     {
         m_testRectangle.setSize({100, 100});
         m_testRectangle.setFillColor(sf::Color::Green);

@@ -8,6 +8,11 @@ namespace raindrops
         std::cout << "StateMachine Init\n";
     }
 
+    std::string StateMachine::getCurrentStateName()
+    {
+        return m_states.top()->getName();
+    }
+
     void StateMachine::run(std::unique_ptr<State> state)
     {
         m_running = true;

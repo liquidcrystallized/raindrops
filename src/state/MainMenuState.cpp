@@ -6,7 +6,7 @@
 namespace raindrops
 {
     MainMenuState::MainMenuState(StateMachine &stateMachine, sf::RenderWindow &renderWindow, const bool replace)
-    : State { stateMachine, renderWindow, replace }
+    : State { stateMachine, renderWindow, replace, "MainMenuState" }
     {
         m_testRectangle.setSize({100, 100});
         m_testRectangle.setFillColor(sf::Color::Red);
