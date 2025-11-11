@@ -1,5 +1,5 @@
 #include "raindrops/midi/MidiReceiver.hpp"
-#include "doctest/doctest.h"
+#include <doctest/doctest.h>
 #include <memory>
 
 TEST_SUITE_BEGIN("MidiReceiver");

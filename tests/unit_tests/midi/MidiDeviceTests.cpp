@@ -1,5 +1,5 @@
 #include "raindrops/midi/MidiDevice.hpp"
-#include "doctest/doctest.h"
+#include <doctest/doctest.h>
 
 TEST_SUITE_BEGIN("MidiDevice");
 
