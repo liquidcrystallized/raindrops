@@ -21,6 +21,10 @@ namespace raindrops
         void run(std::unique_ptr<State> state);
 
         void nextState();
+
+        /**
+         * @brief Flag the current state for popping at the next nexState() call.
+         */
         void lastState();
 
         void update();
