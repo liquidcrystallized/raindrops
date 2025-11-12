@@ -2,13 +2,12 @@
 #define RAINDROPS_PLAYINGSTATE_HPP
 
 #include "State.hpp"
-#include <SFML/Graphics.hpp>
 
 namespace raindrops
 {
     class PlayingState final : public State {
     public:
-        PlayingState(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true);
+        PlayingState(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true);
 
         void pause() override;
         void resume() override;
@@ -16,7 +15,7 @@ namespace raindrops
         void update() override;
         void draw() override;
     private:
-        sf::RectangleShape m_testRectangle;
+        raylib::Rectangle m_testRectangle;
     };
 }
 

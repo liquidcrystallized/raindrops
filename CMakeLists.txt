@@ -10,7 +10,6 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
-option(BUILD_SHARED_LIBS "Build shared libraries" OFF)
 
 #---------------------------------------------------------------------------------------
 # raindrops application
@@ -68,10 +67,10 @@ include_directories(raindrops_tests PRIVATE include)
 #---------------------------------------------------------------------------------------
 # Dependencies from vcpkg
 #---------------------------------------------------------------------------------------
-# SFML
-find_package(SFML COMPONENTS Graphics Window Audio System CONFIG REQUIRED)
-target_link_libraries(raindrops PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
-target_link_libraries(raindrops_tests PRIVATE SFML::Graphics SFML::Window SFML::Audio SFML::System)
+# Raylib
+find_package(raylib CONFIG REQUIRED)
+target_link_libraries(raindrops PRIVATE raylib)
+target_link_libraries(raindrops_tests PRIVATE raylib)
 
 # Doctest
 find_package(doctest CONFIG REQUIRED)

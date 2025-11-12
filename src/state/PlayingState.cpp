@@ -5,11 +5,10 @@
 
 namespace raindrops
 {
-    PlayingState::PlayingState(StateMachine &stateMachine, sf::RenderWindow &renderWindow, const bool replace)
+    PlayingState::PlayingState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
     : State { stateMachine, renderWindow, replace, "PlayingState" }
     {
-        m_testRectangle.setSize({100, 100});
-        m_testRectangle.setFillColor(sf::Color::Green);
+        m_testRectangle.SetSize(100, 100);
         std::cout << "PlayingState Init\n";
     }
 
@@ -25,34 +24,21 @@ namespace raindrops
 
     void PlayingState::update()
     {
-        while (const std::optional event = m_renderWindow.pollEvent())
+        if (IsKeyPressed(KEY_ESCAPE))
         {
-            if (event->getIf<sf::Event::Closed>())
-            {
-                m_stateMachine.quit();
-            }
-
-            if (const auto keyPressed = event->getIf<sf::Event::KeyPressed>())
-            {
-                switch (keyPressed->code)
-                {
-                    case sf::Keyboard::Key::Escape:
-                        m_stateMachine.lastState();
-                        break;
-                    case::sf::Keyboard::Key::M:
-                        m_next = StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, false);
-                        break;
-                    default:
-                        break;
-                }
-            }
+            m_stateMachine.quit();
+        }
+        else if (IsKeyPressed(KEY_M))
+        {
+            m_next = StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, false);
         }
     }
 
     void PlayingState::draw()
     {
-        m_renderWindow.clear();
-        m_renderWindow.draw(m_testRectangle);
-        m_renderWindow.display();
+        m_renderWindow.BeginDrawing();
+        m_renderWindow.ClearBackground();
+        m_testRectangle.Draw(raylib::Color::Green());
+        m_renderWindow.EndDrawing();
     }
 }

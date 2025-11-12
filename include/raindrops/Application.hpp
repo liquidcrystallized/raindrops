@@ -4,7 +4,7 @@
 #include "midi/MidiDevice.hpp"
 #include "midi/MidiMonitor.hpp"
 #include "state/StateMachine.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <raylib-cpp/raylib-cpp.hpp>
 
 namespace raindrops
 {
@@ -17,7 +17,7 @@ namespace raindrops
 
     private:
         StateMachine m_stateMachine;
-        sf::RenderWindow m_renderWindow;
+        raylib::Window m_renderWindow;
         std::vector<MidiDevice> m_midiDevices;
         std::shared_ptr<MidiMonitor> m_midiMonitor;
 

@@ -7,8 +7,11 @@ namespace raindrops
     Application::Application()
     {
         // Graphics related setup
-        m_renderWindow.create(sf::VideoMode({640, 480}), "raindrops [dev]");
-        m_renderWindow.setFramerateLimit(60);
+        //m_renderWindow.create(sf::VideoMode({640, 480}), "raindrops [dev]");
+        //m_renderWindow.setFramerateLimit(60);
+        m_renderWindow.SetSize(640, 480);
+        m_renderWindow.SetTitle("raindrops [dev]");
+        m_renderWindow.SetTargetFPS(60);
 
         // Midi related setup
         const auto midiReceiver = std::make_shared<MidiReceiver>();

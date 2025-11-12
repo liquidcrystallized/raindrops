@@ -1,7 +1,8 @@
 #ifndef RAINDROPS_STATE_HPP
 #define RAINDROPS_STATE_HPP
 
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <raylib-cpp/raylib-cpp.hpp>
+#include <memory>
 
 namespace raindrops
 {
@@ -9,7 +10,7 @@ namespace raindrops
 
     class State {
     public:
-        State(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true, const std::string& stateName = "");
+        State(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true, std::string  stateName = "");
         virtual ~State() = default;
 
         State(const State&) = delete;
@@ -28,7 +29,7 @@ namespace raindrops
         std::string getName() const;
     protected:
         StateMachine& m_stateMachine;
-        sf::RenderWindow& m_renderWindow;
+        raylib::Window& m_renderWindow;
 
         bool m_replacing;
         std::string m_stateName;

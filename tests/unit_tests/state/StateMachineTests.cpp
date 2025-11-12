@@ -8,8 +8,8 @@ TEST_SUITE_BEGIN("StateMachine");
 TEST_CASE("State transitions")
 {
     raindrops::StateMachine stateMachine;
-    sf::RenderWindow dummyWindow { sf::VideoMode({640, 480}), "dummy window" };
-    dummyWindow.setFramerateLimit(1);
+    raylib::Window dummyWindow { 640, 480 };
+    dummyWindow.SetTargetFPS(1);
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
     stateMachine.run(std::move(mainMenu));
@@ -32,7 +32,7 @@ TEST_CASE("State transitions")
 TEST_CASE("State management")
 {
     raindrops::StateMachine stateMachine;
-    sf::RenderWindow dummyWindow { sf::VideoMode({640, 480}), "dummy window" };
+    raylib::Window dummyWindow { 640, 480 };
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
     stateMachine.run(std::move(mainMenu));

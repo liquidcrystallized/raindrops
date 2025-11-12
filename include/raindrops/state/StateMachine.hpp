@@ -2,7 +2,7 @@
 #define RAINDROPS_STATEMACHINE_HPP
 
 #include "State.hpp"
-#include <SFML/Graphics/RenderWindow.hpp>
+#include <raylib-cpp/raylib-cpp.hpp>
 #include <iostream>
 #include <memory>
 #include <stack>
@@ -34,7 +34,7 @@ namespace raindrops
         void quit();
 
         template <typename T>
-        static std::unique_ptr<T> build(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace = true);
+        static std::unique_ptr<T> build(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
 
@@ -43,7 +43,7 @@ namespace raindrops
     };
 
     template<typename T>
-    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, sf::RenderWindow& renderWindow, bool replace)
+    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace)
     {
         auto newState = std::unique_ptr<T>{ nullptr };
 
