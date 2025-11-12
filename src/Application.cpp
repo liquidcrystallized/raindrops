@@ -7,6 +7,7 @@ namespace raindrops
     Application::Application()
     {
         // Graphics related setup
+        m_renderWindow.Init();
         m_renderWindow.SetSize(640, 480);
         m_renderWindow.SetTitle("raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
