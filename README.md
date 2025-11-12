@@ -12,12 +12,13 @@ or some other learning source.
 
 - Midi keyboard/Digital piano (preferably with 88 keys)
 
-## Developers
+## License and Dependencies
 
-### Dependencies
+Sources in this repository are released under the GPLv3 license.
 
-vcpkg is recommended for dependency management.
+These are the licenses for the dependencies:
 
-- SFML 3.2
-- doctest 2.4.12
-- rtmidi 6.0.0
+- [raylib](https://github.com/raysan5/raylib) - Zlib
+- [raylib-cpp](https://github.com/RobLoach/raylib-cpp) - Zlib
+- [doctest](https://github.com/doctest/doctest) - MIT
+- [rtmidi](https://github.com/thestk/rtmidi) - [LICENSE](https://github.com/thestk/rtmidi/blob/master/LICENSE)
