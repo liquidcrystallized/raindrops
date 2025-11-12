@@ -1,7 +1,7 @@
-#include "raindrops/state/StateMachine.hpp"
-#include "raindrops/state/MainMenuState.hpp"
-#include "raindrops/state/PlayingState.hpp"
-#include <doctest/doctest.h>
+#include "StateMachine.hpp"
+#include "MainMenuState.hpp"
+#include "PlayingState.hpp"
+#include <doctest.h>
 
 TEST_SUITE_BEGIN("StateMachine");
 

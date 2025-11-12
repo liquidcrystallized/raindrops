@@ -3,7 +3,6 @@
 
 #include "IMidiInputListener.hpp"
 
-
 namespace raindrops
 {
     class MidiReceiver final : public IMidiInputListener {

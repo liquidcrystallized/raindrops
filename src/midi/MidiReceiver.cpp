@@ -1,4 +1,4 @@
-#include "raindrops/midi/MidiReceiver.hpp"
+#include "MidiReceiver.hpp"
 #include <iostream>
 
 namespace raindrops

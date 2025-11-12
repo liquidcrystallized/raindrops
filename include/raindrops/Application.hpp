@@ -1,10 +1,10 @@
 #ifndef RAINDROPS_APPLICATION_HPP
 #define RAINDROPS_APPLICATION_HPP
 
-#include "midi/MidiDevice.hpp"
-#include "midi/MidiMonitor.hpp"
-#include "state/StateMachine.hpp"
-#include <raylib-cpp/raylib-cpp.hpp>
+#include "MidiDevice.hpp"
+#include "MidiMonitor.hpp"
+#include "StateMachine.hpp"
+#include <raylib-cpp.hpp>
 
 namespace raindrops
 {

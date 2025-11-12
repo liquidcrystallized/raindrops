@@ -1,6 +1,6 @@
-#include "raindrops/state/MainMenuState.hpp"
-#include "raindrops/state/PlayingState.hpp"
-#include "raindrops/state/StateMachine.hpp"
+#include "MainMenuState.hpp"
+#include "PlayingState.hpp"
+#include "StateMachine.hpp"
 #include <iostream>
 
 namespace raindrops

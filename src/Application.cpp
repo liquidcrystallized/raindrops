@@ -1,14 +1,12 @@
-#include "raindrops/Application.hpp"
-#include "raindrops/midi/MidiReceiver.hpp"
-#include "raindrops/state/MainMenuState.hpp"
+#include "Application.hpp"
+#include "MidiReceiver.hpp"
+#include "MainMenuState.hpp"
 
 namespace raindrops
 {
     Application::Application()
     {
         // Graphics related setup
-        //m_renderWindow.create(sf::VideoMode({640, 480}), "raindrops [dev]");
-        //m_renderWindow.setFramerateLimit(60);
         m_renderWindow.SetSize(640, 480);
         m_renderWindow.SetTitle("raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);

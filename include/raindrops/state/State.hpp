@@ -1,7 +1,7 @@
 #ifndef RAINDROPS_STATE_HPP
 #define RAINDROPS_STATE_HPP
 
-#include <raylib-cpp/raylib-cpp.hpp>
+#include <raylib-cpp.hpp>
 #include <memory>
 
 namespace raindrops

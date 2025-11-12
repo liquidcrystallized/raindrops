@@ -12,6 +12,18 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 #---------------------------------------------------------------------------------------
+# external includes
+#---------------------------------------------------------------------------------------
+include_directories(external/raylib/src)
+include_directories(external/raylib-cpp/include)
+include_directories(external/doctest/doctest)
+include_directories(external/rtmidi)
+add_subdirectory(external/raylib)
+add_subdirectory(external/raylib-cpp)
+add_subdirectory(external/doctest)
+add_subdirectory(external/rtmidi)
+
+#---------------------------------------------------------------------------------------
 # raindrops application
 #---------------------------------------------------------------------------------------
 set(RAINDROPS_HEADERS
@@ -43,7 +55,11 @@ add_executable(raindrops
         src/main.cpp
 )
 
-include_directories(raindrops PRIVATE include)
+target_include_directories(raindrops PRIVATE
+        include/raindrops/midi
+        include/raindrops/state
+        include/raindrops
+)
 
 #---------------------------------------------------------------------------------------
 # raindrops tests
@@ -62,24 +78,25 @@ add_executable(raindrops_tests
         tests/TestMain.cpp
 )
 
-include_directories(raindrops_tests PRIVATE include)
+target_include_directories(raindrops_tests PRIVATE
+        include/raindrops/midi
+        include/raindrops/state
+        include/raindrops
+)
 
 #---------------------------------------------------------------------------------------
-# Dependencies from vcpkg
+# Dependencies
 #---------------------------------------------------------------------------------------
 # Raylib
-find_package(raylib CONFIG REQUIRED)
 target_link_libraries(raindrops PRIVATE raylib)
 target_link_libraries(raindrops_tests PRIVATE raylib)
 
 # Doctest
-find_package(doctest CONFIG REQUIRED)
 target_link_libraries(raindrops_tests PRIVATE doctest::doctest)
 
 # rtmidi
-find_package(rtmidi CONFIG REQUIRED)
-target_link_libraries(raindrops PRIVATE RtMidi::rtmidi)
-target_link_libraries(raindrops_tests PRIVATE RtMidi::rtmidi)
+target_link_libraries(raindrops PRIVATE rtmidi)
+target_link_libraries(raindrops_tests PRIVATE rtmidi)
 
 #---------------------------------------------------------------------------------------
 # Build flags

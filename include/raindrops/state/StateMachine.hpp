@@ -2,7 +2,7 @@
 #define RAINDROPS_STATEMACHINE_HPP
 
 #include "State.hpp"
-#include <raylib-cpp/raylib-cpp.hpp>
+#include <raylib-cpp.hpp>
 #include <iostream>
 #include <memory>
 #include <stack>

@@ -1,7 +1,7 @@
 #ifndef RAINDROPS_MIDIDEVICE_HPP
 #define RAINDROPS_MIDIDEVICE_HPP
 
-#include "rtmidi/RtMidi.h"
+#include <RtMidi.h>
 
 namespace raindrops
 {
