@@ -34,6 +34,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/midi/MidiReceiver.hpp
         include/raindrops/state/MainMenuState.hpp
         include/raindrops/state/PlayingState.hpp
+        include/raindrops/state/SettingsMenuState.hpp
         include/raindrops/state/State.hpp
         include/raindrops/state/StateMachine.hpp
         include/raindrops/Application.hpp
@@ -44,6 +45,7 @@ set(RAINDROPS_SOURCES
         src/midi/MidiReceiver.cpp
         src/state/MainMenuState.cpp
         src/state/PlayingState.cpp
+        src/state/SettingsMenuState.cpp
         src/state/State.cpp
         src/state/StateMachine.cpp
         src/Application.cpp

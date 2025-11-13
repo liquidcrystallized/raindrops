@@ -30,7 +30,7 @@ namespace raindrops
         }
         else if (IsKeyPressed(KEY_M))
         {
-            m_next = StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, false);
+            m_stateMachine.lastState();
         }
     }
 

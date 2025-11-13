@@ -3,6 +3,8 @@
 #include "StateMachine.hpp"
 #include <iostream>
 
+#include "SettingsMenuState.hpp"
+
 namespace raindrops
 {
     MainMenuState::MainMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
@@ -24,13 +26,18 @@ namespace raindrops
 
     void MainMenuState::update()
     {
+        // TODO: Temporary for testing
         if (IsKeyPressed(KEY_ESCAPE))
         {
-            m_stateMachine.lastState();
+            m_stateMachine.quit();
         }
         else if (IsKeyPressed(KEY_M))
         {
             m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderWindow, false);
+        }
+        else if (IsKeyPressed(KEY_N))
+        {
+            m_next = StateMachine::build<SettingsMenuState>(m_stateMachine, m_renderWindow, false);
         }
     }
 
