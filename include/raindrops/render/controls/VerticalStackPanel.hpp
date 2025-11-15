@@ -1,7 +1,7 @@
 #ifndef RAINDROPS_STACKPANEL_HPP
 #define RAINDROPS_STACKPANEL_HPP
 
-#include "raygui-cpp/Component.h"
+#include <raygui-cpp/Component.h>
 
 namespace raindrops
 {
