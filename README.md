@@ -21,6 +21,6 @@ These are the licenses for the dependencies:
 - [raylib](https://github.com/raysan5/raylib) - Zlib
 - [raylib-cpp](https://github.com/RobLoach/raylib-cpp) - Zlib
 - [raygui](https://github.com/raysan5/raygui) - Zlib
-- [raygui-cpp](https://github.com/scastd/raygui-cpp/tree/main/examples) - Zlib
+- [raygui-cpp](https://github.com/scastd/raygui-cpp/) - Zlib
 - [doctest](https://github.com/doctest/doctest) - MIT
 - [rtmidi](https://github.com/thestk/rtmidi) - [LICENSE](https://github.com/thestk/rtmidi/blob/master/LICENSE)
