@@ -2,6 +2,9 @@
 #define RAINDROPS_MAINMENUSTATE_HPP
 
 #include "State.hpp"
+#include <raygui-cpp/Button.h>
+#include <raygui-cpp/ListView.h>
+#include <raygui-cpp/Panel.h>
 
 namespace raindrops
 {
@@ -15,7 +18,15 @@ namespace raindrops
         void update() override;
         void draw() override;
     private:
-        raylib::Rectangle m_testRectangle;
+        rgc::Button m_settingsMenuButton;
+        rgc::Button m_quitButton;
+
+        const char* m_settingsMenuButtonText;
+        const char* m_quitButtonText;
+        bool m_settingsMenuButtonCanClick;
+        bool m_quitButtonCanClick;
+
+        void setupUI();
     };
 }
 

@@ -18,11 +18,13 @@ include_directories(external/raylib/src)
 include_directories(external/raylib-cpp/include)
 include_directories(external/doctest/doctest)
 include_directories(external/rtmidi)
-include_directories(external/raygui/src)
-add_subdirectory(external/raylib)
+#include_directories(external/raygui/src)
+include_directories(external/raygui-cpp/include)
+#add_subdirectory(external/raylib)
 add_subdirectory(external/raylib-cpp)
 add_subdirectory(external/doctest)
 add_subdirectory(external/rtmidi)
+add_subdirectory(external/raygui-cpp)
 
 #---------------------------------------------------------------------------------------
 # raindrops application
@@ -39,6 +41,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/state/State.hpp
         include/raindrops/state/StateMachine.hpp
         include/raindrops/Application.hpp
+        include/raindrops/raygui-defguard.hpp
 )
 set(RAINDROPS_SOURCES
         src/midi/MidiDevice.cpp
@@ -100,6 +103,14 @@ target_link_libraries(raindrops_tests PRIVATE doctest::doctest)
 # rtmidi
 target_link_libraries(raindrops PRIVATE rtmidi)
 target_link_libraries(raindrops_tests PRIVATE rtmidi)
+
+# raygui-cpp
+target_link_libraries(raindrops PRIVATE raygui_cpp)
+target_link_libraries(raindrops_tests PRIVATE raygui_cpp)
+
+# Suppress warnings from external
+get_target_property(raygui_cpp_include_dirs raygui_cpp INTERFACE_INCLUDE_DIRECTORIES)
+set_target_properties(raygui_cpp PROPERTIES INTERFACE_SYSTEM_INCLUDE_DIRECTORIES "${raygui_cpp_include_dirs}")
 
 #---------------------------------------------------------------------------------------
 # Build flags

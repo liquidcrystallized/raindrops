@@ -1,13 +1,14 @@
 #include "Application.hpp"
 #include "MidiReceiver.hpp"
 #include "MainMenuState.hpp"
+#include "raygui-defguard.hpp"
 
 namespace raindrops
 {
     Application::Application()
     {
         // Graphics related setup
-        m_renderWindow.Init(640, 480, "raindrops [dev]");
+        m_renderWindow.Init(426, 240, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
         // Midi related setup

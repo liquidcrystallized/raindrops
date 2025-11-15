@@ -2,6 +2,7 @@
 #define RAINDROPS_SETTINGSMENUSTATE_HPP
 
 #include "State.hpp"
+#include <raygui-cpp/Button.h>
 
 namespace raindrops
 {
@@ -18,7 +19,12 @@ namespace raindrops
         void update() override;
         void draw() override;
     private:
-        raylib::Rectangle m_testRectangle;
+        rgc::Button m_backButton;
+
+        const char* m_backButtonText;
+        bool m_backButtonCanClick;
+
+        void setupUI();
     };
 }
 
