@@ -8,6 +8,9 @@ namespace raindrops
 {
     class StateMachine;
 
+    /**
+     * @brief Also known as a screen/scene. Where the "game" gets updated and drawn.
+     */
     class State {
     public:
         State(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true, std::string  stateName = "");
@@ -21,6 +24,8 @@ namespace raindrops
 
         virtual void update() = 0;
         virtual void draw() = 0;
+
+        virtual void onWindowResize() = 0;
 
         std::unique_ptr<State> next();
 

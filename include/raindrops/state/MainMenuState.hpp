@@ -2,9 +2,8 @@
 #define RAINDROPS_MAINMENUSTATE_HPP
 
 #include "State.hpp"
+#include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
-#include <raygui-cpp/ListView.h>
-#include <raygui-cpp/Panel.h>
 
 namespace raindrops
 {
@@ -17,7 +16,11 @@ namespace raindrops
 
         void update() override;
         void draw() override;
+
+        void onWindowResize() override;
     private:
+        VerticalStackPanel m_verticalStackPanel;
+
         rgc::Button m_settingsMenuButton;
         rgc::Button m_quitButton;
 

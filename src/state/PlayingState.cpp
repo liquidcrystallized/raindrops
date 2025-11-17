@@ -41,4 +41,9 @@ namespace raindrops
         m_testRectangle.Draw(raylib::Color::Green());
         m_renderWindow.EndDrawing();
     }
+
+    void PlayingState::onWindowResize()
+    {
+        //TODO
+    }
 }

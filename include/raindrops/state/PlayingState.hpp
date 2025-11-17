@@ -14,6 +14,8 @@ namespace raindrops
 
         void update() override;
         void draw() override;
+
+        void onWindowResize() override;
     private:
         raylib::Rectangle m_testRectangle;
     };

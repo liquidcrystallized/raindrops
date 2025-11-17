@@ -42,6 +42,11 @@ namespace raindrops
         m_renderWindow.EndDrawing();
     }
 
+    void SettingsMenuState::onWindowResize()
+    {
+        //TODO
+    }
+
     //TODO: Temp programmers UI, implement actual design later
     void SettingsMenuState::setupUI()
     {

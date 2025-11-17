@@ -18,6 +18,8 @@ namespace raindrops
 
         void update() override;
         void draw() override;
+
+        void onWindowResize() override;
     private:
         rgc::Button m_backButton;
 
