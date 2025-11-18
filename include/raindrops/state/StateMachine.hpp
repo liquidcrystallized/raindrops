@@ -11,16 +11,29 @@ namespace raindrops
 {
     /**
      * @brief Manages a stack of application states (e.g., main menu, options, etc).
+     * Provides methods to transition between states, handle state pausing/resuming,
+     * and manage the overall application state flow.
      */
     class StateMachine {
     public:
         StateMachine();
 
-        std::string getCurrentStateName();
+        /**
+         * @brief Gets the current state at the top of the stack of states.
+         * @return A reference to the current running state.
+         */
         std::unique_ptr<State>& getCurrentState();
 
+        /**
+         * Runs a given state by pushing it onto the state stack.
+         * @param state The state to be run.
+         */
         void run(std::unique_ptr<State> state);
 
+        /**
+         * @brief Advances to the next state. If we're resuming, pop the current state
+         * and resume the previous state. Otherwise, transition to the next state (if any exists).
+         */
         void nextState();
 
         /**
@@ -34,6 +47,14 @@ namespace raindrops
         [[nodiscard]] bool running() const;
         void quit();
 
+        /**
+         *
+         * @tparam T The type of state to create.
+         * @param stateMachine Reference to the state machine.
+         * @param renderWindow Reference to the rendering window.
+         * @param replace If true, the new state will replace the current one.
+         * @return A unique_ptr to the newly created state.
+         */
         template <typename T>
         static std::unique_ptr<T> build(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true);
     private:

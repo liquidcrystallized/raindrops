@@ -16,17 +16,17 @@ TEST_CASE("State transitions")
 
     // Check initial state
     CHECK( stateMachine.running() == true );
-    CHECK( stateMachine.getCurrentStateName() == "MainMenuState" );
+    CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 
     // Check transition to playing state
     auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, dummyWindow, true);
     stateMachine.run(std::move(playingState));
-    CHECK( stateMachine.getCurrentStateName() == "PlayingState" );
+    CHECK( stateMachine.getCurrentState()->getName() == "PlayingState" );
 
     // Check going "back" a state
     stateMachine.lastState(); // Flag for pop
     stateMachine.nextState(); // Pop and run whatever state is currently at the top
-    CHECK( stateMachine.getCurrentStateName() == "MainMenuState" );
+    CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 }
 
 TEST_CASE("State management")
