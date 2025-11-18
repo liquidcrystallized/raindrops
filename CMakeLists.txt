@@ -89,6 +89,7 @@ add_executable(raindrops_tests
 
 target_include_directories(raindrops_tests PRIVATE
         include/raindrops/midi
+        include/raindrops/render/controls
         include/raindrops/state
         include/raindrops
 )
