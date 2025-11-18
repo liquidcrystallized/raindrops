@@ -8,7 +8,9 @@ namespace raindrops
     Application::Application()
     {
         // Graphics related setup
+        m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
         m_renderWindow.Init(426, 240, "raindrops [dev]");
+        //m_renderWindow.Init(1280, 720, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
         // Midi related setup
@@ -36,6 +38,11 @@ namespace raindrops
     {
         while (m_stateMachine.running())
         {
+            if (m_renderWindow.IsResized())
+            {
+                onWindowResize();
+            }
+
             m_stateMachine.nextState();
             m_stateMachine.update();
             m_stateMachine.draw();
@@ -57,4 +64,8 @@ namespace raindrops
         m_midiMonitor->startMonitoring(m_midiPort, m_midiChannel);
     }
 
+    void Application::onWindowResize()
+    {
+        m_stateMachine.getCurrentState()->onWindowResize();
+    }
 }

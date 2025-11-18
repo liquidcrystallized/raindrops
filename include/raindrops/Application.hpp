@@ -28,6 +28,8 @@ namespace raindrops
         void setMidiChannel(unsigned int channel);
 
         void monitorMidi() const;
+
+        void onWindowResize();
     };
 }
 
