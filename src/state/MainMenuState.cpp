@@ -50,7 +50,7 @@ namespace raindrops
         std::cout << "Window resizing" << '\n';
     }
 
-    //TODO: Temp programmers UI, implement actual design later
+    //TODO: Temp programmers UI, implement actual design later, not resolution aware.
     void MainMenuState::setupUI()
     {
         // Size and position stack panel based on render window size.
@@ -87,9 +87,10 @@ namespace raindrops
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_settingsMenuButton));
 
         // Quit button initialisation and callback setup.
+        const float verticalMargin = static_cast<float>(buttonSize.y) * 1.4f;
         m_quitButtonText = "Quit";
         m_quitButton = rgc::Button(rgc::Bounds::WithText(m_quitButtonText, fontSize, { buttonSize.x, buttonSize.y }), m_quitButtonText);
-        m_quitButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, buttonSize.y }));
+        m_quitButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, verticalMargin }));
         m_quitButton.OnClick([this]
         {
             m_stateMachine.quit();

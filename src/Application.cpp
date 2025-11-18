@@ -8,9 +8,9 @@ namespace raindrops
     Application::Application()
     {
         // Graphics related setup
-        m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-        m_renderWindow.Init(426, 240, "raindrops [dev]");
-        //m_renderWindow.Init(1280, 720, "raindrops [dev]");
+        //m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
+        //m_renderWindow.Init(426, 240, "raindrops [dev]");
+        m_renderWindow.Init(1280, 720, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
         // Midi related setup
