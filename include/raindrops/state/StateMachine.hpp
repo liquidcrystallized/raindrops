@@ -17,6 +17,7 @@ namespace raindrops
         StateMachine();
 
         std::string getCurrentStateName();
+        std::unique_ptr<State>& getCurrentState();
 
         void run(std::unique_ptr<State> state);
 
