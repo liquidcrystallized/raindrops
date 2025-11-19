@@ -9,6 +9,7 @@ TEST_CASE("Default State/Screen window centre is correct")
     raindrops::StateMachine stateMachine;
     raylib::Window dummyWindow { 640, 480 };
     dummyWindow.SetTargetFPS(1);
+    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
     stateMachine.run(std::move(mainMenu));
@@ -24,6 +25,7 @@ TEST_CASE("Arbitrary setting of new centre")
     raindrops::StateMachine stateMachine;
     raylib::Window dummyWindow { 640, 480 };
     dummyWindow.SetTargetFPS(1);
+    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
     stateMachine.run(std::move(mainMenu));
