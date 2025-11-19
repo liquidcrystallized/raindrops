@@ -31,7 +31,7 @@ namespace raindrops
 
         [[nodiscard]] bool isReplacing() const;
 
-        std::string getName() const;
+        [[nodiscard]] std::string getName() const;
     protected:
         StateMachine& m_stateMachine;
         raylib::Window& m_renderWindow;
