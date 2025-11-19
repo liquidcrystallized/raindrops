@@ -32,9 +32,13 @@ namespace raindrops
         [[nodiscard]] bool isReplacing() const;
 
         [[nodiscard]] std::string getName() const;
+
+        [[nodiscard]] raylib::Vector2 getWindowCentrePosition() const;
+        void setWindowCentrePosition(float x, float y);
     protected:
         StateMachine& m_stateMachine;
         raylib::Window& m_renderWindow;
+        raylib::Vector2 m_windowCentrePosition;
 
         bool m_replacing;
         std::string m_stateName;

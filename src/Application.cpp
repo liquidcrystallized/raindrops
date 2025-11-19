@@ -8,8 +8,7 @@ namespace raindrops
     Application::Application()
     {
         // Graphics related setup
-        //m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
-        //m_renderWindow.Init(426, 240, "raindrops [dev]");
+        m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
         m_renderWindow.Init(1280, 720, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
@@ -66,6 +65,12 @@ namespace raindrops
 
     void Application::onWindowResize()
     {
+        m_stateMachine.getCurrentState()->setWindowCentrePosition
+        (
+            static_cast<float>(m_renderWindow.GetWidth()) / 2.0f,
+            static_cast<float>(m_renderWindow.GetHeight()) / 2.0f
+        );
+
         m_stateMachine.getCurrentState()->onWindowResize();
     }
 }

@@ -6,6 +6,10 @@ namespace raindrops
     State::State(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace, std::string stateName)
     : m_stateMachine { stateMachine }
     , m_renderWindow { renderWindow }
+    , m_windowCentrePosition {
+        static_cast<float>(m_renderWindow.GetWidth()) / 2.0f,
+        static_cast<float>(m_renderWindow.GetHeight()) / 2.0f
+    }
     , m_replacing { replace }
     , m_stateName { std::move(stateName) }
     {
@@ -25,5 +29,16 @@ namespace raindrops
     std::string State::getName() const
     {
         return m_stateName;
+    }
+
+    raylib::Vector2 State::getWindowCentrePosition() const
+    {
+        return m_windowCentrePosition;
+    }
+
+    void State::setWindowCentrePosition(const float x, const float y)
+    {
+        m_windowCentrePosition.SetX(x);
+        m_windowCentrePosition.SetY(y);
     }
 }
