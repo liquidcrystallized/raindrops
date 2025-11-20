@@ -2,12 +2,13 @@
 #define RAINDROPS_SETTINGSMENUSTATE_HPP
 
 #include "State.hpp"
+#include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
 
 namespace raindrops
 {
     /**
-     * @brief The settings screen. Where users change things like screen res.
+     * @brief The settings screen. Where users can select their midi device and etc.
      */
     class SettingsMenuState final : public State {
     public:
@@ -21,12 +22,17 @@ namespace raindrops
 
         void onWindowResize() override;
     private:
+        VerticalStackPanel m_verticalStackPanel;
+        raylib::Rectangle m_verticalStackPanelSize;
+        rgc::Bounds m_verticalStackPanelBounds;
+
         rgc::Button m_backButton;
+        raylib::Rectangle m_buttonSize;
 
         const char* m_backButtonText;
-        bool m_backButtonCanClick;
+        int m_buttonScalingFactor;
 
-        void setupUI();
+        void positionUIComponents();
     };
 }
 
