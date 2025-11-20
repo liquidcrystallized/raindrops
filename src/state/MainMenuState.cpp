@@ -10,7 +10,11 @@ namespace raindrops
     MainMenuState::MainMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
     : State { stateMachine, renderWindow, replace, "MainMenuState" }
     {
-        setupUI();
+        m_playButtonText = "Play";
+        m_settingsMenuButtonText = "Settings";
+        m_quitButtonText = "Quit";
+
+        positionUIComponents();
         std::cout << "MainMenuState Init\n";
     }
 
@@ -31,6 +35,7 @@ namespace raindrops
             m_stateMachine.quit();
         }
 
+        m_playButton.Update();
         m_settingsMenuButton.Update();
         m_quitButton.Update();
     }
@@ -47,38 +52,65 @@ namespace raindrops
 
     void MainMenuState::onWindowResize()
     {
-        std::cout << "Window resizing" << '\n';
+        positionUIComponents();
     }
 
-    //TODO: Temp programmers UI, implement actual design later, not resolution aware.
-    void MainMenuState::setupUI()
+    //TODO: Temp programmers UI, implement actual design later.
+    void MainMenuState::positionUIComponents()
     {
-        // Size and position stack panel based on render window size.
-        const raylib::Vector2 verticalStackPanelSize {
-            static_cast<float>(m_renderWindow.GetWidth()) / 3.0f,
-            static_cast<float>(m_renderWindow.GetHeight()) / 1.2f
-        };
+        m_buttonScalingFactor = 1;
 
-        const raylib::Vector2 verticalStackPanelMidpointSnap {
-            (static_cast<float>(m_renderWindow.GetWidth()) / 2.0f) - (verticalStackPanelSize.x / 2),
-            (static_cast<float>(m_renderWindow.GetHeight()) / 2.0f) - (verticalStackPanelSize.y / 2)
+        // Sets the bounds/workspace/position limit for other controls.
+        // They should all be rendered inside the bounds of the stack panel.
+        m_verticalStackPanelSize  = raylib::Rectangle {
+            0,
+            0,
+            static_cast<float>(m_renderWindow.GetWidth()) / 2.0f,
+            static_cast<float>(m_renderWindow.GetHeight()) / 1.5f
         };
 
         m_verticalStackPanel = VerticalStackPanel(
-            rgc::Bounds({verticalStackPanelMidpointSnap.x,verticalStackPanelMidpointSnap.y},
-            {verticalStackPanelSize.x, verticalStackPanelSize.y}),
-            "raindrops [dev]");
+            rgc::Bounds(
+                {
+                    this->m_windowCentrePosition.x - m_verticalStackPanelSize.GetWidth() / 2,
+                    this->m_windowCentrePosition.y - m_verticalStackPanelSize.GetHeight() / 2
+                },
+                {
+                    m_verticalStackPanelSize.GetWidth(),
+                    m_verticalStackPanelSize.GetHeight()
+                }
+                ),
+            "raindrops [dev]"
+        );
 
-        // Button sizing and positioning
-        const raylib::Vector2 buttonSize {
-            (verticalStackPanelSize.x / 1.5f),
-            verticalStackPanelSize.y / 6.0f
+        // Size and position the button relative to the stack panel.
+        m_buttonSize = raylib::Rectangle {
+            0,
+            0,
+            m_verticalStackPanelSize.GetWidth() / 1.1f,
+            m_verticalStackPanelSize.GetHeight() / 8.0f
         };
-        constexpr int fontSize { 22 };
 
-        // Settings button initialisation and callback setup.
-        m_settingsMenuButtonText = "Settings";
-        m_settingsMenuButton = rgc::Button(rgc::Bounds::WithText(m_settingsMenuButtonText, fontSize, { buttonSize.x, buttonSize.y }), m_settingsMenuButtonText);
+        // Play button positioning and callback.
+        m_playButton = rgc::Button(rgc::Bounds::WithText(
+            m_playButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 2, m_buttonSize.GetHeight() }),
+            m_playButtonText);
+        m_playButton.SetStyle(rgc::Style(rgc::Style::Position::TOP_CENTER, { 0, m_buttonSize.GetHeight() / 0.5f }));
+        m_playButton.OnClick([this]
+        {
+            //TODO Move to play/song selection screen.
+            std::cout << "Play button clicked" << '\n';
+        });
+        m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
+
+        // Settings button positioning and callback.
+        m_settingsMenuButton = rgc::Button(rgc::Bounds::WithText(
+            m_settingsMenuButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 2, m_buttonSize.GetHeight() }),
+            m_settingsMenuButtonText);
         m_settingsMenuButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
         m_settingsMenuButton.OnClick([this]
         {
@@ -86,11 +118,13 @@ namespace raindrops
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_settingsMenuButton));
 
-        // Quit button initialisation and callback setup.
-        const float verticalMargin = static_cast<float>(buttonSize.y) * 1.4f;
-        m_quitButtonText = "Quit";
-        m_quitButton = rgc::Button(rgc::Bounds::WithText(m_quitButtonText, fontSize, { buttonSize.x, buttonSize.y }), m_quitButtonText);
-        m_quitButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, verticalMargin }));
+        // Quit button positioning and callback.
+        m_quitButton = rgc::Button(rgc::Bounds::WithText(
+            m_quitButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 2, m_buttonSize.GetHeight() }),
+            m_quitButtonText);
+        m_quitButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { 0, -m_buttonSize.GetHeight() / 0.5f }));
         m_quitButton.OnClick([this]
         {
             m_stateMachine.quit();

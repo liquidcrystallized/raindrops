@@ -20,16 +20,20 @@ namespace raindrops
         void onWindowResize() override;
     private:
         VerticalStackPanel m_verticalStackPanel;
+        raylib::Rectangle m_verticalStackPanelSize;
+        rgc::Bounds m_verticalStackPanelBounds;
 
+        rgc::Button m_playButton;
         rgc::Button m_settingsMenuButton;
         rgc::Button m_quitButton;
+        raylib::Rectangle m_buttonSize;
 
+        const char* m_playButtonText;
         const char* m_settingsMenuButtonText;
         const char* m_quitButtonText;
-        bool m_settingsMenuButtonCanClick;
-        bool m_quitButtonCanClick;
+        int m_buttonScalingFactor;
 
-        void setupUI();
+        void positionUIComponents();
     };
 }
 
