@@ -35,9 +35,7 @@ namespace raindrops
             m_stateMachine.quit();
         }
 
-        m_playButton.Update();
-        m_settingsMenuButton.Update();
-        m_quitButton.Update();
+        m_verticalStackPanel.Update();
     }
 
     void MainMenuState::draw()
