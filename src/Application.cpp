@@ -12,6 +12,8 @@ namespace raindrops
         m_renderWindow.Init(1280, 720, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
+        rgc::Globals::Style::GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
+
         // Midi related setup
         const auto midiReceiver = std::make_shared<MidiReceiver>();
 
