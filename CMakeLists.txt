@@ -37,6 +37,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/midi/MidiReceiver.hpp
         include/raindrops/render/controls/VerticalStackPanel.hpp
         include/raindrops/state/MainMenuState.hpp
+        include/raindrops/state/MidiSetupMenuState.hpp
         include/raindrops/state/PlayingState.hpp
         include/raindrops/state/SettingsMenuState.hpp
         include/raindrops/state/State.hpp
@@ -50,6 +51,7 @@ set(RAINDROPS_SOURCES
         src/midi/MidiReceiver.cpp
         src/render/controls/VerticalStackPanel.cpp
         src/state/MainMenuState.cpp
+        src/state/MidiSetupMenuState.cpp
         src/state/PlayingState.cpp
         src/state/SettingsMenuState.cpp
         src/state/State.cpp
