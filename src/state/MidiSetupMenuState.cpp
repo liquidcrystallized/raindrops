@@ -8,6 +8,7 @@ namespace raindrops
     MidiSetupMenuState::MidiSetupMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
     : State { stateMachine, renderWindow, replace, "MidiSetupMenuState" }
     {
+        m_applyButtonText = "Apply";
         m_backButtonText = "Back";
 
         positionUIComponents();
@@ -26,7 +27,7 @@ namespace raindrops
 
     void MidiSetupMenuState::update()
     {
-        if (IsKeyPressed(KEY_ESCAPE))
+        if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
         {
             m_stateMachine.lastState();
         }
@@ -72,9 +73,34 @@ namespace raindrops
                     m_verticalStackPanelSize.GetWidth(),
                     m_verticalStackPanelSize.GetHeight()
                 }
-                ),
+            ),
             "midi setup"
         );
+
+        // Set another vertical stack panel inside.
+        m_innerVerticalStackPanelSize = raylib::Rectangle {
+            0,
+            0,
+            m_verticalStackPanelSize.GetWidth() / 1.2f,
+           m_verticalStackPanelSize.GetHeight() / 1.5f
+        };
+
+        m_innerVerticalStackPanel = VerticalStackPanel(
+            rgc::Bounds(
+                {
+                    0,
+                    0
+                },
+                {
+                    m_innerVerticalStackPanelSize.GetWidth(),
+                   m_innerVerticalStackPanelSize.GetHeight()
+                }
+            ),
+            "select midi device"
+        );
+
+        m_innerVerticalStackPanel.SetStyle(rgc::Style(rgc::Style::Position::TOP_CENTER, { 0, m_innerVerticalStackPanelSize.GetHeight() / 12.0f }));
+        m_verticalStackPanel.AddChild(rgc::ToComponent(&m_innerVerticalStackPanel));
 
         // Size and position the button relative to the stack panel.
         m_buttonSize = raylib::Rectangle {
@@ -88,13 +114,26 @@ namespace raindrops
         m_backButton = rgc::Button(rgc::Bounds::WithText(
             m_backButtonText,
             m_buttonScalingFactor,
-            { m_buttonSize.GetWidth() / 2, m_buttonSize.GetHeight() }),
+            { m_buttonSize.GetWidth() / 4, m_buttonSize.GetHeight() }),
             m_backButtonText);
-        m_backButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { 0, -m_buttonSize.GetHeight() / 0.5f }));
+        m_backButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { -m_buttonSize.GetWidth() / 5.0f, -m_verticalStackPanelSize.GetHeight() / 12.0f }));
         m_backButton.OnClick([this]
         {
             m_stateMachine.lastState();
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_backButton));
+
+        // Apply button positioning and callback.
+        m_applyButton = rgc::Button(rgc::Bounds::WithText(
+            m_applyButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 4, m_buttonSize.GetHeight() }),
+            m_applyButtonText);
+        m_applyButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { m_buttonSize.GetWidth() / 5.0f, -m_verticalStackPanelSize.GetHeight() / 12.0f }));
+        m_applyButton.OnClick([this]
+        {
+            //TODO Apply settings
+        });
+        m_verticalStackPanel.AddChild(rgc::ToComponent(&m_applyButton));
     }
 }
