@@ -26,9 +26,11 @@ namespace raindrops
         raylib::Rectangle m_verticalStackPanelSize;
         rgc::Bounds m_verticalStackPanelBounds;
 
+        rgc::Button m_midiSetupMenuButton;
         rgc::Button m_backButton;
         raylib::Rectangle m_buttonSize;
 
+        const char* m_midiSetupMenuButtonText;
         const char* m_backButtonText;
         int m_buttonScalingFactor;
 

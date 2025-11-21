@@ -1,4 +1,5 @@
 #include "SettingsMenuState.hpp"
+#include "MidiSetupMenuState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
 #include <iostream>
@@ -8,6 +9,7 @@ namespace raindrops
     SettingsMenuState::SettingsMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
     : State { stateMachine, renderWindow, replace, "SettingsMenuState" }
     {
+        m_midiSetupMenuButtonText = "Midi Setup";
         m_backButtonText = "Back";
 
         positionUIComponents();
@@ -74,7 +76,7 @@ namespace raindrops
                     m_verticalStackPanelSize.GetHeight()
                 }
                 ),
-            "Settings"
+            "settings"
         );
 
         // Size and position the button relative to the stack panel.
@@ -84,6 +86,19 @@ namespace raindrops
             m_verticalStackPanelSize.GetWidth() / 1.1f,
             m_verticalStackPanelSize.GetHeight() / 8.0f
         };
+
+        // Midi setup menu button positioning and callback.
+        m_midiSetupMenuButton = rgc::Button(rgc::Bounds::WithText(
+            m_midiSetupMenuButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 2, m_buttonSize.GetHeight() }),
+            m_midiSetupMenuButtonText);
+        m_midiSetupMenuButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
+        m_midiSetupMenuButton.OnClick([this]
+        {
+            m_next = StateMachine::build<MidiSetupMenuState>(m_stateMachine, m_renderWindow, false);
+        });
+        m_verticalStackPanel.AddChild(rgc::ToComponent(&m_midiSetupMenuButton));
 
         // Back button positioning and callback.
         m_backButton = rgc::Button(rgc::Bounds::WithText(
