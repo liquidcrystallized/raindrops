@@ -12,6 +12,7 @@ namespace raindrops
         m_renderWindow.Init(1280, 720, "raindrops [dev]");
         m_renderWindow.SetTargetFPS(60);
 
+        // Note: Default raylib font looks bad if not in multiples of 10.
         rgc::Globals::Style::GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
         // Midi related setup
