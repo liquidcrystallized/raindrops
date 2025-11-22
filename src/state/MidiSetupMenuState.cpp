@@ -8,6 +8,10 @@ namespace raindrops
     MidiSetupMenuState::MidiSetupMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
     : State { stateMachine, renderWindow, replace, "MidiSetupMenuState" }
     {
+        m_midiDeviceListViewText = "Lorem;Ipsum;Dolor;Sit;Amet;Consectetuer";
+        m_midiDeviceListViewScrollIndex = 1;
+        m_midiDeviceListViewActiveSelection = 0;
+
         m_applyButtonText = "Apply";
         m_backButtonText = "Back";
 
@@ -33,6 +37,7 @@ namespace raindrops
         }
 
         m_verticalStackPanel.Update();
+        m_midiDeviceListView.Update();
     }
 
     void MidiSetupMenuState::draw()
@@ -41,6 +46,7 @@ namespace raindrops
         m_renderWindow.ClearBackground(raylib::Color::RayWhite());
 
         RAYGUI_CPP_UNUSED(m_verticalStackPanel.Show(true));
+        RAYGUI_CPP_UNUSED(m_midiDeviceListView.Show(true));
 
         m_renderWindow.EndDrawing();
     }
@@ -101,6 +107,20 @@ namespace raindrops
 
         m_innerVerticalStackPanel.SetStyle(rgc::Style(rgc::Style::Position::TOP_CENTER, { 0, m_innerVerticalStackPanelSize.GetHeight() / 12.0f }));
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_innerVerticalStackPanel));
+
+        // List view for all connected midi devices.
+        m_midiDeviceListViewBounds = rgc::Bounds {
+            {
+                0,
+                0
+            },
+            {
+                m_innerVerticalStackPanelSize.GetWidth() / 1.1f,
+                m_innerVerticalStackPanelSize.GetHeight() / 1.1f
+            }
+        };
+        m_midiDeviceListView = rgc::ListView(m_midiDeviceListViewBounds, m_midiDeviceListViewText, &m_midiDeviceListViewScrollIndex, m_midiDeviceListViewActiveSelection);
+        m_midiDeviceListView.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, -m_innerVerticalStackPanelSize.GetHeight() / 6.0f }));
 
         // Size and position the button relative to the stack panel.
         m_buttonSize = raylib::Rectangle {

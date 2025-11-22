@@ -4,6 +4,7 @@
 #include "State.hpp"
 #include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
+#include <raygui-cpp/ListView.h>
 
 namespace raindrops
 {
@@ -25,6 +26,12 @@ namespace raindrops
         raylib::Rectangle m_innerVerticalStackPanelSize;
         rgc::Bounds m_verticalStackPanelBounds;
         rgc::Bounds m_innerVerticalStackPanelBounds;
+
+        rgc::ListView m_midiDeviceListView;
+        rgc::Bounds m_midiDeviceListViewBounds;
+        int m_midiDeviceListViewScrollIndex;
+        int m_midiDeviceListViewActiveSelection;
+        const char* m_midiDeviceListViewText;
 
         rgc::Button m_applyButton;
         rgc::Button m_backButton;
