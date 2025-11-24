@@ -16,11 +16,11 @@ namespace raindrops
         rgc::Globals::Style::GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
 
         // Midi related setup
-        const auto midiReceiver = std::make_shared<MidiReceiver>();
+        auto midiReceiver = std::make_unique<MidiReceiver>();
 
-        m_midiMonitor = std::make_shared<MidiMonitor>();
+        m_midiMonitor = std::make_unique<MidiMonitor>();
         m_midiMonitor->listDevices(m_midiDevices);
-        m_midiMonitor->setInputListener(midiReceiver);
+        m_midiMonitor->setInputListener(std::move(midiReceiver));
 
         //TODO: Temporary for testing
         setMidiPort(1);

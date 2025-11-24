@@ -7,7 +7,7 @@ namespace raindrops
     {
         try
         {
-            m_rtMidiIn = std::make_shared<RtMidiIn>();
+            m_rtMidiIn = std::make_unique<RtMidiIn>();
         }
         catch (RtMidiError& error)
         {
@@ -35,7 +35,7 @@ namespace raindrops
             m_rtMidiIn->openPort(midiPort);
             m_rtMidiIn->ignoreTypes(false, false, false);
             m_running = true;
-            m_monitorThread = std::make_shared<std::thread>(&MidiMonitor::monitor, this);
+            m_monitorThread = std::make_unique<std::thread>(&MidiMonitor::monitor, this);
         }
         catch (RtMidiError& error)
         {
@@ -78,9 +78,9 @@ namespace raindrops
         }
     }
 
-    void MidiMonitor::setInputListener(const std::shared_ptr<IMidiInputListener>& inputListener)
+    void MidiMonitor::setInputListener(std::unique_ptr<IMidiInputListener> inputListener)
     {
-        m_inputListener = inputListener;
+        m_inputListener = std::move(inputListener);
     }
 
 
