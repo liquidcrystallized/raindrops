@@ -34,6 +34,7 @@ namespace raindrops
 
     Application::~Application()
     {
+        m_midiMonitor->stopMonitoring();
     }
 
     void Application::run()
