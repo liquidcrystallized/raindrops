@@ -50,7 +50,7 @@ namespace raindrops
     {
         m_running = false;
 
-        if (m_monitorThread)
+        if (m_monitorThread && m_monitorThread->joinable())
         {
             m_monitorThread->join();
         }
@@ -82,7 +82,6 @@ namespace raindrops
     {
         m_inputListener = std::move(inputListener);
     }
-
 
     void MidiMonitor::monitor() const
     {
@@ -126,5 +125,4 @@ namespace raindrops
         }
         m_rtMidiIn->closePort();
     }
-
 }
