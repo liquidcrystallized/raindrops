@@ -19,7 +19,7 @@ namespace raindrops
         StateMachine m_stateMachine;
         raylib::Window m_renderWindow;
         std::vector<MidiDevice> m_midiDevices;
-        std::unique_ptr<MidiMonitor> m_midiMonitor;
+        MidiMonitor m_midiMonitor;
 
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
@@ -27,7 +27,7 @@ namespace raindrops
         void setMidiPort(unsigned int port);
         void setMidiChannel(unsigned int channel);
 
-        void monitorMidi() const;
+        void monitorMidi();
 
         void onWindowResize();
     };

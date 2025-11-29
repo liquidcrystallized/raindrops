@@ -9,10 +9,11 @@ TEST_CASE("State transitions")
 {
     raindrops::StateMachine stateMachine;
     raylib::Window dummyWindow { 640, 480 };
+    raindrops::MidiMonitor midiMonitor {};
     dummyWindow.SetTargetFPS(1);
     dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     // Check initial state
@@ -20,7 +21,7 @@ TEST_CASE("State transitions")
     CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 
     // Check transition to playing state
-    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, dummyWindow, true);
+    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, dummyWindow, midiMonitor, true);
     stateMachine.run(std::move(playingState));
     CHECK( stateMachine.getCurrentState()->getName() == "PlayingState" );
 
@@ -34,10 +35,11 @@ TEST_CASE("State management")
 {
     raindrops::StateMachine stateMachine;
     raylib::Window dummyWindow { 640, 480 };
+    raindrops::MidiMonitor midiMonitor {};
     dummyWindow.SetTargetFPS(1);
     dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     stateMachine.quit();

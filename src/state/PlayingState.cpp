@@ -5,8 +5,8 @@
 
 namespace raindrops
 {
-    PlayingState::PlayingState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
-    : State { stateMachine, renderWindow, replace, "PlayingState" }
+    PlayingState::PlayingState(StateMachine& stateMachine, raylib::Window& renderWindow, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderWindow, midiMonitor, replace, "PlayingState" }
     {
         m_testRectangle.SetSize(100, 100);
         std::cout << "PlayingState Init\n";

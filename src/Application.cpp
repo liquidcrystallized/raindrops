@@ -18,9 +18,8 @@ namespace raindrops
         // Midi related setup
         auto midiReceiver = std::make_unique<MidiReceiver>();
 
-        m_midiMonitor = std::make_unique<MidiMonitor>();
-        m_midiMonitor->listDevices(m_midiDevices);
-        m_midiMonitor->setInputListener(std::move(midiReceiver));
+        m_midiMonitor.listDevices(m_midiDevices);
+        m_midiMonitor.setInputListener(std::move(midiReceiver));
 
         //TODO: Temporary for testing
         setMidiPort(1);
@@ -29,12 +28,12 @@ namespace raindrops
         monitorMidi();
 
         // Initialise state machine
-        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, true));
+        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, true));
     }
 
     Application::~Application()
     {
-        m_midiMonitor->stopMonitoring();
+        m_midiMonitor.stopMonitoring();
     }
 
     void Application::run()
@@ -62,9 +61,9 @@ namespace raindrops
         m_midiChannel = channel;
     }
 
-    void Application::monitorMidi() const
+    void Application::monitorMidi()
     {
-        m_midiMonitor->startMonitoring(m_midiPort, m_midiChannel);
+        m_midiMonitor.startMonitoring(m_midiPort, m_midiChannel);
     }
 
     void Application::onWindowResize()

@@ -7,7 +7,7 @@ namespace raindrops
 {
     class PlayingState final : public State {
     public:
-        PlayingState(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true);
+        PlayingState(StateMachine&, raylib::Window&, MidiMonitor&, bool replace = true);
 
         void pause() override;
         void resume() override;

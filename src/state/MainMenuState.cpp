@@ -7,8 +7,8 @@
 
 namespace raindrops
 {
-    MainMenuState::MainMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, const bool replace)
-    : State { stateMachine, renderWindow, replace, "MainMenuState" }
+    MainMenuState::MainMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderWindow, midiMonitor, replace, "MainMenuState" }
     {
         m_playButtonText = "Play";
         m_settingsMenuButtonText = "Settings";
@@ -112,7 +112,7 @@ namespace raindrops
         m_settingsMenuButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
         m_settingsMenuButton.OnClick([this]
         {
-            m_next = StateMachine::build<SettingsMenuState>(m_stateMachine, m_renderWindow, false);
+            m_next = StateMachine::build<SettingsMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_settingsMenuButton));
 

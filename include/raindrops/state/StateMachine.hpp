@@ -52,11 +52,12 @@ namespace raindrops
          * @tparam T The type of state to create.
          * @param stateMachine Reference to the state machine.
          * @param renderWindow Reference to the rendering window.
+         * @param midiMonitor Reference to the midi monitor.
          * @param replace If true, the new state will replace the current one.
          * @return A unique_ptr to the newly created state.
          */
         template <typename T>
-        static std::unique_ptr<T> build(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace = true);
+        static std::unique_ptr<T> build(StateMachine& stateMachine, raylib::Window& renderWindow, MidiMonitor& midiMonitor, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
 
@@ -65,13 +66,13 @@ namespace raindrops
     };
 
     template<typename T>
-    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, raylib::Window& renderWindow, bool replace)
+    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, raylib::Window& renderWindow, MidiMonitor& midiMonitor, bool replace)
     {
         auto newState = std::unique_ptr<T>{ nullptr };
 
         try
         {
-            newState = std::make_unique<T>(stateMachine, renderWindow, replace);
+            newState = std::make_unique<T>(stateMachine, renderWindow, midiMonitor, replace);
         }
         catch (std::runtime_error& exception)
         {
