@@ -2,8 +2,7 @@
 
 int main()
 {
-    auto app = raindrops::Application{};
-    app.run();
+    raindrops::Application application {};
 
     return 0;
 }

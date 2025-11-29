@@ -29,6 +29,8 @@ namespace raindrops
 
         // Initialise state machine
         m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, true));
+
+        run();
     }
 
     Application::~Application()

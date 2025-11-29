@@ -13,8 +13,6 @@ namespace raindrops
         Application();
         ~Application();
 
-        void run();
-
     private:
         StateMachine m_stateMachine;
         raylib::Window m_renderWindow;
@@ -23,6 +21,8 @@ namespace raindrops
 
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
+
+        void run();
 
         void setMidiPort(unsigned int port);
         void setMidiChannel(unsigned int channel);
