@@ -18,7 +18,7 @@ namespace raindrops
         // Midi related setup
         auto midiReceiver = std::make_unique<MidiReceiver>();
 
-        m_midiMonitor.listDevices(m_midiDevices);
+        m_midiMonitor.probeAndSetMidiDevices(m_midiDevices);
         m_midiMonitor.setInputListener(std::move(midiReceiver));
 
         //TODO: Temporary for testing

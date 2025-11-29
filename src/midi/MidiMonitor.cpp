@@ -59,11 +59,11 @@ namespace raindrops
     std::vector<MidiDevice> MidiMonitor::getMidiDevices() const
     {
         std::vector<MidiDevice> devices;
-        listDevices(devices);
+        probeAndSetMidiDevices(devices);
         return devices;
     }
 
-    void MidiMonitor::listDevices(std::vector<MidiDevice>& midiDevices) const
+    void MidiMonitor::probeAndSetMidiDevices(std::vector<MidiDevice>& midiDevices) const
     {
         midiDevices.clear();
 
