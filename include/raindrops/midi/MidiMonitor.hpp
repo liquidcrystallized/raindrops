@@ -17,9 +17,9 @@ namespace raindrops
         ~MidiMonitor();
 
         bool startMonitoring(unsigned int midiPort, unsigned int midiChannel);
-
         void stopMonitoring();
 
+        [[nodiscard]] std::vector<MidiDevice> getMidiDevices() const;
         void listDevices(std::vector<MidiDevice>& midiDevices) const;
 
         void setInputListener(std::unique_ptr<IMidiInputListener> inputListener);
