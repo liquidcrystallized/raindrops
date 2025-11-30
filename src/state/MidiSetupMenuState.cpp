@@ -1,6 +1,7 @@
 #include "MidiSetupMenuState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
+#include <cstring>
 #include <iostream>
 
 namespace raindrops
@@ -15,6 +16,7 @@ namespace raindrops
         m_applyButtonText = "Apply";
         m_backButtonText = "Back";
 
+        refreshMidiDevices();
         positionUIComponents();
         std::cout << "MidiSetupMenuState Init\n";
     }
@@ -155,5 +157,25 @@ namespace raindrops
             //TODO Apply settings
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_applyButton));
+    }
+
+    void MidiSetupMenuState::refreshMidiDevices()
+    {
+        m_midiDevices = m_stateMachine
+            .getCurrentState()
+            ->getMidiMonitor()
+            .getMidiDevices();
+
+        for (MidiDevice& device : m_midiDevices)
+        {
+            // Needed first because raylib adds a new selection in the list view after the ;
+            // so if there's an ; at the end of the string, there will be a blank option selectable.
+            if (!m_deviceList.empty())
+            {
+                m_deviceList += ";";
+            }
+            m_deviceList += device.getPortName();
+        }
+        m_midiDeviceListViewText = m_deviceList.c_str();
     }
 }

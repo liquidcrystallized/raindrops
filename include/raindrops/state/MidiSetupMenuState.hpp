@@ -41,7 +41,11 @@ namespace raindrops
         const char* m_backButtonText;
         int m_buttonScalingFactor;
 
+        std::vector<MidiDevice> m_midiDevices;
+        std::string m_deviceList;
+
         void positionUIComponents();
+        void refreshMidiDevices();
     };
 }
 
