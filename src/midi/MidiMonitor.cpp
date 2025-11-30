@@ -90,6 +90,26 @@ namespace raindrops
         m_inputListener = std::move(inputListener);
     }
 
+    unsigned int MidiMonitor::getMidiChannelNumber() const
+    {
+        return m_midiChannel;
+    }
+
+    void MidiMonitor::setMidiChannel(const unsigned int channelNumber)
+    {
+        m_midiChannel = channelNumber;
+    }
+
+    unsigned int MidiMonitor::getMidiPortNumber() const
+    {
+        return m_midiPort;
+    }
+
+    void MidiMonitor::setMidiPort(const unsigned int portNumber)
+    {
+        m_midiPort = portNumber;
+    }
+
     void MidiMonitor::monitor() const
     {
         std::vector<unsigned char> midiMessage;

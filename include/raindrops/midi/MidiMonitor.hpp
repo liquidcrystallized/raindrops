@@ -24,6 +24,12 @@ namespace raindrops
 
         void setInputListener(std::unique_ptr<IMidiInputListener> inputListener);
 
+        [[nodiscard]] unsigned int getMidiChannelNumber() const;
+        void setMidiChannel(unsigned int channelNumber);
+
+        [[nodiscard]] unsigned int getMidiPortNumber() const;
+        void setMidiPort(unsigned int portNumber);
+
     private:
         bool m_running;
         unsigned int m_midiPort;

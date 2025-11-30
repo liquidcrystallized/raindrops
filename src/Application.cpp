@@ -22,10 +22,9 @@ namespace raindrops
         m_midiMonitor.setInputListener(std::move(midiReceiver));
 
         //TODO: Temporary for testing
-        setMidiPort(1);
-        setMidiChannel(1);
-
-        monitorMidi();
+        m_midiMonitor.setMidiPort(1);
+        m_midiMonitor.setMidiChannel(1);
+        m_midiMonitor.startMonitoring(m_midiMonitor.getMidiPortNumber(), m_midiMonitor.getMidiChannelNumber());
 
         // Initialise state machine
         m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, true));
@@ -51,21 +50,6 @@ namespace raindrops
             m_stateMachine.update();
             m_stateMachine.draw();
         }
-    }
-
-    void Application::setMidiPort(unsigned int port)
-    {
-        m_midiPort = port;
-    }
-
-    void Application::setMidiChannel(unsigned int channel)
-    {
-        m_midiChannel = channel;
-    }
-
-    void Application::monitorMidi()
-    {
-        m_midiMonitor.startMonitoring(m_midiPort, m_midiChannel);
     }
 
     void Application::onWindowResize()

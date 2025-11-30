@@ -24,11 +24,6 @@ namespace raindrops
 
         void run();
 
-        void setMidiPort(unsigned int port);
-        void setMidiChannel(unsigned int channel);
-
-        void monitorMidi();
-
         void onWindowResize();
     };
 }
