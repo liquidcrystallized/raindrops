@@ -4,6 +4,7 @@
 #include "State.hpp"
 #include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
+#include <raygui-cpp/Label.h>
 #include <raygui-cpp/ListView.h>
 
 namespace raindrops
@@ -42,7 +43,9 @@ namespace raindrops
         int m_buttonScalingFactor;
 
         std::vector<MidiDevice> m_midiDevices;
+        rgc::Label m_connectedDeviceLabel;
         std::string m_deviceList;
+        std::string m_connectedDeviceLabelText;
 
         void positionUIComponents();
         void refreshMidiDevices();

@@ -4,6 +4,7 @@
 #include "State.hpp"
 #include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
+#include <raygui-cpp/Label.h>
 
 namespace raindrops
 {
@@ -33,7 +34,11 @@ namespace raindrops
         const char* m_quitButtonText;
         int m_buttonScalingFactor;
 
+        rgc::Label m_connectedDeviceLabel;
+        std::string m_connectedDeviceLabelText;
+
         void positionUIComponents();
+
     };
 }
 

@@ -110,6 +110,18 @@ namespace raindrops
         m_midiPort = portNumber;
     }
 
+    std::string MidiMonitor::getConnectedDeviceName() const
+    {
+        for (std::vector<MidiDevice> connectedDevices = getMidiDevices(); auto& device : connectedDevices)
+        {
+            if (device.getPortNumber() == m_midiPort)
+            {
+                return device.getPortName();
+            }
+        }
+        return "Midi device not connected.";
+    }
+
     void MidiMonitor::monitor() const
     {
         std::vector<unsigned char> midiMessage;

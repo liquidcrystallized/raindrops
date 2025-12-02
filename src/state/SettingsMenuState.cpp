@@ -42,6 +42,7 @@ namespace raindrops
         m_renderWindow.ClearBackground(raylib::Color::RayWhite());
 
         RAYGUI_CPP_UNUSED(m_verticalStackPanel.Show(true));
+        RAYGUI_CPP_UNUSED(m_connectedDeviceLabel.Show(true));
 
         m_renderWindow.EndDrawing();
     }
@@ -112,5 +113,12 @@ namespace raindrops
             m_stateMachine.lastState();
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_backButton));
+
+        // Show currently connected device.
+        m_connectedDeviceLabelText = "Connected device: " + m_midiMonitor.getConnectedDeviceName();
+        m_connectedDeviceLabel = rgc::Label{ rgc::Bounds
+            { 10, static_cast<float>(m_renderWindow.GetHeight()) - 20.0f, static_cast<float>(m_renderWindow.GetWidth()), 10 },
+            m_connectedDeviceLabelText.c_str() };
+        m_connectedDeviceLabel.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
     }
 }

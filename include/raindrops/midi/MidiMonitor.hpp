@@ -30,6 +30,8 @@ namespace raindrops
         [[nodiscard]] unsigned int getMidiPortNumber() const;
         void setMidiPort(unsigned int portNumber);
 
+        [[nodiscard]] std::string getConnectedDeviceName() const;
+
     private:
         bool m_running;
         unsigned int m_midiPort;
