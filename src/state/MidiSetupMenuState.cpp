@@ -172,7 +172,9 @@ namespace raindrops
         m_applyButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { m_buttonSize.GetWidth() / 5.0f, -m_verticalStackPanelSize.GetHeight() / 12.0f }));
         m_applyButton.OnClick([this]
         {
-            //TODO Apply settings
+            m_midiMonitor.setMidiPort(static_cast<unsigned int>(m_midiDeviceListView.GetActive()));
+            m_midiMonitor.stopMonitoring();
+            m_midiMonitor.startMonitoring(m_midiMonitor.getMidiPortNumber(), m_midiMonitor.getMidiChannelNumber());
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_applyButton));
 
