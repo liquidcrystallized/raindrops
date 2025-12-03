@@ -15,6 +15,7 @@ namespace raindrops
 
         m_applyButtonText = "Apply";
         m_backButtonText = "Back";
+        m_refreshButtonText = "Refresh";
 
         refreshMidiDevices();
         positionUIComponents();
@@ -119,11 +120,11 @@ namespace raindrops
             },
             {
                 m_innerVerticalStackPanelSize.GetWidth() / 1.1f,
-                m_innerVerticalStackPanelSize.GetHeight() / 1.1f
+                m_innerVerticalStackPanelSize.GetHeight() / 1.2f
             }
         };
         m_midiDeviceListView = rgc::ListView(m_midiDeviceListViewBounds, m_midiDeviceListViewText, &m_midiDeviceListViewScrollIndex, m_midiDeviceListViewActiveSelection);
-        m_midiDeviceListView.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, -m_innerVerticalStackPanelSize.GetHeight() / 6.0f }));
+        m_midiDeviceListView.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, -m_innerVerticalStackPanelSize.GetHeight() / 5.0f }));
 
         // Size and position the button relative to the stack panel.
         m_buttonSize = raylib::Rectangle {
@@ -145,6 +146,19 @@ namespace raindrops
             m_stateMachine.lastState();
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_backButton));
+
+        // Refresh button positioning and callback.
+        m_refreshButton = rgc::Button(rgc::Bounds::WithText(
+            m_refreshButtonText,
+            m_buttonScalingFactor,
+            { m_buttonSize.GetWidth() / 4, m_buttonSize.GetHeight() / 2 }),
+            m_refreshButtonText);
+        m_refreshButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { -m_buttonSize.GetWidth() / 1000.0f, -m_verticalStackPanelSize.GetHeight() / 3.5f }));
+        m_refreshButton.OnClick([this]
+        {
+            //TODO Apply settings
+        });
+        m_verticalStackPanel.AddChild(rgc::ToComponent(&m_refreshButton));
 
         // Apply button positioning and callback.
         m_applyButton = rgc::Button(rgc::Bounds::WithText(

@@ -36,10 +36,12 @@ namespace raindrops
 
         rgc::Button m_applyButton;
         rgc::Button m_backButton;
+        rgc::Button m_refreshButton;
         raylib::Rectangle m_buttonSize;
 
         const char* m_applyButtonText;
         const char* m_backButtonText;
+        const char* m_refreshButtonText;
         int m_buttonScalingFactor;
 
         std::vector<MidiDevice> m_midiDevices;
