@@ -156,7 +156,7 @@ namespace raindrops
         m_refreshButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { -m_buttonSize.GetWidth() / 1000.0f, -m_verticalStackPanelSize.GetHeight() / 3.5f }));
         m_refreshButton.OnClick([this]
         {
-            //TODO Apply settings
+            refreshMidiDevices();
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_refreshButton));
 
@@ -187,6 +187,8 @@ namespace raindrops
             .getCurrentState()
             ->getMidiMonitor()
             .getMidiDevices();
+
+        m_deviceList.clear();
 
         for (MidiDevice& device : m_midiDevices)
         {
