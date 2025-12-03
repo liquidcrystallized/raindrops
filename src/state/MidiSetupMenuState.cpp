@@ -39,6 +39,9 @@ namespace raindrops
             m_stateMachine.lastState();
         }
 
+        m_connectedDeviceLabelText = "Connected device: " + m_midiMonitor.getConnectedDeviceName();
+        m_connectedDeviceLabel.SetText(m_connectedDeviceLabelText.c_str());
+
         m_verticalStackPanel.Update();
         m_midiDeviceListView.Update();
     }
@@ -174,7 +177,6 @@ namespace raindrops
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_applyButton));
 
         // Show currently connected device.
-        m_connectedDeviceLabelText = "Connected device: " + m_midiMonitor.getConnectedDeviceName();
         m_connectedDeviceLabel = rgc::Label{ rgc::Bounds
             { 10, static_cast<float>(m_renderWindow.GetHeight()) - 20.0f, static_cast<float>(m_renderWindow.GetWidth()), 10 },
             m_connectedDeviceLabelText.c_str() };
