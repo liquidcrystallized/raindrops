@@ -105,8 +105,8 @@ namespace raindrops
         m_playButton.SetStyle(rgc::Style(rgc::Style::Position::TOP_CENTER, { 0, m_buttonSize.GetHeight() / 0.5f }));
         m_playButton.OnClick([this]
         {
-            //TODO Move to play/song selection screen.
-            std::cout << "Play button clicked" << '\n';
+            //TODO Move song selection screen.
+            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderWindow, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 

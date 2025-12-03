@@ -26,10 +26,6 @@ namespace raindrops
     {
         if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
         {
-            m_stateMachine.quit();
-        }
-        else if (raylib::Keyboard::IsKeyPressed(KEY_M))
-        {
             m_stateMachine.lastState();
         }
     }
