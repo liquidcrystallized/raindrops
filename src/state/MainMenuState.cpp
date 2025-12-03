@@ -47,6 +47,7 @@ namespace raindrops
 
         RAYGUI_CPP_UNUSED(m_verticalStackPanel.Show(true));
         RAYGUI_CPP_UNUSED(m_connectedDeviceLabel.Show(true));
+        RAYGUI_CPP_UNUSED(m_wipUIWarningLabel.Show(true));
 
         m_renderWindow.EndDrawing();
     }
@@ -138,5 +139,11 @@ namespace raindrops
             { 10, static_cast<float>(m_renderWindow.GetHeight()) - 20.0f, static_cast<float>(m_renderWindow.GetWidth()), 10 },
             m_connectedDeviceLabelText.c_str() };
         m_connectedDeviceLabel.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
+
+        // Mostly temporary.
+        m_wipUIWarningLabel = rgc::Label{ rgc::Bounds
+            { 10, 10, 1000, 10 },
+            "The menu UI is temporary for testing and will be completely revamped closer to 1.0"
+        };
     }
 }

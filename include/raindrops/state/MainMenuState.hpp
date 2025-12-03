@@ -37,6 +37,8 @@ namespace raindrops
         rgc::Label m_connectedDeviceLabel;
         std::string m_connectedDeviceLabelText;
 
+        rgc::Label m_wipUIWarningLabel;
+
         void positionUIComponents();
 
     };
