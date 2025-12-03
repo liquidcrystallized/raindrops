@@ -28,7 +28,7 @@ namespace raindrops
 
     void SettingsMenuState::update()
     {
-        if (IsKeyPressed(KEY_ESCAPE))
+        if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
         {
             m_stateMachine.lastState();
         }

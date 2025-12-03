@@ -32,7 +32,7 @@ namespace raindrops
 
     void MainMenuState::update()
     {
-        if (IsKeyPressed(KEY_ESCAPE))
+        if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
         {
             m_stateMachine.quit();
         }
