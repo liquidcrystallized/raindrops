@@ -1,16 +1,35 @@
 > The application is currently under development and no binaries are provided yet.
 > Binaries will be provided when the application reaches 1.0 status.
 
-# Introduction
+# What is this?
 
 raindrops is an application that displays music notes in an intuitive way to 
 help piano players sight read. This application does not teach you how to play the
-piano, it is expected that user's already know at least the basics from a teacher
+piano, it is expected that users already know at least the basics from a teacher
 or some other learning source.
 
 ## Hardware requirements
 
-- Midi keyboard/Digital piano (preferably with 88 keys)
+- Midi keyboard/Digital piano (preferably with 88 keys), must connect directly to the machine running the application.
+
+## Loading songs
+
+This application accepts MusicXML files (.musicxml/.mxl) for songs.
+
+### Why MusicXML instead of Midi?
+
+Music sheets/scores are information dense and midi files lack the information required to properly
+display them. To briefly name a *few things* missing from a MIDI file:
+
+- Dynamics, both individual markings (p, ff) and changes (crescendo, dimuendo)
+- Articulation (slurs, staccato, accents, etc)
+- Pedal markings
+- Performance directions/indications (*dolce*, violent, *molto espressivo*)
+- Tempo/style indications (*andante*, swing 8th notes, rock feel)
+- Beaming information/Stem direction
+
+As this application focuses on the development of *sight reading skills*, basically being able to read any music
+sheet/score placed in front of the player with confidence, missing the above elements and more is detrimental to the application's functionality and goals.
 
 ## License and Dependencies
 
@@ -24,3 +43,4 @@ These are the licenses for the dependencies:
 - [raygui-cpp](https://github.com/scastd/raygui-cpp/) - Zlib
 - [doctest](https://github.com/doctest/doctest) - MIT
 - [rtmidi](https://github.com/thestk/rtmidi) - [LICENSE](https://github.com/thestk/rtmidi/blob/master/LICENSE)
+- [mx](https://github.com/webern/mx) - MIT
