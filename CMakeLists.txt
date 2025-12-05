@@ -20,6 +20,7 @@ include_directories(external/doctest/doctest)
 include_directories(external/rtmidi)
 #include_directories(external/raygui/src)
 include_directories(external/raygui-cpp/include)
+include_directories(external/mx/Sourcecode/include)
 #add_subdirectory(external/raylib)
 add_subdirectory(external/raylib-cpp)
 add_subdirectory(external/doctest)
@@ -114,6 +115,10 @@ target_link_libraries(raindrops_tests PRIVATE rtmidi)
 # raygui-cpp
 target_link_libraries(raindrops PRIVATE raygui_cpp)
 target_link_libraries(raindrops_tests PRIVATE raygui_cpp)
+
+# mx (music xml)
+target_link_libraries(raindrops PRIVATE mx)
+target_link_libraries(raindrops_tests PRIVATE mx)
 
 # Suppress warnings from external
 get_target_property(raygui_cpp_include_dirs raygui_cpp INTERFACE_INCLUDE_DIRECTORIES)

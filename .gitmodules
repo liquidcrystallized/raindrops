@@ -16,3 +16,6 @@
 [submodule "external/raygui-cpp"]
 	path = external/raygui-cpp
 	url = https://github.com/scastd/raygui-cpp.git
+[submodule "external/mx"]
+	path = external/mx
+	url = https://github.com/webern/mx.git
