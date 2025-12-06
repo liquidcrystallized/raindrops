@@ -21,6 +21,7 @@ namespace raindrops
 
         [[nodiscard]] std::vector<MidiDevice> getMidiDevices() const;
         void probeAndSetMidiDevices(std::vector<MidiDevice>& midiDevices) const;
+        static void appendNewDevice(const std::string& portName, unsigned int portNumber, std::vector<MidiDevice>& midiDevices);
 
         void setInputListener(std::unique_ptr<IMidiInputListener> inputListener);
 
@@ -31,6 +32,8 @@ namespace raindrops
         void setMidiPort(unsigned int portNumber);
 
         [[nodiscard]] std::string getConnectedDeviceName() const;
+
+        [[nodiscard]] bool monitorThreadAlive() const;
 
     private:
         bool m_running;

@@ -50,7 +50,7 @@ namespace raindrops
     {
         m_running = false;
 
-        if (m_monitorThread && m_monitorThread->joinable())
+        if (m_monitorThread && monitorThreadAlive())
         {
             m_monitorThread->join();
         }
@@ -75,7 +75,7 @@ namespace raindrops
                 try
                 {
                     std::string portName = m_rtMidiIn->getPortName(i);
-                    midiDevices.emplace_back(portName, i);
+                    appendNewDevice(portName, i, midiDevices);
                 }
                 catch (RtMidiError& error)
                 {
@@ -83,6 +83,11 @@ namespace raindrops
                 }
             }
         }
+    }
+
+    void MidiMonitor::appendNewDevice(const std::string& portName,  unsigned int portNumber, std::vector<MidiDevice>& midiDevices)
+    {
+        midiDevices.emplace_back(portName, portNumber);
     }
 
     void MidiMonitor::setInputListener(std::unique_ptr<IMidiInputListener> inputListener)
@@ -120,6 +125,11 @@ namespace raindrops
             }
         }
         return "Midi device not connected.";
+    }
+
+    bool MidiMonitor::monitorThreadAlive() const
+    {
+        return m_monitorThread->joinable();
     }
 
     void MidiMonitor::monitor() const
