@@ -26,6 +26,7 @@ add_subdirectory(external/raylib-cpp)
 add_subdirectory(external/doctest)
 add_subdirectory(external/rtmidi)
 add_subdirectory(external/raygui-cpp)
+add_subdirectory(external/mx)
 
 #---------------------------------------------------------------------------------------
 # raindrops application
