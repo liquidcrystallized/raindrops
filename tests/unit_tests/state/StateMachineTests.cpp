@@ -46,4 +46,40 @@ TEST_CASE("State management")
     CHECK( stateMachine.running() == false );
 }
 
+TEST_CASE("State transitions with replacement")
+{
+    raindrops::StateMachine stateMachine;
+    raylib::Window dummyWindow { 640, 480 };
+    raindrops::MidiMonitor midiMonitor {};
+    dummyWindow.SetTargetFPS(1);
+    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+
+    // Test state replacement
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    stateMachine.run(std::move(mainMenu));
+
+    CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
+
+    // Replace with PlayingState
+    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, dummyWindow, midiMonitor, true);
+    stateMachine.run(std::move(playingState));
+    CHECK( stateMachine.getCurrentState()->getName() == "PlayingState" );
+
+    // Replace back to MainMenuState
+    auto mainMenuAgain = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    stateMachine.run(std::move(mainMenuAgain));
+    CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
+}
+
+TEST_CASE("State management quit without running")
+{
+    raindrops::StateMachine stateMachine;
+    raylib::Window dummyWindow { 640, 480 };
+    raindrops::MidiMonitor midiMonitor {};
+    dummyWindow.SetTargetFPS(1);
+    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    stateMachine.quit();
+    CHECK( stateMachine.running() == false );
+}
+
 TEST_SUITE_END();
