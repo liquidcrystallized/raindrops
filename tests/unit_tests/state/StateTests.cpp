@@ -41,4 +41,22 @@ TEST_CASE("Arbitrary setting of new centre")
     CHECK( centreY == stateMachine.getCurrentState()->getWindowCentrePosition().GetY() );
 }
 
+TEST_CASE("State initialization and properties")
+{
+    raindrops::StateMachine stateMachine;
+    raylib::Window dummyWindow { 640, 480 };
+    raindrops::MidiMonitor midiMonitor {};
+    dummyWindow.SetTargetFPS(1);
+    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+
+    // Test default state properties
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    stateMachine.run(std::move(mainMenu));
+
+    CHECK( stateMachine.getCurrentState()->isReplacing() == true );
+    CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
+    CHECK( &stateMachine.getCurrentState()->getMidiMonitor() == &midiMonitor );
+}
+
+
 TEST_SUITE_END();
