@@ -61,6 +61,13 @@ set(RAINDROPS_SOURCES
         src/Application.cpp
 )
 
+set(RAINDROPS_INCLUDE_DIRECTORIES
+        include/raindrops/midi
+        include/raindrops/render/controls
+        include/raindrops/state
+        include/raindrops
+)
+
 add_executable(raindrops
         ${RAINDROPS_HEADERS}
         ${RAINDROPS_SOURCES}
@@ -68,10 +75,7 @@ add_executable(raindrops
 )
 
 target_include_directories(raindrops PRIVATE
-        include/raindrops/midi
-        include/raindrops/render/controls
-        include/raindrops/state
-        include/raindrops
+        ${RAINDROPS_INCLUDE_DIRECTORIES}
 )
 
 #---------------------------------------------------------------------------------------
@@ -93,10 +97,7 @@ add_executable(raindrops_tests
 )
 
 target_include_directories(raindrops_tests PRIVATE
-        include/raindrops/midi
-        include/raindrops/render/controls
-        include/raindrops/state
-        include/raindrops
+        ${RAINDROPS_INCLUDE_DIRECTORIES}
 )
 
 #---------------------------------------------------------------------------------------
