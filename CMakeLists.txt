@@ -41,6 +41,9 @@ set(RAINDROPS_HEADERS
         include/raindrops/midi/MidiMonitor.hpp
         include/raindrops/midi/MidiReceiver.hpp
         include/raindrops/render/controls/VerticalStackPanel.hpp
+        include/raindrops/render/graphics/raylib/GraphicsRaylib.hpp
+        include/raindrops/render/IGraphics.hpp
+        include/raindrops/render/Renderer.hpp
         include/raindrops/state/MainMenuState.hpp
         include/raindrops/state/MidiSetupMenuState.hpp
         include/raindrops/state/PlayingState.hpp
@@ -57,6 +60,8 @@ set(RAINDROPS_SOURCES
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.cpp
         src/render/controls/VerticalStackPanel.cpp
+        src/render/graphics/raylib/GraphicsRaylib.cpp
+        src/render/Renderer.cpp
         src/state/MainMenuState.cpp
         src/state/MidiSetupMenuState.cpp
         src/state/PlayingState.cpp
@@ -71,6 +76,9 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/core/file/musicxml
         include/raindrops/midi
         include/raindrops/render/controls
+        include/raindrops/render/graphics
+        include/raindrops/render/graphics/raylib
+        include/raindrops/render
         include/raindrops/state
         include/raindrops
 )
@@ -93,6 +101,7 @@ set(RAINDROPS_TESTS_SOURCES
         tests/unit_tests/midi/MidiDeviceTests.cpp
         tests/unit_tests/midi/MidiMonitorTests.cpp
         tests/unit_tests/midi/MidiReceiverTests.cpp
+        tests/unit_tests/render/RendererTests.cpp
         tests/unit_tests/state/StateMachineTests.cpp
         tests/unit_tests/state/StateTests.cpp
 )
