@@ -52,7 +52,7 @@ namespace raindrops
          *
          * @tparam T The type of state to create.
          * @param stateMachine Reference to the state machine.
-         * @param renderWindow Reference to the rendering window.
+         * @param renderer Reference to the abstract renderer which handles drawing.
          * @param midiMonitor Reference to the midi monitor.
          * @param replace If true, the new state will replace the current one.
          * @return A unique_ptr to the newly created state.
