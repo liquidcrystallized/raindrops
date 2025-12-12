@@ -105,7 +105,7 @@ namespace raindrops
         m_playButton.OnClick([this]
         {
             //TODO Move song selection screen.
-            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            //m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 
