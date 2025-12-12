@@ -51,4 +51,10 @@ namespace raindrops
     {
         m_window.SetSize(m_window.GetWidth(), height);
     }
+
+    void GraphicsRaylib::toggleTestMode()
+    {
+        m_window.SetTargetFPS(1);
+        m_window.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    }
 }

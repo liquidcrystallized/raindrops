@@ -20,6 +20,8 @@ namespace raindrops
         [[nodiscard]] int getWindowHeight() const override;
         void setWindowHeight(int height) override;
 
+        void toggleTestMode() override;
+
     private:
         raylib::Window m_window;
     };

@@ -43,4 +43,9 @@ namespace raindrops
     {
         m_graphics.setWindowHeight(height);
     }
+
+    void Renderer::toggleTestMode() const
+    {
+        m_graphics.toggleTestMode();
+    }
 }
