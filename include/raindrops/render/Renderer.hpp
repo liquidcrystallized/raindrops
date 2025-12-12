@@ -7,12 +7,18 @@ namespace raindrops
 {
     class Renderer {
     public:
-        explicit Renderer(const IGraphics&);
+        explicit Renderer(IGraphics&);
         ~Renderer();
 
         void draw() const;
+
+        [[nodiscard]] int getWindowWidth() const;
+        void setWindowWidth(int width) const;
+
+        [[nodiscard]] int getWindowHeight() const;
+        void setWindowHeight(int height) const;
     private:
-        const IGraphics& m_graphics;
+        IGraphics& m_graphics;
     };
 }
 
