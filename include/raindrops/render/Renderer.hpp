@@ -22,6 +22,8 @@ namespace raindrops
         [[nodiscard]] int getWindowHeight() const;
         void setWindowHeight(int height) const;
 
+        [[nodiscard]] bool windowResized() const;
+
         void toggleTestMode() const;
     private:
         IGraphics& m_graphics;

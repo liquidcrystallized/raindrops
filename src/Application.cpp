@@ -33,7 +33,7 @@ namespace raindrops
     {
         while (m_stateMachine.running())
         {
-            if (m_renderWindow.IsResized())
+            if (m_renderer.windowResized())
             {
                 onWindowResize();
             }
@@ -48,8 +48,8 @@ namespace raindrops
     {
         m_stateMachine.getCurrentState()->setWindowCentrePosition
         (
-            static_cast<float>(m_renderWindow.GetWidth()) / 2.0f,
-            static_cast<float>(m_renderWindow.GetHeight()) / 2.0f
+            static_cast<float>(m_renderer.getWindowWidth()) / 2.0f,
+            static_cast<float>(m_renderer.getWindowHeight()) / 2.0f
         );
 
         m_stateMachine.getCurrentState()->onWindowResize();

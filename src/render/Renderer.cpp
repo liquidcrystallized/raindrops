@@ -44,6 +44,11 @@ namespace raindrops
         m_graphics.setWindowHeight(height);
     }
 
+    bool Renderer::windowResized() const
+    {
+        return m_graphics.windowResized();
+    }
+
     void Renderer::toggleTestMode() const
     {
         m_graphics.toggleTestMode();

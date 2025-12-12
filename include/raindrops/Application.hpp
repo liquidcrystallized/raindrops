@@ -17,7 +17,6 @@ namespace raindrops
     private:
         Renderer& m_renderer;
         StateMachine m_stateMachine;
-        raylib::Window m_renderWindow;
         std::vector<MidiDevice> m_midiDevices;
         MidiMonitor m_midiMonitor;
 

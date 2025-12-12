@@ -21,6 +21,8 @@ namespace raindrops
         [[nodiscard]] virtual int getWindowHeight() const = 0;
         virtual void setWindowHeight(int height) = 0;
 
+        [[nodiscard]] virtual bool windowResized() const = 0;
+
         /**
          * Enable things like headless mode. For use with unit tests.
          */

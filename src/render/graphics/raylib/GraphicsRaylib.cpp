@@ -52,6 +52,11 @@ namespace raindrops
         m_window.SetSize(m_window.GetWidth(), height);
     }
 
+    bool GraphicsRaylib::windowResized() const
+    {
+        return m_window.IsResized();
+    }
+
     void GraphicsRaylib::toggleTestMode()
     {
         m_window.SetTargetFPS(1);

@@ -20,6 +20,8 @@ namespace raindrops
         [[nodiscard]] int getWindowHeight() const override;
         void setWindowHeight(int height) override;
 
+        [[nodiscard]] bool windowResized() const override;
+
         void toggleTestMode() override;
 
     private:
