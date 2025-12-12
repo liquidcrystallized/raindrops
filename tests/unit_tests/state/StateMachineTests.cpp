@@ -82,10 +82,6 @@ TEST_CASE("State transitions with replacement")
 TEST_CASE("State management quit without running")
 {
     raindrops::StateMachine stateMachine;
-    raylib::Window dummyWindow { 640, 480 };
-    raindrops::MidiMonitor midiMonitor {};
-    dummyWindow.SetTargetFPS(1);
-    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
     stateMachine.quit();
     CHECK( stateMachine.running() == false );
 }
