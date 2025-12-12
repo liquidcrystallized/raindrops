@@ -21,9 +21,15 @@ namespace raindrops
         std::cout << "GraphicsRaylib destructed.\n";
     }
 
-    void GraphicsRaylib::draw() const
+    void GraphicsRaylib::drawStart()
     {
-        std::cout << "GraphicsRaylib::draw()\n";
+        m_window.BeginDrawing();
+        m_window.ClearBackground(raylib::Color::RayWhite()); //TODO: Uh, move this somewhere.
+    }
+
+    void GraphicsRaylib::drawEnd()
+    {
+        m_window.EndDrawing();
     }
 
     int GraphicsRaylib::getWindowWidth() const

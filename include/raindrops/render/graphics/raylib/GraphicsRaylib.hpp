@@ -11,7 +11,8 @@ namespace raindrops
         GraphicsRaylib();
         ~GraphicsRaylib() override;
 
-        void draw() const override;
+        void drawStart() override;
+        void drawEnd() override;
 
         [[nodiscard]] int getWindowWidth() const override;
         void setWindowWidth(int width) override;

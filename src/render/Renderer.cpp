@@ -14,10 +14,14 @@ namespace raindrops
         std::cout << "Renderer destructed.\n";
     }
 
-    void Renderer::draw() const
+    void Renderer::drawStart() const
     {
-        std::cout << "Renderer: 'drawing' something arbitrary.\n";
-        m_graphics.draw();
+        m_graphics.drawStart();
+    }
+
+    void Renderer::drawEnd() const
+    {
+        m_graphics.drawEnd();
     }
 
     int Renderer::getWindowWidth() const

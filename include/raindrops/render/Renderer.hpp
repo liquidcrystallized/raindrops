@@ -5,12 +5,16 @@
 
 namespace raindrops
 {
+    /**
+     * A layer between a graphics framework and the application.
+     */
     class Renderer {
     public:
         explicit Renderer(IGraphics&);
         ~Renderer();
 
-        void draw() const;
+        void drawStart() const;
+        void drawEnd() const;
 
         [[nodiscard]] int getWindowWidth() const;
         void setWindowWidth(int width) const;

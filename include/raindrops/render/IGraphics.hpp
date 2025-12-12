@@ -8,7 +8,12 @@ namespace raindrops
     public:
         virtual ~IGraphics() = default;
 
-        virtual void draw() const = 0;
+        /**
+         * Some graphics frameworks have functions indicating when
+         * drawing starts and ends, so draw is split here.
+         */
+        virtual void drawStart() = 0;
+        virtual void drawEnd() = 0;
 
         [[nodiscard]] virtual int getWindowWidth() const = 0;
         virtual void setWindowWidth(int width) = 0;
