@@ -1,4 +1,5 @@
 #include "GraphicsRaylib.hpp"
+#include "raygui-defguard.hpp"
 #include <iostream>
 
 namespace raindrops

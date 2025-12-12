@@ -1,7 +1,6 @@
 #include "Application.hpp"
 #include "MidiReceiver.hpp"
 #include "MainMenuState.hpp"
-#include "raygui-defguard.hpp"
 
 namespace raindrops
 {
