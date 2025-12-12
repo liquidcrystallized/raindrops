@@ -1,5 +1,7 @@
+#include "GraphicsRaylib.hpp"
 #include "MainMenuState.hpp"
 #include "MidiMonitor.hpp"
+#include "Renderer.hpp"
 #include "StateMachine.hpp"
 #include <doctest.h>
 
@@ -8,12 +10,14 @@ TEST_SUITE_BEGIN("State");
 TEST_CASE("Default State/Screen window centre is correct")
 {
     raindrops::StateMachine stateMachine;
-    raylib::Window dummyWindow { 640, 480 };
+    raindrops::GraphicsRaylib raylib {};
+    raindrops::Renderer renderer { raylib };
     raindrops::MidiMonitor midiMonitor {};
-    dummyWindow.SetTargetFPS(1);
-    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    renderer.setWindowWidth(640);
+    renderer.setWindowHeight(480);
+    renderer.toggleTestMode();
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     raylib::Vector2 expectedDummyWindowCentre { 640 / 2.0f, 480 / 2.0f };
@@ -25,12 +29,14 @@ TEST_CASE("Default State/Screen window centre is correct")
 TEST_CASE("Arbitrary setting of new centre")
 {
     raindrops::StateMachine stateMachine;
-    raylib::Window dummyWindow { 640, 480 };
+    raindrops::GraphicsRaylib raylib {};
+    raindrops::Renderer renderer { raylib };
     raindrops::MidiMonitor midiMonitor {};
-    dummyWindow.SetTargetFPS(1);
-    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    renderer.setWindowWidth(640);
+    renderer.setWindowHeight(480);
+    renderer.toggleTestMode();
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     float centreX { 500 };
@@ -44,13 +50,15 @@ TEST_CASE("Arbitrary setting of new centre")
 TEST_CASE("State initialization and properties")
 {
     raindrops::StateMachine stateMachine;
-    raylib::Window dummyWindow { 640, 480 };
+    raindrops::GraphicsRaylib raylib {};
+    raindrops::Renderer renderer { raylib };
     raindrops::MidiMonitor midiMonitor {};
-    dummyWindow.SetTargetFPS(1);
-    dummyWindow.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    renderer.setWindowWidth(640);
+    renderer.setWindowHeight(480);
+    renderer.toggleTestMode();
 
     // Test default state properties
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, dummyWindow, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     CHECK( stateMachine.getCurrentState()->isReplacing() == true );

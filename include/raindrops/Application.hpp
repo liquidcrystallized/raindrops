@@ -3,6 +3,7 @@
 
 #include "MidiDevice.hpp"
 #include "MidiMonitor.hpp"
+#include "Renderer.hpp"
 #include "StateMachine.hpp"
 #include <raylib-cpp.hpp>
 
@@ -10,10 +11,11 @@ namespace raindrops
 {
     class Application {
     public:
-        Application();
+        Application(Renderer&);
         ~Application();
 
     private:
+        Renderer& m_renderer;
         StateMachine m_stateMachine;
         raylib::Window m_renderWindow;
         std::vector<MidiDevice> m_midiDevices;

@@ -4,7 +4,8 @@
 
 namespace raindrops
 {
-    Application::Application()
+    Application::Application(Renderer& renderer)
+    : m_renderer { renderer }
     {
         // Graphics related setup
         m_renderWindow.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
@@ -26,7 +27,7 @@ namespace raindrops
         m_midiMonitor.startMonitoring(m_midiMonitor.getMidiPortNumber(), m_midiMonitor.getMidiChannelNumber());
 
         // Initialise state machine
-        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, true));
+        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderer, m_midiMonitor, true));
 
         run();
     }

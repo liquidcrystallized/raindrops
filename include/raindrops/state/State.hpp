@@ -2,6 +2,7 @@
 #define RAINDROPS_STATE_HPP
 
 #include "MidiMonitor.hpp"
+#include "Renderer.hpp"
 #include <raylib-cpp.hpp>
 #include <memory>
 
@@ -14,7 +15,7 @@ namespace raindrops
      */
     class State {
     public:
-        State(StateMachine&, raylib::Window&, MidiMonitor&, bool replace = true, std::string stateName = "");
+        State(StateMachine&, Renderer&, MidiMonitor&, bool replace = true, std::string stateName = "");
         virtual ~State() = default;
 
         State(const State&) = delete;
@@ -40,7 +41,7 @@ namespace raindrops
         void setWindowCentrePosition(float x, float y);
     protected:
         StateMachine& m_stateMachine;
-        raylib::Window& m_renderWindow;
+        Renderer& m_renderer;
         raylib::Vector2 m_windowCentrePosition;
 
         MidiMonitor& m_midiMonitor;

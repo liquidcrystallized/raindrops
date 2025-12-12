@@ -7,8 +7,8 @@
 
 namespace raindrops
 {
-    MainMenuState::MainMenuState(StateMachine& stateMachine, raylib::Window& renderWindow, MidiMonitor& midiMonitor, const bool replace)
-    : State { stateMachine, renderWindow, midiMonitor, replace, "MainMenuState" }
+    MainMenuState::MainMenuState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderer, midiMonitor, replace, "MainMenuState" }
     {
         m_playButtonText = "Play";
         m_settingsMenuButtonText = "Settings";
@@ -45,14 +45,13 @@ namespace raindrops
 
     void MainMenuState::draw()
     {
-        m_renderWindow.BeginDrawing();
-        m_renderWindow.ClearBackground(raylib::Color::RayWhite());
+        m_renderer.drawStart();
 
         RAYGUI_CPP_UNUSED(m_verticalStackPanel.Show(true));
         RAYGUI_CPP_UNUSED(m_connectedDeviceLabel.Show(true));
         RAYGUI_CPP_UNUSED(m_wipUIWarningLabel.Show(true));
 
-        m_renderWindow.EndDrawing();
+        m_renderer.drawEnd();
     }
 
     void MainMenuState::onWindowResize()
@@ -60,7 +59,7 @@ namespace raindrops
         positionUIComponents();
     }
 
-    //TODO: Temp programmers UI, implement actual design later.
+    //TODO: Temp programmers UI, implement actual design later, throw it into the renderer
     void MainMenuState::positionUIComponents()
     {
         m_buttonScalingFactor = 1;
@@ -70,8 +69,8 @@ namespace raindrops
         m_verticalStackPanelSize  = raylib::Rectangle {
             0,
             0,
-            static_cast<float>(m_renderWindow.GetWidth()) / 2.0f,
-            static_cast<float>(m_renderWindow.GetHeight()) / 1.5f
+            static_cast<float>(m_renderer.getWindowWidth()) / 2.0f,
+            static_cast<float>(m_renderer.getWindowHeight()) / 1.5f
         };
 
         m_verticalStackPanel = VerticalStackPanel(
@@ -106,7 +105,7 @@ namespace raindrops
         m_playButton.OnClick([this]
         {
             //TODO Move song selection screen.
-            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderWindow, m_midiMonitor, false);
+            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 
@@ -119,7 +118,7 @@ namespace raindrops
         m_settingsMenuButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
         m_settingsMenuButton.OnClick([this]
         {
-            m_next = StateMachine::build<SettingsMenuState>(m_stateMachine, m_renderWindow, m_midiMonitor, false);
+            m_next = StateMachine::build<SettingsMenuState>(m_stateMachine, m_renderer, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_settingsMenuButton));
 
@@ -138,7 +137,7 @@ namespace raindrops
 
         // Show currently connected device.
         m_connectedDeviceLabel = rgc::Label{ rgc::Bounds
-            { 10, static_cast<float>(m_renderWindow.GetHeight()) - 20.0f, static_cast<float>(m_renderWindow.GetWidth()), 10 },
+            { 10, static_cast<float>(m_renderer.getWindowHeight()) - 20.0f, static_cast<float>(m_renderer.getWindowWidth()), 10 },
             m_connectedDeviceLabelText.c_str() };
         m_connectedDeviceLabel.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
 

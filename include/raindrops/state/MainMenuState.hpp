@@ -10,7 +10,7 @@ namespace raindrops
 {
     class MainMenuState final : public State {
     public:
-        MainMenuState(StateMachine&, raylib::Window&, MidiMonitor&, bool replace = true);
+        MainMenuState(StateMachine&, Renderer&, MidiMonitor&, bool replace = true);
 
         void pause() override;
         void resume() override;

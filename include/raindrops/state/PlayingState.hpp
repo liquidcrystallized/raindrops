@@ -7,7 +7,7 @@ namespace raindrops
 {
     class PlayingState final : public State {
     public:
-        PlayingState(StateMachine&, raylib::Window&, MidiMonitor&, bool replace = true);
+        PlayingState(StateMachine&, Renderer&, MidiMonitor&, bool replace = true);
 
         void pause() override;
         void resume() override;
@@ -17,7 +17,6 @@ namespace raindrops
 
         void onWindowResize() override;
     private:
-        raylib::Rectangle m_testRectangle;
     };
 }
 
