@@ -71,8 +71,8 @@ namespace raindrops
         m_verticalStackPanel = VerticalStackPanel(
             rgc::Bounds(
                 {
-                    this->m_windowCentrePosition.x - m_verticalStackPanelSize.GetWidth() / 2,
-                    this->m_windowCentrePosition.y - m_verticalStackPanelSize.GetHeight() / 2
+                    this->m_windowCentrePosition.getX() - m_verticalStackPanelSize.GetWidth() / 2,
+                    this->m_windowCentrePosition.getY() - m_verticalStackPanelSize.GetHeight() / 2
                 },
                 {
                     m_verticalStackPanelSize.GetWidth(),

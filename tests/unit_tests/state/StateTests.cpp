@@ -22,8 +22,8 @@ TEST_CASE("Default State/Screen window centre is correct")
 
     raylib::Vector2 expectedDummyWindowCentre { 640 / 2.0f, 480 / 2.0f };
 
-    CHECK( expectedDummyWindowCentre.GetX() == stateMachine.getCurrentState()->getWindowCentrePosition().GetX() );
-    CHECK( expectedDummyWindowCentre.GetY() == stateMachine.getCurrentState()->getWindowCentrePosition().GetY() );
+    CHECK( expectedDummyWindowCentre.GetX() == stateMachine.getCurrentState()->getWindowCentrePosition().getX() );
+    CHECK( expectedDummyWindowCentre.GetY() == stateMachine.getCurrentState()->getWindowCentrePosition().getY() );
 }
 
 TEST_CASE("Arbitrary setting of new centre")
@@ -43,8 +43,8 @@ TEST_CASE("Arbitrary setting of new centre")
     float centreY { 600 };
     stateMachine.getCurrentState()->setWindowCentrePosition(centreX, centreY);
 
-    CHECK( centreX == stateMachine.getCurrentState()->getWindowCentrePosition().GetX() );
-    CHECK( centreY == stateMachine.getCurrentState()->getWindowCentrePosition().GetY() );
+    CHECK( centreX == stateMachine.getCurrentState()->getWindowCentrePosition().getX() );
+    CHECK( centreY == stateMachine.getCurrentState()->getWindowCentrePosition().getY() );
 }
 
 TEST_CASE("State initialization and properties")

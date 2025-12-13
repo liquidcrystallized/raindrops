@@ -37,14 +37,14 @@ namespace raindrops
         return m_midiMonitor;
     }
 
-    raylib::Vector2 State::getWindowCentrePosition() const
+    Vector2 State::getWindowCentrePosition() const
     {
         return m_windowCentrePosition;
     }
 
     void State::setWindowCentrePosition(const float x, const float y)
     {
-        m_windowCentrePosition.SetX(x);
-        m_windowCentrePosition.SetY(y);
+        m_windowCentrePosition.setX(x);
+        m_windowCentrePosition.setY(y);
     }
 }

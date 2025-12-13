@@ -3,6 +3,7 @@
 
 #include "MidiMonitor.hpp"
 #include "Renderer.hpp"
+#include "core/math/Vector2.hpp"
 #include <raylib-cpp.hpp>
 #include <memory>
 
@@ -37,12 +38,12 @@ namespace raindrops
 
         [[nodiscard]] MidiMonitor& getMidiMonitor() const;
 
-        [[nodiscard]] raylib::Vector2 getWindowCentrePosition() const;
+        [[nodiscard]] Vector2 getWindowCentrePosition() const;
         void setWindowCentrePosition(float x, float y);
     protected:
         StateMachine& m_stateMachine;
         Renderer& m_renderer;
-        raylib::Vector2 m_windowCentrePosition;
+        Vector2 m_windowCentrePosition;
 
         MidiMonitor& m_midiMonitor;
 
