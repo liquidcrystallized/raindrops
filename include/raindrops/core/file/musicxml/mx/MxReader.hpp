@@ -2,6 +2,8 @@
 #define RAINDROPS_MXREADER_HPP
 
 #include "IMusicXmlReader.hpp"
+#include <mx/api/DocumentManager.h>
+#include <fstream>
 
 namespace raindrops
 {
@@ -10,7 +12,18 @@ namespace raindrops
         MxReader();
         ~MxReader() override;
 
-        [[nodiscard]] std::string read() const override;
+        [[nodiscard]] bool tryLoadFileIntoStream(const std::string& filePath) override;
+
+        [[nodiscard]] bool tryParseFileInputStream(std::istream& inputStream) override;
+
+        [[nodiscard]] std::string getRawFileContents() const override;
+
+        [[nodiscard]] std::string getMusicXmlVersion() const override;
+
+    private:
+        mx::api::DocumentManager& m_documentManager;
+        mx::api::ScoreData m_scoreData;
+        std::string m_fileContents;
     };
 }
 

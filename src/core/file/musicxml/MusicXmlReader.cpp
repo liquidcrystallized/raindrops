@@ -3,7 +3,7 @@
 
 namespace raindrops
 {
-    MusicXmlReader::MusicXmlReader(const IMusicXmlReader& reader)
+    MusicXmlReader::MusicXmlReader(IMusicXmlReader& reader)
     : m_reader { reader }
     {
         std::cout << "MusicXmlReader constructed.\n";
@@ -14,8 +14,35 @@ namespace raindrops
         std::cout << "MusicXmlReader destructed.\n";
     }
 
-    std::string MusicXmlReader::read() const
+    bool MusicXmlReader::tryLoadFileIntoStream(const std::string& filePath) const
     {
-        return m_reader.read();
+        if (!m_reader.tryLoadFileIntoStream(filePath))
+        {
+            std::cerr << "MusicXmlReader::tryLoadFileIntoStream failed.\n";
+            return false;
+        }
+
+        return true;
+    }
+
+    bool MusicXmlReader::tryParseFileInputStream(std::istream& inputStream) const
+    {
+        if (!m_reader.tryParseFileInputStream(inputStream))
+        {
+            std::cerr << "MusicXmlReader::tryParseFileInputStream failed\n";
+            return false;
+        }
+
+        return true;
+    }
+
+    std::string MusicXmlReader::getRawFileContents() const
+    {
+        return m_reader.getRawFileContents();
+    }
+
+    std::string MusicXmlReader::getMusicXmlVersion() const
+    {
+        return m_reader.getMusicXmlVersion();
     }
 }

@@ -7,13 +7,19 @@ namespace raindrops
 {
     class MusicXmlReader {
     public:
-        explicit MusicXmlReader(const IMusicXmlReader&);
+        explicit MusicXmlReader(IMusicXmlReader&);
         ~MusicXmlReader();
 
-         [[nodiscard]] std::string read() const;
+        [[nodiscard]] bool tryLoadFileIntoStream(const std::string& filePath) const;
+
+        [[nodiscard]] bool tryParseFileInputStream(std::istream& inputStream) const;
+
+        [[nodiscard]] std::string getRawFileContents() const;
+
+        [[nodiscard]] std::string getMusicXmlVersion() const;
 
     private:
-        const IMusicXmlReader& m_reader;
+        IMusicXmlReader& m_reader;
     };
 }
 

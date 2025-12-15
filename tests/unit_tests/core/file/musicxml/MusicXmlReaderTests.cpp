@@ -1,6 +1,8 @@
 #include "MusicXmlReader.hpp"
 #include "MxReader.hpp"
 #include <doctest.h>
+#include <sstream>
+#include <string>
 
 TEST_SUITE_BEGIN("MusicXmlReader");
 
@@ -8,7 +10,7 @@ TEST_SUITE_BEGIN("MusicXmlReader");
  * MusicXml "Hello World".
  * https://www.w3.org/2021/06/musicxml40/tutorial/hello-world/
  */
-constexpr const char* const musicXmlReaderTestFile = R"(
+std::string musicXmlReaderTestFileContents = R"(
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE score-partwise PUBLIC
     "-//Recordare//DTD MusicXML 3.1 Partwise//EN"
@@ -48,15 +50,30 @@ constexpr const char* const musicXmlReaderTestFile = R"(
 </score-partwise>
 )";
 
-// Temporary test.
-TEST_CASE("MusicXmlReader reads correctly")
+std::string nonMusicXmlFileContents = R"(
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae volutpat mauris.
+Curabitur vulputate, velit et fermentum vestibulum, est est fermentum magna, ut pretium nulla
+velit vitae augue. Sed ultricies, nisl ac dapibus molestie, urna ligula interdum nulla, vel
+ullamcorper nibh arcu lacinia dolor. Integer auctor odio nec urna tempor, sed egestas ipsum viverra.
+Nulla non quam viverra, sodales ipsum vel, luctus magna. Aliquam lacus turpis, tempus eu lacus vitae,
+cursus fringilla nibh. Duis molestie est eu viverra luctus. Duis in blandit diam. Proin sem leo, feugiat
+non accumsan id, convallis pellentesque tortor. Donec in pellentesque lorem, vitae consectetur est.
+In lobortis, nunc ac semper varius, lorem neque pharetra orci, nec ullamcorper eros nulla id magna.
+Phasellus vel sapien pulvinar, facilisis leo ac, interdum nisi. Orci varius natoque penatibus et
+magnis dis parturient montes, nascetur ridiculus mus. Nullam eu placerat nisl, non suscipit purus.
+Fusce aliquam porttitor ex in mollis.
+)";
+
+TEST_CASE("MusicXmlReader successfully parses string stream of MusicXml file contents")
 {
-    raindrops::MxReader mxReader {};
-    raindrops::MusicXmlReader musicXmlReader { mxReader };
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
 
-    std::string expectedReadString { "MxReader\n" };
+    std::istringstream ss { musicXmlReaderTestFileContents };
 
-    CHECK( expectedReadString == musicXmlReader.read() );
+    bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
+
+    CHECK( contentsAreMusicXml == true );
 }
 
 TEST_SUITE_END();
