@@ -64,28 +64,25 @@ magnis dis parturient montes, nascetur ridiculus mus. Nullam eu placerat nisl, n
 Fusce aliquam porttitor ex in mollis.
 )";
 
-TEST_CASE("MusicXmlReader successfully parses string stream of MusicXml file contents")
+TEST_CASE("MusicXmlReader try parse file input stream")
 {
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    std::istringstream ss { musicXmlReaderTestFileContents };
+    SUBCASE("Should be true - file contents are musicxml")
+    {
+        std::istringstream ss { musicXmlReaderTestFileContents };
+        bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
 
-    bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
+        CHECK( contentsAreMusicXml == true );
+    }
+    SUBCASE("Should be false - file contents are not musicxml")
+    {
+        std::istringstream ss { nonMusicXmlFileContents };
+        bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
 
-    CHECK( contentsAreMusicXml == true );
-}
-
-TEST_CASE("MusicXmlReader doesn't parse string stream of non-MusicXml file contents")
-{
-    raindrops::MxReader mx {};
-    raindrops::MusicXmlReader musicXmlReader { mx };
-
-    std::istringstream ss { nonMusicXmlFileContents };
-
-    bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
-
-    CHECK( contentsAreMusicXml == false );
+        CHECK( contentsAreMusicXml == false );
+    }
 }
 
 TEST_SUITE_END();
