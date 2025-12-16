@@ -76,4 +76,16 @@ TEST_CASE("MusicXmlReader successfully parses string stream of MusicXml file con
     CHECK( contentsAreMusicXml == true );
 }
 
+TEST_CASE("MusicXmlReader doesn't parse string stream of non-MusicXml file contents")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    std::istringstream ss { nonMusicXmlFileContents };
+
+    bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
+
+    CHECK( contentsAreMusicXml == false );
+}
+
 TEST_SUITE_END();

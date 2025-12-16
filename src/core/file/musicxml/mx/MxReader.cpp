@@ -37,9 +37,16 @@ namespace raindrops
 
     bool MxReader::tryParseFileInputStream(std::istream& inputStream)
     {
-        const int documentID = m_documentManager.createFromStream(inputStream);
-        m_scoreData = m_documentManager.getData(documentID);
-        m_documentManager.destroyDocument(documentID);
+        try
+        {
+            const int documentID = m_documentManager.createFromStream(inputStream);
+            m_scoreData = m_documentManager.getData(documentID);
+            m_documentManager.destroyDocument(documentID);
+        }
+        catch (std::runtime_error& error)
+        {
+            std::cout << error.what() << '\n';
+        }
 
         if (m_scoreData.parts.size() != 1)
         {
