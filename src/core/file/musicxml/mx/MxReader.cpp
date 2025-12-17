@@ -3,16 +3,9 @@
 
 namespace raindrops
 {
-    MxReader::MxReader()
-    : m_documentManager { mx::api::DocumentManager::getInstance() }
-    {
-        std::cout << "MxReader constructed.\n";
-    }
+    MxReader::MxReader() : m_documentManager { mx::api::DocumentManager::getInstance() } {}
 
-    MxReader::~MxReader()
-    {
-        std::cout << "MxReader destructed.\n";
-    }
+    MxReader::~MxReader() = default;
 
     bool MxReader::tryLoadFileIntoStream(const std::string& filePath)
     {

@@ -3,7 +3,6 @@
 #include "SettingsMenuState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
-#include <iostream>
 
 namespace raindrops
 {
@@ -17,17 +16,16 @@ namespace raindrops
         m_connectedDeviceLabelText = "";
 
         positionUIComponents();
-        std::cout << "MainMenuState Init\n";
     }
 
     void MainMenuState::pause()
     {
-        std::cout << "MainMenuState Pause\n";
+        //TODO
     }
 
     void MainMenuState::resume()
     {
-        std::cout << "MainMenuState Resume\n";
+        //TODO
     }
 
     void MainMenuState::update()

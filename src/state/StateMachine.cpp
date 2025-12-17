@@ -1,12 +1,8 @@
 #include "StateMachine.hpp"
-#include <iostream>
 
 namespace raindrops
 {
-    StateMachine::StateMachine() : m_resume { false }, m_running { false }
-    {
-        std::cout << "StateMachine Init\n";
-    }
+    StateMachine::StateMachine() : m_resume { false }, m_running { false } {}
 
     std::unique_ptr<State>& StateMachine::getCurrentState()
     {

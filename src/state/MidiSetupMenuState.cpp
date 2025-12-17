@@ -1,8 +1,6 @@
 #include "MidiSetupMenuState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
-#include <cstring>
-#include <iostream>
 
 namespace raindrops
 {
@@ -19,17 +17,16 @@ namespace raindrops
 
         refreshMidiDevices();
         positionUIComponents();
-        std::cout << "MidiSetupMenuState Init\n";
     }
 
     void MidiSetupMenuState::pause()
     {
-        std::cout << "MidiSetupMenuState Pause\n";
+        //TODO
     }
 
     void MidiSetupMenuState::resume()
     {
-        std::cout << "MidiSetupMenuState Resume\n";
+        //TODO
     }
 
     void MidiSetupMenuState::update()

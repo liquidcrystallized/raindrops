@@ -2,7 +2,6 @@
 #include "MidiSetupMenuState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
-#include <iostream>
 
 namespace raindrops
 {
@@ -13,17 +12,16 @@ namespace raindrops
         m_backButtonText = "Back";
 
         positionUIComponents();
-        std::cout << "SettingsMenuState Init\n";
     }
 
     void SettingsMenuState::pause()
     {
-        std::cout << "SettingsMenuState Pause\n";
+        //TODO
     }
 
     void SettingsMenuState::resume()
     {
-        std::cout << "SettingsMenuState Resume\n";
+        //TODO
     }
 
     void SettingsMenuState::update()

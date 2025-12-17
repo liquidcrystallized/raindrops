@@ -1,18 +1,10 @@
 #include "Renderer.hpp"
-#include <iostream>
 
 namespace raindrops
 {
-    Renderer::Renderer(IGraphics& graphics)
-    : m_graphics { graphics }
-    {
-        std::cout << "Renderer constructed.\n";
-    }
+    Renderer::Renderer(IGraphics& graphics) : m_graphics { graphics } {}
 
-    Renderer::~Renderer()
-    {
-        std::cout << "Renderer destructed.\n";
-    }
+    Renderer::~Renderer() = default;
 
     void Renderer::drawStart() const
     {

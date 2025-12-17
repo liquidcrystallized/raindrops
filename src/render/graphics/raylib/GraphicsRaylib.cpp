@@ -1,11 +1,12 @@
 #include "GraphicsRaylib.hpp"
 #include "raygui-defguard.hpp"
-#include <iostream>
 
 namespace raindrops
 {
     GraphicsRaylib::GraphicsRaylib()
     {
+        SetTraceLogLevel(LOG_NONE);
+
         // Graphics related setup
         m_window.SetConfigFlags(FLAG_WINDOW_RESIZABLE);
         m_window.Init(1280, 720, "raindrops [dev]");
@@ -13,13 +14,9 @@ namespace raindrops
 
         // Note: Default raylib font looks bad if not in multiples of 10.
         rgc::Globals::Style::GuiSetStyle(DEFAULT, TEXT_SIZE, 20);
-        std::cout << "GraphicsRaylib constructed.\n";
     }
 
-    GraphicsRaylib::~GraphicsRaylib()
-    {
-        std::cout << "GraphicsRaylib destructed.\n";
-    }
+    GraphicsRaylib::~GraphicsRaylib() = default;
 
     void GraphicsRaylib::drawStart()
     {

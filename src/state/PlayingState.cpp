@@ -1,24 +1,21 @@
 #include "PlayingState.hpp"
 #include "MainMenuState.hpp"
 #include "StateMachine.hpp"
-#include <iostream>
 
 namespace raindrops
 {
     PlayingState::PlayingState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
-    {
-        std::cout << "PlayingState Init\n";
-    }
+    {}
 
     void PlayingState::pause()
     {
-        std::cout << "PlayingState Pause\n";
+        //TODO
     }
 
     void PlayingState::resume()
     {
-        std::cout << "PlayingState Resume\n";
+        //TODO
     }
 
     void PlayingState::update()

@@ -3,16 +3,9 @@
 
 namespace raindrops
 {
-    MusicXmlReader::MusicXmlReader(IMusicXmlReader& reader)
-    : m_reader { reader }
-    {
-        std::cout << "MusicXmlReader constructed.\n";
-    }
+    MusicXmlReader::MusicXmlReader(IMusicXmlReader& reader) : m_reader { reader } {}
 
-    MusicXmlReader::~MusicXmlReader()
-    {
-        std::cout << "MusicXmlReader destructed.\n";
-    }
+    MusicXmlReader::~MusicXmlReader() = default;
 
     bool MusicXmlReader::tryLoadFileIntoStream(const std::string& filePath) const
     {
