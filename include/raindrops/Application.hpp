@@ -11,7 +11,7 @@ namespace raindrops
 {
     class Application {
     public:
-        Application(Renderer&);
+        explicit Application(Renderer&);
         ~Application();
 
     private:
