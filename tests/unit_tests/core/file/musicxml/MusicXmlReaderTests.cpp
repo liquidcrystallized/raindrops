@@ -64,7 +64,7 @@ magnis dis parturient montes, nascetur ridiculus mus. Nullam eu placerat nisl, n
 Fusce aliquam porttitor ex in mollis.
 )";
 
-TEST_CASE("MusicXmlReader try parse file input stream")
+TEST_CASE("MusicXmlReader::tryParseFileInputStream - Are contents musicxml")
 {
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
