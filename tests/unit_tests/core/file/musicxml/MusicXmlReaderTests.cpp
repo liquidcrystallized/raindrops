@@ -85,4 +85,15 @@ TEST_CASE("MusicXmlReader::tryParseFileInputStream - Are contents musicxml")
     }
 }
 
+TEST_CASE("MusicXmlReader::getMusicXmlVersion")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    std::istringstream ss { musicXmlReaderTestFileContents };
+    musicXmlReader.tryParseFileInputStream(ss);
+
+    CHECK( musicXmlReader.getMusicXmlVersion() == "3.1" );
+}
+
 TEST_SUITE_END();

@@ -23,6 +23,7 @@ namespace raindrops
     private:
         mx::api::DocumentManager& m_documentManager;
         mx::api::ScoreData m_scoreData;
+        std::string m_musicXmlVersion;
         std::string m_fileContents;
     };
 }

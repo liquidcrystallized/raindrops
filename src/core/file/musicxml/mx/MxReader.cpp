@@ -1,4 +1,6 @@
 #include "MxReader.hpp"
+#include <mx/core/Document.h>
+#include <mx/core/elements/ScorePartwise.h>
 #include <iostream>
 
 namespace raindrops
@@ -33,7 +35,14 @@ namespace raindrops
         try
         {
             const int documentID = m_documentManager.createFromStream(inputStream);
-            m_scoreData = m_documentManager.getData(documentID);
+
+            m_scoreData = m_documentManager.getData(documentID); // for the easier mx::api.
+            m_musicXmlVersion = m_documentManager                // mx::core shenanigans.
+                .getDocument(documentID)
+                ->getScorePartwise()
+                ->getAttributes()
+                ->version.getValue();
+
             m_documentManager.destroyDocument(documentID);
         }
         catch (std::runtime_error& error)
@@ -61,6 +70,6 @@ namespace raindrops
 
     std::string MxReader::getMusicXmlVersion() const
     {
-        return {};
+        return m_musicXmlVersion;
     }
 }
