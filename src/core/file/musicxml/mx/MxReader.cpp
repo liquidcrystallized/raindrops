@@ -48,6 +48,7 @@ namespace raindrops
         catch (std::runtime_error& error)
         {
             std::cout << error.what() << '\n';
+            return false;
         }
 
         if (m_scoreData.parts.size() != 1)
