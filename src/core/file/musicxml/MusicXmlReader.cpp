@@ -9,24 +9,12 @@ namespace raindrops
 
     bool MusicXmlReader::tryLoadFileIntoStream(const std::string& filePath) const
     {
-        if (!m_reader.tryLoadFileIntoStream(filePath))
-        {
-            std::cerr << "MusicXmlReader::tryLoadFileIntoStream failed.\n";
-            return false;
-        }
-
-        return true;
+        return m_reader.tryLoadFileIntoStream(filePath);
     }
 
     bool MusicXmlReader::tryParseFileInputStream(std::istream& inputStream) const
     {
-        if (!m_reader.tryParseFileInputStream(inputStream))
-        {
-            std::cerr << "MusicXmlReader::tryParseFileInputStream failed\n";
-            return false;
-        }
-
-        return true;
+        return m_reader.tryParseFileInputStream(inputStream);
     }
 
     std::string MusicXmlReader::getRawFileContents() const
