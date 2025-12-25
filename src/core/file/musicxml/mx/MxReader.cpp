@@ -71,6 +71,11 @@ namespace raindrops
 
     std::string MxReader::getMusicXmlVersion() const
     {
+        if (m_musicXmlVersion.empty())
+        {
+            return {};
+        }
+
         return m_musicXmlVersion;
     }
 }
