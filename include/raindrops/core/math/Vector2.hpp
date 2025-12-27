@@ -1,26 +1,31 @@
 #ifndef RAINDROPS_VECTOR2_HPP
 #define RAINDROPS_VECTOR2_HPP
 
+#include <concepts>
 
 namespace raindrops
 {
+    template<typename T>
+    concept Scalar = std::integral<T> || std::floating_point<T>;
+
     /**
      * Represents two arbitrary points, or values, that
      * have some sort of relation with each other.
      */
+    template<Scalar T>
     class Vector2 {
     public:
-        Vector2(float x, float y);
+        Vector2(T x, T y);
 
-        [[nodiscard]] float getX() const;
-        void setX(float);
+        [[nodiscard]] T getX() const;
+        void setX(T);
 
-        [[nodiscard]] float getY() const;
-        void setY(float);
+        [[nodiscard]] T getY() const;
+        void setY(T);
 
     private:
-        float m_x;
-        float m_y;
+        T m_x;
+        T m_y;
     };
 }
 

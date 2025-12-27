@@ -2,24 +2,29 @@
 
 namespace raindrops
 {
-    Vector2::Vector2(const float x, const float y) : m_x { x }, m_y { y } {}
+    template<Scalar T>
+    Vector2<T>::Vector2(T const x, T const y) : m_x { x }, m_y { y } {}
 
-    float Vector2::getX() const
+    template<Scalar T>
+    T Vector2<T>::getX() const
     {
         return m_x;
     }
 
-    void Vector2::setX(const float x)
+    template<Scalar T>
+    void Vector2<T>::setX(T const x)
     {
         m_x = x;
     }
 
-    float Vector2::getY() const
+    template<Scalar T>
+    T Vector2<T>::getY() const
     {
         return m_y;
     }
 
-    void Vector2::setY(const float y)
+    template<Scalar T>
+    void Vector2<T>::setY(T const y)
     {
         m_y = y;
     }
