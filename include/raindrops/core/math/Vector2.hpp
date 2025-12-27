@@ -5,14 +5,17 @@
 
 namespace raindrops
 {
+    /**
+     * Limit accepted types to only a 'Number'
+     */
     template<typename T>
-    concept Scalar = std::integral<T> || std::floating_point<T>;
+    concept Number = std::integral<T> || std::floating_point<T>;
 
     /**
      * Represents two arbitrary points, or values, that
      * have some sort of relation with each other.
      */
-    template<Scalar T>
+    template<Number T>
     class Vector2 {
     public:
         Vector2(T x, T y);
