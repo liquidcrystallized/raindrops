@@ -38,12 +38,12 @@ namespace raindrops
 
         [[nodiscard]] MidiMonitor& getMidiMonitor() const;
 
-        [[nodiscard]] Vector2 getWindowCentrePosition() const;
+        [[nodiscard]] Vector2<float> getWindowCentrePosition() const;
         void setWindowCentrePosition(float x, float y);
     protected:
         StateMachine& m_stateMachine;
         Renderer& m_renderer;
-        Vector2 m_windowCentrePosition;
+        Vector2<float> m_windowCentrePosition;
 
         MidiMonitor& m_midiMonitor;
 

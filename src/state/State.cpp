@@ -37,7 +37,7 @@ namespace raindrops
         return m_midiMonitor;
     }
 
-    Vector2 State::getWindowCentrePosition() const
+    Vector2<float> State::getWindowCentrePosition() const
     {
         return m_windowCentrePosition;
     }
