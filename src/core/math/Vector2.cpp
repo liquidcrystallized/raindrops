@@ -28,4 +28,9 @@ namespace raindrops
     {
         m_y = y;
     }
+
+    // Explicit instantiation so methods get generated.
+    template class Vector2<int>;
+    template class Vector2<double>;
+    template class Vector2<float>;
 }
