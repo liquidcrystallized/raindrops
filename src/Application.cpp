@@ -21,7 +21,7 @@ namespace raindrops
         // Initialise state machine
         m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderer, m_midiMonitor, true));
 
-        run();
+        startApplication();
     }
 
     Application::~Application()
@@ -29,7 +29,7 @@ namespace raindrops
         m_midiMonitor.stopMonitoring();
     }
 
-    void Application::run()
+    void Application::startApplication()
     {
         while (m_stateMachine.running())
         {

@@ -23,7 +23,7 @@ namespace raindrops
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
 
-        void run();
+        void startApplication();
 
         void onWindowResize();
     };
