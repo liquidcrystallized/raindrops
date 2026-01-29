@@ -106,6 +106,7 @@ target_include_directories(raindrops PRIVATE
 set(RAINDROPS_TESTS_SOURCES
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
+        tests/unit_tests/core/score/MusicSheetTests.cpp
         tests/unit_tests/midi/MidiDeviceTests.cpp
         tests/unit_tests/midi/MidiMonitorTests.cpp
         tests/unit_tests/midi/MidiReceiverTests.cpp
