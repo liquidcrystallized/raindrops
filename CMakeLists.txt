@@ -37,6 +37,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
         include/raindrops/core/math/Vector2.hpp
+        include/raindrops/core/score/MusicSheet.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
         include/raindrops/midi/MidiMessageList.hpp
@@ -59,6 +60,7 @@ set(RAINDROPS_SOURCES
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
         src/core/math/Vector2.cpp
+        src/core/score/MusicSheet.cpp
         src/midi/MidiDevice.cpp
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.cpp
@@ -78,6 +80,7 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/core/file/musicxml/mx
         include/raindrops/core/file/musicxml
         include/raindrops/core/math
+        include/raindrops/core/score
         include/raindrops/midi
         include/raindrops/render/controls
         include/raindrops/render/graphics
