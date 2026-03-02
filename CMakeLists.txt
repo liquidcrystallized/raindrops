@@ -37,6 +37,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
         include/raindrops/core/math/Vector2.hpp
+        include/raindrops/core/score/Measure.hpp
         include/raindrops/core/score/MusicSheet.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
@@ -60,6 +61,7 @@ set(RAINDROPS_SOURCES
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
         src/core/math/Vector2.cpp
+        src/core/score/Measure.cpp
         src/core/score/MusicSheet.cpp
         src/midi/MidiDevice.cpp
         src/midi/MidiMonitor.cpp
@@ -106,6 +108,7 @@ target_include_directories(raindrops PRIVATE
 set(RAINDROPS_TESTS_SOURCES
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
+        tests/unit_tests/core/score/MeasureTests.cpp
         tests/unit_tests/core/score/MusicSheetTests.cpp
         tests/unit_tests/midi/MidiDeviceTests.cpp
         tests/unit_tests/midi/MidiMonitorTests.cpp
