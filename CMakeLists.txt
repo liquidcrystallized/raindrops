@@ -52,6 +52,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/state/MidiSetupMenuState.hpp
         include/raindrops/state/PlayingState.hpp
         include/raindrops/state/SettingsMenuState.hpp
+        include/raindrops/state/SongSelectionState.hpp
         include/raindrops/state/State.hpp
         include/raindrops/state/StateMachine.hpp
         include/raindrops/Application.hpp
@@ -73,6 +74,7 @@ set(RAINDROPS_SOURCES
         src/state/MidiSetupMenuState.cpp
         src/state/PlayingState.cpp
         src/state/SettingsMenuState.cpp
+        src/state/SongSelectionState.cpp
         src/state/State.cpp
         src/state/StateMachine.cpp
         src/Application.cpp
