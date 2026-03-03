@@ -1,6 +1,6 @@
 #include "MainMenuState.hpp"
-#include "PlayingState.hpp"
 #include "SettingsMenuState.hpp"
+#include "SongSelectionState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
 
@@ -102,8 +102,7 @@ namespace raindrops
         m_playButton.SetStyle(rgc::Style(rgc::Style::Position::TOP_CENTER, { 0, m_buttonSize.GetHeight() / 0.5f }));
         m_playButton.OnClick([this]
         {
-            //TODO Move song selection screen.
-            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            m_next = StateMachine::build<SongSelectionState>(m_stateMachine, m_renderer, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 
