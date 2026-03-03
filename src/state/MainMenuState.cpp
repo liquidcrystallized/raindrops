@@ -141,7 +141,7 @@ namespace raindrops
         // Mostly temporary.
         m_wipUIWarningLabel = rgc::Label{ rgc::Bounds
             { 10, 10, 1000, 10 },
-            "The menu UI is temporary for testing and will be completely revamped closer to 1.0"
+            "ALL UI in this application is temporary for testing and will be completely revamped closer to 1.0"
         };
     }
 }
