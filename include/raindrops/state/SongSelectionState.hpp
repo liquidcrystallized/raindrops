@@ -41,9 +41,7 @@ namespace raindrops
         const char* m_refreshButtonText;
         int m_buttonScalingFactor;
 
-        std::vector<MidiDevice> m_midiDevices;
         rgc::Label m_connectedDeviceLabel;
-        std::string m_deviceList;
         std::string m_connectedDeviceLabelText;
 
         void positionUIComponents();
