@@ -2,6 +2,8 @@
 #include "PlayingState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
+#include <filesystem>
+#include <iostream>
 
 namespace raindrops
 {
@@ -15,6 +17,8 @@ namespace raindrops
         m_playButtonText = "Play";
         m_backButtonText = "Back";
         m_refreshButtonText = "Refresh";
+
+        m_songDirectory = "songs";
 
         refreshSongList();
         positionUIComponents();
@@ -161,6 +165,19 @@ namespace raindrops
 
     void SongSelectionState::refreshSongList()
     {
-        //TODO
+        m_songList.clear();
+
+        //TODO: Create the songs folder in correct standard directories per os. (e.g, appdata, .local/share, etc)
+        //TODO: or grant the user the ability to specify a custom song directory.
+        if (!std::filesystem::exists(m_songDirectory))
+        {
+            std::cout << "The songs folder does not exist. Creating.";
+            std::filesystem::create_directory(m_songDirectory);
+        }
+
+        for (std::filesystem::directory_entry const& entry : std::filesystem::directory_iterator(m_songDirectory))
+        {
+            std::cout << entry.path().string() << std::endl;
+        }
     }
 }

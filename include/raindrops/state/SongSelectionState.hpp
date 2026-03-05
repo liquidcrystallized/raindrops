@@ -6,6 +6,7 @@
 #include <raygui-cpp/Button.h>
 #include <raygui-cpp/Label.h>
 #include <raygui-cpp/ListView.h>
+#include <filesystem>
 
 namespace raindrops
 {
@@ -25,6 +26,8 @@ namespace raindrops
         raylib::Rectangle m_verticalStackPanelSize;
         rgc::Bounds m_verticalStackPanelBounds;
 
+        std::filesystem::path m_songDirectory;
+        std::string m_songList;
         rgc::ListView m_songListView;
         rgc::Bounds m_songListViewBounds;
         int m_songListViewScrollIndex;
