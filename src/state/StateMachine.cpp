@@ -6,6 +6,11 @@ namespace raindrops
 
     std::unique_ptr<State>& StateMachine::getCurrentState()
     {
+        if (m_states.empty())
+        {
+            throw std::runtime_error("No state is currently running");
+        }
+
         return m_states.top();
     }
 
@@ -66,6 +71,10 @@ namespace raindrops
 
     void StateMachine::update()
     {
+        if (m_states.empty())
+        {
+            std::cerr << "Warning: StateMachine::update() called with no states\n";
+        }
         // Let the current state update the game
         m_states.top()->update();
     }
