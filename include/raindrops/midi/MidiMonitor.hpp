@@ -44,6 +44,9 @@ namespace raindrops
         std::unique_ptr<RtMidiIn> m_rtMidiIn;
         std::unique_ptr<IMidiInputListener> m_inputListener;
 
+        void startMonitoringThread();
+        void cleanupThread();
+
         /**
          * @brief Thread function that periodically checks for new midi events.
          */

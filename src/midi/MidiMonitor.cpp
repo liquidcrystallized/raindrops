@@ -35,11 +35,12 @@ namespace raindrops
             m_rtMidiIn->openPort(midiPort);
             m_rtMidiIn->ignoreTypes(false, false, false);
             m_running = true;
-            m_monitorThread = std::make_unique<std::thread>(&MidiMonitor::monitor, this);
+            startMonitoringThread();
         }
         catch (RtMidiError& error)
         {
             error.printMessage();
+            stopMonitoring();
             return false;
         }
 
@@ -130,6 +131,28 @@ namespace raindrops
     bool MidiMonitor::monitorThreadAlive() const
     {
         return m_monitorThread->joinable();
+    }
+
+    void MidiMonitor::startMonitoringThread()
+    {
+        try
+        {
+            m_monitorThread = std::make_unique<std::thread>(&MidiMonitor::monitor, this);
+        }
+        catch (std::system_error& error)
+        {
+            throw std::runtime_error("Failed to create MIDI monitoring thread: " + std::string(error.what()));
+        }
+    }
+
+    void MidiMonitor::cleanupThread()
+    {
+        if (m_monitorThread && m_monitorThread->joinable())
+        {
+            m_monitorThread->join();
+        }
+
+        m_monitorThread.reset();
     }
 
     void MidiMonitor::monitor() const
