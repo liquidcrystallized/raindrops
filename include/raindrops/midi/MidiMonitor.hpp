@@ -19,7 +19,7 @@ namespace raindrops
         bool startMonitoring(unsigned int midiPort, unsigned int midiChannel);
         void stopMonitoring();
 
-        [[nodiscard]] std::vector<MidiDevice> getMidiDevices() const;
+        [[nodiscard]] std::vector<MidiDevice> getMidiDevices();
         void probeAndSetMidiDevices(std::vector<MidiDevice>& midiDevices) const;
         static void appendNewDevice(const std::string& portName, unsigned int portNumber, std::vector<MidiDevice>& midiDevices);
 
@@ -31,7 +31,7 @@ namespace raindrops
         [[nodiscard]] unsigned int getMidiPortNumber() const;
         void setMidiPort(unsigned int portNumber);
 
-        [[nodiscard]] std::string getConnectedDeviceName() const;
+        [[nodiscard]] std::string getConnectedDeviceName();
 
         [[nodiscard]] bool monitorThreadAlive() const;
 
@@ -39,6 +39,9 @@ namespace raindrops
         bool m_running;
         unsigned int m_midiPort;
         unsigned int m_midiChannel;
+        std::vector<MidiDevice> m_cachedDevices;
+        std::chrono::steady_clock::time_point m_lastProbeTime;
+        static constexpr std::chrono::seconds m_cacheDuration = std::chrono::seconds(5);
 
         std::unique_ptr<std::thread> m_monitorThread;
         std::unique_ptr<RtMidiIn> m_rtMidiIn;

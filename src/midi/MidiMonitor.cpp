@@ -57,11 +57,19 @@ namespace raindrops
         }
     }
 
-    std::vector<MidiDevice> MidiMonitor::getMidiDevices() const
+    std::vector<MidiDevice> MidiMonitor::getMidiDevices()
     {
-        std::vector<MidiDevice> devices;
-        probeAndSetMidiDevices(devices);
-        return devices;
+        const std::chrono::time_point<std::chrono::steady_clock> currentTime = std::chrono::steady_clock::now();
+        std::chrono::duration<long> timeElapsed = std::chrono::duration_cast<std::chrono::seconds>(currentTime - m_lastProbeTime);
+
+        // Re-probe only if cache is stale.
+        if (timeElapsed > m_cacheDuration || m_cachedDevices.empty())
+        {
+            probeAndSetMidiDevices(m_cachedDevices);
+            m_lastProbeTime = currentTime;
+        }
+
+        return m_cachedDevices;
     }
 
     void MidiMonitor::probeAndSetMidiDevices(std::vector<MidiDevice>& midiDevices) const
@@ -116,9 +124,11 @@ namespace raindrops
         m_midiPort = portNumber;
     }
 
-    std::string MidiMonitor::getConnectedDeviceName() const
+    std::string MidiMonitor::getConnectedDeviceName()
     {
-        for (std::vector<MidiDevice> connectedDevices = getMidiDevices(); auto& device : connectedDevices)
+        const std::vector<MidiDevice> connectedDevices = getMidiDevices();
+
+        for (MidiDevice device : connectedDevices)
         {
             if (device.getPortNumber() == m_midiPort)
             {
