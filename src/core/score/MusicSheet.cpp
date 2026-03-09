@@ -76,4 +76,19 @@ namespace raindrops
     {
         m_hasBPMInfo = hasBPMInfo;
     }
+
+    int MusicSheet::getMeasureCount() const
+    {
+        return static_cast<int>(m_measures.size());
+    }
+
+    const std::vector<Measure> & MusicSheet::getMeasures() const
+    {
+        return m_measures;
+    }
+
+    void MusicSheet::addMeasure(const Measure measure)
+    {
+        m_measures.push_back(measure);
+    }
 }

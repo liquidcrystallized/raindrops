@@ -1,7 +1,9 @@
 #ifndef RAINDROPS_MUSICSHEET_HPP
 #define RAINDROPS_MUSICSHEET_HPP
 
+#include "Measure.hpp"
 #include <string>
+#include <vector>
 
 namespace raindrops
 {
@@ -27,6 +29,10 @@ namespace raindrops
 
         [[nodiscard]] bool getHasBPMInfo() const;
         void setHasBPMInfo(bool hasBPMInfo);
+
+        [[nodiscard]] int getMeasureCount() const;
+        [[nodiscard]] const std::vector<Measure>& getMeasures() const;
+        void addMeasure(Measure measure);
     private:
         std::string m_filePath {};
         std::string m_title {};
@@ -37,6 +43,8 @@ namespace raindrops
 
         // Whether BPM info is present in the sheet. If it is set to false, each measure's BPM was set to a default of 120.
         bool m_hasBPMInfo {};
+
+        std::vector<Measure> m_measures {};
     };
 }
 
