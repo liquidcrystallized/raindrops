@@ -2,6 +2,9 @@
 #define RAINDROPS_SONGSELECTIONSTATE_HPP
 
 #include "State.hpp"
+#include "MusicSheet.hpp"
+#include "MusicXmlReader.hpp"
+#include "MxReader.hpp"
 #include "VerticalStackPanel.hpp"
 #include <raygui-cpp/Button.h>
 #include <raygui-cpp/Label.h>
@@ -47,8 +50,13 @@ namespace raindrops
         rgc::Label m_connectedDeviceLabel;
         std::string m_connectedDeviceLabelText;
 
+        std::unique_ptr<MusicSheet> m_selectedSong;
+        MxReader mx {};
+        MusicXmlReader m_musicXmlReader { mx }; //TODO: Init elsewhere.
+
         void positionUIComponents();
         void refreshSongList();
+        void loadSelectedSong(const std::string& filePathForSelectedSong);
     };
 }
 

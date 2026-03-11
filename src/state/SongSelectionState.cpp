@@ -1,4 +1,5 @@
 #include "SongSelectionState.hpp"
+#include "MxReader.hpp"
 #include "PlayingState.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
@@ -152,7 +153,8 @@ namespace raindrops
         m_playButton.OnClick([this]
         {
             //TODO: Pass loaded song details to play screen for sheet rendering.
-            m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            loadSelectedSong("songs/hello_world.mxl");
+            //m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 
@@ -175,9 +177,28 @@ namespace raindrops
             std::filesystem::create_directory(m_songDirectory);
         }
 
+        //TODO: Refresh song list.
         for (std::filesystem::directory_entry const& entry : std::filesystem::directory_iterator(m_songDirectory))
         {
             std::cout << entry.path().string() << std::endl;
+        }
+    }
+
+    //TODO: Get the selected file path from m_songListViewActiveSelection later when this works.
+    void SongSelectionState::loadSelectedSong(const std::string& filePathForSelectedSong)
+    {
+        m_selectedSong = std::make_unique<MusicSheet>();
+        m_selectedSong->setFilePath(filePathForSelectedSong);
+
+        if (m_musicXmlReader.tryLoadFileIntoStream(filePathForSelectedSong))
+        {
+            auto inputStream = std::istringstream(m_musicXmlReader.getRawFileContents());
+
+            if (m_musicXmlReader.tryParseFileInputStream(inputStream))
+            {
+                //TODO: Load stuff.
+                std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
+            }
         }
     }
 }
