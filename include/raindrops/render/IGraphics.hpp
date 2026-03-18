@@ -1,6 +1,7 @@
 #ifndef RAINDROPS_IRENDERER_HPP
 #define RAINDROPS_IRENDERER_HPP
 
+#include "Colour.hpp"
 #include <string>
 
 namespace raindrops
@@ -33,14 +34,14 @@ namespace raindrops
          * Basic shape drawing functions.
          */
 
-        virtual void drawLine(float startX, float startY, float endX, float endY, int thickness, std::string colour) = 0;
-        virtual void drawCircle(float centreX, float centreY, float radius, std::string colour) = 0;
+        virtual void drawLine(float startX, float startY, float endX, float endY, int thickness, Colour colour) = 0;
+        virtual void drawCircle(float centreX, float centreY, float radius, Colour colour) = 0;
 
         /**
          * Text rendering functions.
          */
 
-        virtual void drawText(std::string text, float positionX, float positionY, int fontSize, std::string colour) = 0;
+        virtual void drawText(std::string text, float positionX, float positionY, int fontSize, Colour colour) = 0;
 
         /**
          * Enable things like headless mode. For use with unit tests.

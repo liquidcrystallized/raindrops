@@ -46,6 +46,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/midi/MidiReceiver.hpp
         include/raindrops/render/controls/VerticalStackPanel.hpp
         include/raindrops/render/graphics/raylib/GraphicsRaylib.hpp
+        include/raindrops/render/graphics/Colour.hpp
         include/raindrops/render/IGraphics.hpp
         include/raindrops/render/Renderer.hpp
         include/raindrops/state/MainMenuState.hpp

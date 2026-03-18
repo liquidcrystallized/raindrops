@@ -54,29 +54,42 @@ namespace raindrops
         return m_window.IsResized();
     }
 
-    void GraphicsRaylib::drawLine(const float startX, const float startY, const float endX, const float endY, const int thickness, std::string colour)
+    void GraphicsRaylib::drawLine(const float startX, const float startY, const float endX, const float endY, const int thickness, const Colour colour)
     {
         const raylib::Vector2 startPosition { startX, startY };
         const raylib::Vector2 endPosition { endX, endY };
-        const raylib::Color lineColour { raylib::Color::Black() };
+        const raylib::Color lineColour { setColour(colour) };
         lineColour.DrawLine(startPosition, endPosition, static_cast<float>(thickness));
     }
 
-    void GraphicsRaylib::drawCircle(const float centreX, const float centreY, const float radius, std::string colour)
+    void GraphicsRaylib::drawCircle(const float centreX, const float centreY, const float radius, const Colour colour)
     {
         const raylib::Vector2 centerPosition { centreX, centreY };
-        const raylib::Color circleColour { raylib::Color::Black() };
+        const raylib::Color circleColour { setColour(colour) };
         centerPosition.DrawCircle(radius, circleColour);
     }
 
-    void GraphicsRaylib::drawText(const std::string text, const float positionX, const float positionY, const int fontSize, std::string colour)
+    void GraphicsRaylib::drawText(const std::string text, const float positionX, const float positionY, const int fontSize, const Colour colour)
     {
-        raylib::Text::Draw(text, static_cast<int>(positionX), static_cast<int>(positionY), fontSize, raylib::Color::Black());
+        raylib::Text::Draw(text, static_cast<int>(positionX), static_cast<int>(positionY), fontSize, setColour(colour));
     }
 
     void GraphicsRaylib::toggleTestMode()
     {
         m_window.SetTargetFPS(1);
         m_window.SetConfigFlags(FLAG_WINDOW_HIDDEN);
+    }
+
+    raylib::Color GraphicsRaylib::setColour(const Colour colour)
+    {
+        switch (colour)
+        {
+            case Colour::grey:
+                return raylib::Color::Gray();
+            case Colour::red:
+                return raylib::Color::Red();
+            default:
+                return raylib::Color::Black();
+        }
     }
 }
