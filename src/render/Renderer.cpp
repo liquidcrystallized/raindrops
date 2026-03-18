@@ -41,6 +41,21 @@ namespace raindrops
         return m_graphics.windowResized();
     }
 
+    void Renderer::drawLine(const float startX, const float startY, const float endX, const float endY, const int thickness, const std::string& colour) const
+    {
+        m_graphics.drawLine(startX, startY, endX, endY, thickness, colour);
+    }
+
+    void Renderer::drawCircle(const float centreX, const float centreY, const float radius, const std::string& colour) const
+    {
+        m_graphics.drawCircle(centreX, centreY, radius, colour);
+    }
+
+    void Renderer::drawText(const std::string& text, const float positionX, const float positionY, const int fontSize, const std::string& colour) const
+    {
+        m_graphics.drawText(text, positionX, positionY, fontSize, colour);
+    }
+
     void Renderer::toggleTestMode() const
     {
         m_graphics.toggleTestMode();

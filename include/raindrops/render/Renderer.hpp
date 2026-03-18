@@ -24,6 +24,11 @@ namespace raindrops
 
         [[nodiscard]] bool windowResized() const;
 
+        void drawLine(float startX, float startY, float endX, float endY, int thickness, const std::string& colour) const;
+        void drawCircle(float centreX, float centreY, float radius, const std::string& colour) const;
+
+        void drawText(const std::string& text, float positionX, float positionY, int fontSize, const std::string& colour) const;
+
         void toggleTestMode() const;
     private:
         IGraphics& m_graphics;

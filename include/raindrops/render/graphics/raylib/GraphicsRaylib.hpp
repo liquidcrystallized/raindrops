@@ -22,10 +22,16 @@ namespace raindrops
 
         [[nodiscard]] bool windowResized() const override;
 
+        void drawLine(float startX, float startY, float endX, float endY, int thickness, std::string colour) override;
+        void drawCircle(float centreX, float centreY, float radius, std::string colour) override;
+
+        void drawText(std::string text, float positionX, float positionY, int fontSize, std::string colour) override;
+
         void toggleTestMode() override;
 
     private:
         raylib::Window m_window;
+        raylib::Image m_image;
     };
 }
 
