@@ -20,6 +20,10 @@ namespace raindrops
 
         [[nodiscard]] std::string getMusicXmlVersion() const override;
 
+        [[nodiscard]] std::string getMusicComposer() const override;
+
+        [[nodiscard]] std::string getMusicTitle() const override;
+
     private:
         mx::api::DocumentManager& m_documentManager;
         mx::api::ScoreData m_scoreData;

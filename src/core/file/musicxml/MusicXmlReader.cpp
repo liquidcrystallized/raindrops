@@ -26,4 +26,14 @@ namespace raindrops
     {
         return m_reader.getMusicXmlVersion();
     }
+
+    std::string MusicXmlReader::getMusicComposer() const
+    {
+        return m_reader.getMusicComposer();
+    }
+
+    std::string MusicXmlReader::getMusicTitle() const
+    {
+        return m_reader.getMusicTitle();
+    }
 }

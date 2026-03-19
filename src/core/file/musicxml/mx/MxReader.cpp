@@ -78,4 +78,14 @@ namespace raindrops
 
         return m_musicXmlVersion;
     }
+
+    std::string MxReader::getMusicComposer() const
+    {
+        return m_scoreData.composer;
+    }
+
+    std::string MxReader::getMusicTitle() const
+    {
+        return m_scoreData.workTitle;
+    }
 }
