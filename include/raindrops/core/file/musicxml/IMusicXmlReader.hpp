@@ -22,9 +22,9 @@ namespace raindrops
 
         [[nodiscard]] virtual std::string getMusicXmlVersion() const = 0;
 
-        [[nodiscard]] virtual std::string getMusicComposer() const = 0;
+        [[nodiscard]] virtual std::string getSongComposer() const = 0;
 
-        [[nodiscard]] virtual std::string getMusicTitle() const = 0;
+        [[nodiscard]] virtual std::string getSongTitle() const = 0;
     };
 }
 

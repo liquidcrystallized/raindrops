@@ -27,13 +27,13 @@ namespace raindrops
         return m_reader.getMusicXmlVersion();
     }
 
-    std::string MusicXmlReader::getMusicComposer() const
+    std::string MusicXmlReader::getSongComposer() const
     {
-        return m_reader.getMusicComposer();
+        return m_reader.getSongComposer();
     }
 
-    std::string MusicXmlReader::getMusicTitle() const
+    std::string MusicXmlReader::getSongTitle() const
     {
-        return m_reader.getMusicTitle();
+        return m_reader.getSongTitle();
     }
 }

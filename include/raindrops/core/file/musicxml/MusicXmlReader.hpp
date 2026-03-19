@@ -18,9 +18,9 @@ namespace raindrops
 
         [[nodiscard]] std::string getMusicXmlVersion() const;
 
-        [[nodiscard]] std::string getMusicComposer() const;
+        [[nodiscard]] std::string getSongComposer() const;
 
-        [[nodiscard]] std::string getMusicTitle() const;
+        [[nodiscard]] std::string getSongTitle() const;
 
     private:
         IMusicXmlReader& m_reader;
