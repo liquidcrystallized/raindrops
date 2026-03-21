@@ -8,7 +8,7 @@
 
 namespace raindrops
 {
-    SongSelectionState::SongSelectionState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    SongSelectionState::SongSelectionState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "SongSelectionState" }
     {
         m_songListViewText = "Lorem;Ipsum;Dolor;Sit;Amet;Consectetuer";

@@ -48,7 +48,6 @@ set(RAINDROPS_HEADERS
         include/raindrops/render/graphics/raylib/GraphicsRaylib.hpp
         include/raindrops/render/graphics/Colour.hpp
         include/raindrops/render/IGraphics.hpp
-        include/raindrops/render/Renderer.hpp
         include/raindrops/state/MainMenuState.hpp
         include/raindrops/state/MidiSetupMenuState.hpp
         include/raindrops/state/PlayingState.hpp
@@ -70,7 +69,6 @@ set(RAINDROPS_SOURCES
         src/midi/MidiReceiver.cpp
         src/render/controls/VerticalStackPanel.cpp
         src/render/graphics/raylib/GraphicsRaylib.cpp
-        src/render/Renderer.cpp
         src/state/MainMenuState.cpp
         src/state/MidiSetupMenuState.cpp
         src/state/PlayingState.cpp

@@ -1,7 +1,7 @@
 #ifndef RAINDROPS_STATEMACHINE_HPP
 #define RAINDROPS_STATEMACHINE_HPP
 
-#include "Renderer.hpp"
+#include "IGraphics.hpp"
 #include "State.hpp"
 #include <raylib-cpp.hpp>
 #include <iostream>
@@ -58,7 +58,7 @@ namespace raindrops
          * @return A unique_ptr to the newly created state.
          */
         template <typename T>
-        static std::unique_ptr<T> build(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, bool replace = true);
+        static std::unique_ptr<T> build(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
 
@@ -67,7 +67,7 @@ namespace raindrops
     };
 
     template<typename T>
-    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, bool replace)
+    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, bool replace)
     {
         auto newState = std::unique_ptr<T>{ nullptr };
 

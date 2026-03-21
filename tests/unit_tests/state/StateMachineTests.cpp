@@ -2,7 +2,6 @@
 #include "StateMachine.hpp"
 #include "MainMenuState.hpp"
 #include "PlayingState.hpp"
-#include "Renderer.hpp"
 #include <doctest.h>
 
 TEST_SUITE_BEGIN("StateMachine");
@@ -10,8 +9,7 @@ TEST_SUITE_BEGIN("StateMachine");
 TEST_CASE("State transitions")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
@@ -38,8 +36,7 @@ TEST_CASE("State transitions")
 TEST_CASE("State management")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
@@ -55,8 +52,7 @@ TEST_CASE("State management")
 TEST_CASE("State transitions with replacement")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);

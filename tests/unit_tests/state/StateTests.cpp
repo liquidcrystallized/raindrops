@@ -1,7 +1,6 @@
 #include "GraphicsRaylib.hpp"
 #include "MainMenuState.hpp"
 #include "MidiMonitor.hpp"
-#include "Renderer.hpp"
 #include "StateMachine.hpp"
 #include <doctest.h>
 
@@ -10,8 +9,7 @@ TEST_SUITE_BEGIN("State");
 TEST_CASE("Default State/Screen window centre is correct")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
@@ -29,8 +27,7 @@ TEST_CASE("Default State/Screen window centre is correct")
 TEST_CASE("Arbitrary setting of new centre")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
@@ -50,8 +47,7 @@ TEST_CASE("Arbitrary setting of new centre")
 TEST_CASE("State initialization and properties")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib raylib {};
-    raindrops::Renderer renderer { raylib };
+    raindrops::GraphicsRaylib renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);

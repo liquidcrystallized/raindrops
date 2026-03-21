@@ -15,7 +15,7 @@ namespace raindrops
 {
     class SongSelectionState final : public State {
     public:
-        SongSelectionState(StateMachine&, Renderer&, MidiMonitor&, bool replace = true);
+        SongSelectionState(StateMachine&, IGraphics&, MidiMonitor&, bool replace = true);
 
         void pause() override;
         void resume() override;

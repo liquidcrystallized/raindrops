@@ -1,5 +1,4 @@
 #include "GraphicsRaylib.hpp"
-#include "Renderer.hpp"
 #include <doctest.h>
 
 TEST_SUITE_BEGIN("Renderer");
@@ -8,11 +7,9 @@ TEST_CASE("Renderer gets correct width and height")
 {
     SUBCASE("Renderer: raylib")
     {
-        raindrops::GraphicsRaylib raylib {};
-        raylib.setWindowWidth(1280);
-        raylib.setWindowHeight(720);
-
-        raindrops::Renderer renderer { raylib };
+        raindrops::GraphicsRaylib renderer {};
+        renderer.setWindowWidth(1280);
+        renderer.setWindowHeight(720);
 
         int expectedWindowWidth { 1280 };
         int expectedWindowHeight { 720 };
@@ -26,11 +23,10 @@ TEST_CASE("Renderer sets correct width and height")
 {
     SUBCASE("Renderer: raylib")
     {
-        raindrops::GraphicsRaylib raylib {};
-        raylib.setWindowWidth(1280);
-        raylib.setWindowHeight(720);
+        raindrops::GraphicsRaylib renderer {};
+        renderer.setWindowWidth(1280);
+        renderer.setWindowHeight(720);
 
-        raindrops::Renderer renderer { raylib };
         renderer.setWindowWidth(1920);
         renderer.setWindowHeight(1080);
 

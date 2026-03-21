@@ -6,7 +6,7 @@
 
 namespace raindrops
 {
-    MainMenuState::MainMenuState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    MainMenuState::MainMenuState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "MainMenuState" }
     {
         m_playButtonText = "Play";

@@ -4,7 +4,7 @@
 
 namespace raindrops
 {
-    Application::Application(Renderer& renderer)
+    Application::Application(IGraphics& renderer)
     : m_renderer { renderer }
     {
         // Midi related setup

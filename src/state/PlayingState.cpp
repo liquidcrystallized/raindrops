@@ -4,7 +4,7 @@
 
 namespace raindrops
 {
-    PlayingState::PlayingState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
     , m_sheetStartPosition { 100, 50 }
     {

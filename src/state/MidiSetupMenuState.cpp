@@ -4,7 +4,7 @@
 
 namespace raindrops
 {
-    MidiSetupMenuState::MidiSetupMenuState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    MidiSetupMenuState::MidiSetupMenuState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "MidiSetupMenuState" }
     {
         m_midiDeviceListViewText = "Lorem;Ipsum;Dolor;Sit;Amet;Consectetuer";

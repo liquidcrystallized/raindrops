@@ -3,7 +3,7 @@
 
 namespace raindrops
 {
-    State::State(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace, std::string stateName)
+    State::State(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace, std::string stateName)
     : m_stateMachine { stateMachine }
     , m_renderer { renderer }
     , m_windowCentrePosition {

@@ -5,7 +5,7 @@
 
 namespace raindrops
 {
-    SettingsMenuState::SettingsMenuState(StateMachine& stateMachine, Renderer& renderer, MidiMonitor& midiMonitor, const bool replace)
+    SettingsMenuState::SettingsMenuState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "SettingsMenuState" }
     {
         m_midiSetupMenuButtonText = "Midi Setup";
