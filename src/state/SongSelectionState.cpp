@@ -179,15 +179,19 @@ namespace raindrops
         //TODO: or grant the user the ability to specify a custom song directory.
         if (!std::filesystem::exists(m_songDirectory))
         {
-            std::cout << "The songs folder does not exist. Creating.";
+            std::cout << "The songs folder does not exist. Creating.\n";
             std::filesystem::create_directory(m_songDirectory);
         }
 
-        //TODO: Refresh song list.
         for (std::filesystem::directory_entry const& entry : std::filesystem::directory_iterator(m_songDirectory))
         {
-            std::cout << entry.path().string() << std::endl;
+            if (!m_songList.empty())
+            {
+                m_songList += ";";
+            }
+            m_songList += entry.path().string();
         }
+        m_songListViewText = m_songList.c_str();
     }
 
     //TODO: Get the selected file path from m_songListViewActiveSelection later when this works.
