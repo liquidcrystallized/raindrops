@@ -56,7 +56,7 @@ namespace raindrops
 
         void positionUIComponents();
         void refreshSongList();
-        void loadSelectedSong(const std::string& filePathForSelectedSong);
+        bool loadSelectedSong(const std::string& filePathForSelectedSong);
     };
 }
 

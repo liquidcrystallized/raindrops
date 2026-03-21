@@ -153,8 +153,14 @@ namespace raindrops
         m_playButton.OnClick([this]
         {
             //TODO: Pass loaded song details to play screen for sheet rendering.
-            loadSelectedSong("songs/hello_world.mxl");
-            //m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            if (loadSelectedSong("songs/hello_world.mxl"))
+            {
+                m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            }
+            else
+            {
+                std::cout << "Could not load song.\n";
+            }
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
 
@@ -185,7 +191,7 @@ namespace raindrops
     }
 
     //TODO: Get the selected file path from m_songListViewActiveSelection later when this works.
-    void SongSelectionState::loadSelectedSong(const std::string& filePathForSelectedSong)
+    bool SongSelectionState::loadSelectedSong(const std::string& filePathForSelectedSong)
     {
         m_selectedSong = std::make_unique<MusicSheet>();
         m_selectedSong->setFilePath(filePathForSelectedSong);
@@ -197,8 +203,14 @@ namespace raindrops
             if (m_musicXmlReader.tryParseFileInputStream(inputStream))
             {
                 //TODO: Load stuff.
+                m_selectedSong->setComposer(m_musicXmlReader.getSongComposer());
+                m_selectedSong->setTitle(m_musicXmlReader.getSongTitle());
+
                 std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
+                return true;
             }
         }
+
+        return false;
     }
 }
