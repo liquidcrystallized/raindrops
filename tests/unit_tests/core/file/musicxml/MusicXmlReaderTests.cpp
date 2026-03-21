@@ -96,4 +96,22 @@ TEST_CASE("MusicXmlReader::getMusicXmlVersion")
     CHECK( musicXmlReader.getMusicXmlVersion() == "3.1" );
 }
 
+TEST_CASE("MusicXmlReader::getNumberOfParts")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    SUBCASE("There is 1 part")
+    {
+        std::istringstream ss { musicXmlReaderTestFileContents };
+        musicXmlReader.tryParseFileInputStream(ss);
+
+        CHECK( musicXmlReader.getNumberOfParts() == 1 );
+    }
+    SUBCASE("There are 2 parts")
+    {
+        //TODO
+    }
+}
+
 TEST_SUITE_END();

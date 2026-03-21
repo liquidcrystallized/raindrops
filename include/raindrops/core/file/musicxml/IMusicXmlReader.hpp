@@ -22,6 +22,14 @@ namespace raindrops
 
         [[nodiscard]] virtual std::string getMusicXmlVersion() const = 0;
 
+        /**
+         * Number of parts, or instruments in a musical score. Basically the lines where
+         * the clefs are positioned, typically with around 5 stave lines. Part can potentially have
+         * more of these, separating the treble and bass.
+         * @return Number of "playable" parts.
+         */
+        [[nodiscard]] virtual int getNumberOfParts() const = 0;
+
         [[nodiscard]] virtual std::string getSongComposer() const = 0;
 
         [[nodiscard]] virtual std::string getSongTitle() const = 0;

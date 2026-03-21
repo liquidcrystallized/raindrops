@@ -20,6 +20,8 @@ namespace raindrops
 
         [[nodiscard]] std::string getMusicXmlVersion() const override;
 
+        [[nodiscard]] int getNumberOfParts() const override;
+
         [[nodiscard]] std::string getSongComposer() const override;
 
         [[nodiscard]] std::string getSongTitle() const override;
@@ -29,6 +31,7 @@ namespace raindrops
         mx::api::ScoreData m_scoreData;
         std::string m_musicXmlVersion;
         std::string m_fileContents;
+        int numberOfParts;
     };
 }
 

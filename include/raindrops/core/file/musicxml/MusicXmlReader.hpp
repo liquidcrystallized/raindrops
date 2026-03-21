@@ -18,6 +18,8 @@ namespace raindrops
 
         [[nodiscard]] std::string getMusicXmlVersion() const;
 
+        [[nodiscard]] int getNumberOfParts() const;
+
         [[nodiscard]] std::string getSongComposer() const;
 
         [[nodiscard]] std::string getSongTitle() const;
