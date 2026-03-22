@@ -30,11 +30,12 @@ namespace raindrops
         rgc::Bounds m_verticalStackPanelBounds;
 
         std::filesystem::path m_songDirectory;
-        std::string m_songList;
+        std::vector<std::string> m_songList;
         rgc::ListView m_songListView;
         rgc::Bounds m_songListViewBounds;
         int m_songListViewScrollIndex;
         int m_songListViewActiveSelection;
+        std::string m_songListText;
         const char* m_songListViewText;
 
         rgc::Button m_playButton;

@@ -185,13 +185,15 @@ namespace raindrops
 
         for (std::filesystem::directory_entry const& entry : std::filesystem::directory_iterator(m_songDirectory))
         {
-            if (!m_songList.empty())
-            {
-                m_songList += ";";
-            }
-            m_songList += entry.path().string();
+            m_songList.push_back(entry.path().string());
         }
-        m_songListViewText = m_songList.c_str();
+
+        for (const std::string& songNames : m_songList)
+        {
+            m_songListText += songNames + ";";
+        }
+
+        m_songListViewText = m_songListText.c_str();
     }
 
     //TODO: Get the selected file path from m_songListViewActiveSelection later when this works.
