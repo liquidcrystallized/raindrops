@@ -152,8 +152,9 @@ namespace raindrops
         m_playButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { m_buttonSize.GetWidth() / 5.0f, -m_verticalStackPanelSize.GetHeight() / 12.0f }));
         m_playButton.OnClick([this]
         {
-            //TODO: Pass loaded song details to play screen for sheet rendering.
-            if (loadSelectedSong("songs/hello_world.mxl"))
+            std::string selectedSongPath { m_songList[m_songListView.GetActive()] };
+
+            if (loadSelectedSong(selectedSongPath))
             {
                 m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
             }
@@ -174,6 +175,7 @@ namespace raindrops
     void SongSelectionState::refreshSongList()
     {
         m_songList.clear();
+        m_songListText.clear();
 
         //TODO: Create the songs folder in correct standard directories per os. (e.g, appdata, .local/share, etc)
         //TODO: or grant the user the ability to specify a custom song directory.
@@ -196,7 +198,6 @@ namespace raindrops
         m_songListViewText = m_songListText.c_str();
     }
 
-    //TODO: Get the selected file path from m_songListViewActiveSelection later when this works.
     bool SongSelectionState::loadSelectedSong(const std::string& filePathForSelectedSong)
     {
         m_selectedSong = std::make_unique<MusicSheet>();
