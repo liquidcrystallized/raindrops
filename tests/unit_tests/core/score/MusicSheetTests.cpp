@@ -3,6 +3,16 @@
 
 TEST_SUITE_BEGIN("MusicSheet");
 
+TEST_CASE("Music sheet default constructor")
+{
+    raindrops::MusicSheet sheet;
+
+    CHECK( sheet.getMeasureCount() == 0 );
+    CHECK( sheet.getHasBPMInfo() == false );
+    CHECK( sheet.getTitle().empty() );
+    CHECK( sheet.getComposer().empty() );
+}
+
 TEST_CASE("Music sheet xml filepath")
 {
     raindrops::MusicSheet sheet;
@@ -13,7 +23,7 @@ TEST_CASE("Music sheet xml filepath")
     CHECK( sheet.getFilePath() == filePath );
 }
 
-TEST_CASE("Music sheet title")
+TEST_CASE("Music sheet title get/set")
 {
     raindrops::MusicSheet sheet;
 
@@ -23,7 +33,7 @@ TEST_CASE("Music sheet title")
     CHECK( sheet.getTitle() == workTitle );
 }
 
-TEST_CASE("Music sheet subtitle")
+TEST_CASE("Music sheet subtitle get/set")
 {
     raindrops::MusicSheet sheet;
 
@@ -33,7 +43,7 @@ TEST_CASE("Music sheet subtitle")
     CHECK ( sheet.getSubTitle() == subtitle );
 }
 
-TEST_CASE("Music sheet composer")
+TEST_CASE("Music sheet composer get/set")
 {
     raindrops::MusicSheet sheet;
 
@@ -43,13 +53,7 @@ TEST_CASE("Music sheet composer")
     CHECK( sheet.getComposer() == composer );
 }
 
-TEST_CASE("Music sheet has BPM info default initialisation false")
-{
-    raindrops::MusicSheet sheet;
-    CHECK( sheet.getHasBPMInfo() == false );
-}
-
-TEST_CASE("Music sheet has BPM info")
+TEST_CASE("Music sheet has BPM info get/set")
 {
     raindrops::MusicSheet sheet;
 
