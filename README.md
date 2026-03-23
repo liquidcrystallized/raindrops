@@ -31,6 +31,12 @@ display them. To briefly name a *few things* missing from a MIDI file:
 As this application focuses on the development of *sight reading skills*, basically being able to read any music
 sheet/score placed in front of the player with confidence, missing the above elements and more is detrimental to the application's functionality and goals.
 
+## Developers
+
+The [unofficial MusicXML test suite music xml files](https://github.com/lilypond/lilypond/tree/master/input/regression/musicxml)
+supplied by the [LilyPond](https://lilypond.org/) devs can be used as test "songs" for development. The license for the tests and files 
+are [MIT](https://lilypond.org/doc/v2.24/input/regression/musicxml/collated-files.html).
+
 ## License and Dependencies
 
 Sources in this repository are released under the GPLv3 license.
