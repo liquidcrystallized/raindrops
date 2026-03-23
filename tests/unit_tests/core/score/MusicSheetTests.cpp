@@ -1,4 +1,5 @@
 #include "MusicSheet.hpp"
+#include "Measure.hpp"
 #include <doctest.h>
 
 TEST_SUITE_BEGIN("MusicSheet");
@@ -61,6 +62,63 @@ TEST_CASE("Music sheet has BPM info get/set")
     sheet.setHasBPMInfo(hasBPMInfo);
 
     CHECK( sheet.getHasBPMInfo() == hasBPMInfo );
+}
+
+TEST_CASE("Music sheet add measures")
+{
+    raindrops::MusicSheet sheet;
+
+    raindrops::Measure measure1;
+    measure1.setMeasureNumber(1);
+    measure1.setTempoInBPM(120);
+
+    raindrops::Measure measure2;
+    measure2.setMeasureNumber(2);
+    measure2.setTempoInBPM(130);
+
+    sheet.addMeasure(measure1);
+    sheet.addMeasure(measure2);
+
+    CHECK( sheet.getMeasureCount() == 2 );
+}
+
+TEST_CASE("Music sheet file path get/set")
+{
+    raindrops::MusicSheet sheet;
+
+    const std::string expectedPath = "/path/to/song.musicxml";
+    sheet.setFilePath(expectedPath);
+
+    CHECK( sheet.getFilePath() == expectedPath );
+}
+
+TEST_CASE("Music sheet BPM info flag toggle")
+{
+    raindrops::MusicSheet sheet;
+
+    CHECK( sheet.getHasBPMInfo() == false );
+
+    sheet.setHasBPMInfo(true);
+
+    CHECK( sheet.getHasBPMInfo() == true );
+}
+
+TEST_CASE("Music sheet measure retrieval by count")
+{
+    raindrops::MusicSheet sheet;
+
+    for (int i = 0; i < 5; i++)
+    {
+        raindrops::Measure measure;
+        measure.setMeasureNumber(i+1);
+        sheet.addMeasure(measure);
+    }
+
+    const std::vector<raindrops::Measure>& measures = sheet.getMeasures();
+
+    CHECK( measures.size() == 5 );
+    CHECK( measures[0].getMeasureNumber() == 1 );
+    CHECK( measures[4].getMeasureNumber() == 5 );
 }
 
 TEST_SUITE_END();
