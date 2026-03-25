@@ -14,7 +14,7 @@ namespace raindrops
         m_measureNumber = number;
     }
 
-    bool Measure::getHasEndLine() const
+    bool Measure::hasEndLine() const
     {
         return m_hasEndLine;
     }

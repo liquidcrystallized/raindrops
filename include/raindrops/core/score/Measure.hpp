@@ -15,13 +15,14 @@ namespace raindrops
         [[nodiscard]] int getMeasureNumber() const;
         void setMeasureNumber(int number);
 
-        [[nodiscard]] bool getHasEndLine() const;
+        [[nodiscard]] bool hasEndLine() const;
         void setHasEndLine(bool hasEndLine);
 
         [[nodiscard]] int getTempoInBPM() const;
         void setTempoInBPM(int number);
     private:
         int m_measureNumber {};
+        bool m_hasAttributes {};
         bool m_hasEndLine {};
         int m_tempoInBPM {};
     };

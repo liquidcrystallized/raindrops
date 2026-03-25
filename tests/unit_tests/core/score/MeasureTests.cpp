@@ -23,7 +23,7 @@ TEST_CASE("Measure number get/set")
 TEST_CASE("Has end line default false")
 {
     raindrops::Measure measure;
-    CHECK( measure.getHasEndLine() == false );
+    CHECK( measure.hasEndLine() == false );
 }
 
 TEST_CASE("Has end line get/set")
@@ -31,7 +31,7 @@ TEST_CASE("Has end line get/set")
     raindrops::Measure measure;
 
     measure.setHasEndLine(true);
-    bool shouldHaveEndLine = measure.getHasEndLine();
+    bool shouldHaveEndLine = measure.hasEndLine();
 
     CHECK( shouldHaveEndLine == true );
 }
