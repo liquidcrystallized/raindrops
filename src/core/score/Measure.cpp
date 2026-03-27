@@ -13,24 +13,4 @@ namespace raindrops
     {
         m_measureNumber = number;
     }
-
-    bool Measure::hasEndLine() const
-    {
-        return m_hasEndLine;
-    }
-
-    void Measure::setHasEndLine(const bool hasEndLine)
-    {
-        m_hasEndLine = hasEndLine;
-    }
-
-    int Measure::getTempoInBPM() const
-    {
-        return m_tempoInBPM;
-    }
-
-    void Measure::setTempoInBPM(const int number)
-    {
-        m_tempoInBPM = number;
-    }
 }
