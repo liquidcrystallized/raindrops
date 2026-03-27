@@ -5,6 +5,9 @@
 
 namespace raindrops
 {
+    /**
+     * @brief Helps with unit testing.
+     */
     class MusicXmlReader {
     public:
         explicit MusicXmlReader(IMusicXmlReader&);
