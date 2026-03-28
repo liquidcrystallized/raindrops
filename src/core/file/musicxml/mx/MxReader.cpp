@@ -11,7 +11,7 @@ namespace raindrops
 
     bool MxReader::tryLoadFileIntoStream(const std::string& filePath)
     {
-        std::ifstream fileStream { filePath };
+        std::ifstream fileStream { filePath, std::ios::binary };
 
         if (!fileStream)
         {
@@ -20,13 +20,14 @@ namespace raindrops
             return false;
         }
 
-        std::string line {};
-        while (getline(fileStream, line))
-        {
-            m_fileContents.append(line);
-        }
+        fileStream.seekg(0, std::ios::end);
+        const std::streamsize fileSize = fileStream.tellg();
+        fileStream.seekg(0, std::ios::beg);
 
+        m_fileContents.resize(static_cast<size_t>(fileSize));
+        fileStream.read(m_fileContents.data(), fileSize);
         fileStream.close();
+
         return true;
     }
 
