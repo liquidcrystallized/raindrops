@@ -12,9 +12,9 @@ namespace raindrops
         MxReader();
         ~MxReader() override;
 
-        [[nodiscard]] bool tryLoadFileIntoStream(const std::string& filePath) override;
+        bool tryLoadFileIntoStream(const std::string& filePath) override;
 
-        [[nodiscard]] bool tryParseFileInputStream(std::istream& inputStream) override;
+        bool tryParseFileInputStream(std::istream& inputStream) override;
 
         [[nodiscard]] std::string getRawFileContents() const override;
 

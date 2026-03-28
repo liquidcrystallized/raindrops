@@ -13,9 +13,9 @@ namespace raindrops
         explicit MusicXmlReader(IMusicXmlReader&);
         ~MusicXmlReader();
 
-        [[nodiscard]] bool tryLoadFileIntoStream(const std::string& filePath) const;
+        bool tryLoadFileIntoStream(const std::string& filePath) const;
 
-        [[nodiscard]] bool tryParseFileInputStream(std::istream& inputStream) const;
+        bool tryParseFileInputStream(std::istream& inputStream) const;
 
         [[nodiscard]] std::string getRawFileContents() const;
 

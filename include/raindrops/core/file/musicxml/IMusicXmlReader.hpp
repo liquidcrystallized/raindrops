@@ -9,14 +9,14 @@ namespace raindrops
     public:
         virtual ~IMusicXmlReader() = default;
 
-        [[nodiscard]] virtual bool tryLoadFileIntoStream(const std::string& filePath) = 0;
+        virtual bool tryLoadFileIntoStream(const std::string& filePath) = 0;
 
         /**
          * Make sure the input from a file we're reading contains music xml content.
          * @param inputStream Stream of file contents, a string or something.
          * @return true if contents are music xml, false if not.
          */
-        [[nodiscard]] virtual bool tryParseFileInputStream(std::istream& inputStream) = 0;
+        virtual bool tryParseFileInputStream(std::istream& inputStream) = 0;
 
         [[nodiscard]] virtual std::string getRawFileContents() const = 0;
 
