@@ -70,11 +70,9 @@ TEST_CASE("Music sheet add measures")
 
     raindrops::Measure measure1;
     measure1.setMeasureNumber(1);
-    measure1.setTempoInBPM(120);
 
     raindrops::Measure measure2;
     measure2.setMeasureNumber(2);
-    measure2.setTempoInBPM(130);
 
     sheet.addMeasure(measure1);
     sheet.addMeasure(measure2);
