@@ -27,6 +27,11 @@ namespace raindrops
         return m_reader.getMusicXmlVersion();
     }
 
+    int MusicXmlReader::getNumberOfMeasures() const
+    {
+        return m_reader.getNumberOfMeasures();
+    }
+
     int MusicXmlReader::getNumberOfParts() const
     {
         return m_reader.getNumberOfParts();

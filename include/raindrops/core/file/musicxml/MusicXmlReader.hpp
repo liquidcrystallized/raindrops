@@ -6,7 +6,7 @@
 namespace raindrops
 {
     /**
-     * @brief Helps with unit testing.
+     * @brief Helps with unit testing external libs.
      */
     class MusicXmlReader {
     public:
@@ -20,6 +20,8 @@ namespace raindrops
         [[nodiscard]] std::string getRawFileContents() const;
 
         [[nodiscard]] std::string getMusicXmlVersion() const;
+
+        [[nodiscard]] int getNumberOfMeasures() const;
 
         [[nodiscard]] int getNumberOfParts() const;
 

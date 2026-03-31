@@ -30,6 +30,8 @@ namespace raindrops
          */
         [[nodiscard]] virtual int getNumberOfParts() const = 0;
 
+        [[nodiscard]] virtual int getNumberOfMeasures() const = 0;
+
         [[nodiscard]] virtual std::string getSongComposer() const = 0;
 
         [[nodiscard]] virtual std::string getSongTitle() const = 0;

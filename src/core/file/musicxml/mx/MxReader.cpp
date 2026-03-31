@@ -80,6 +80,11 @@ namespace raindrops
         return m_musicXmlVersion;
     }
 
+    int MxReader::getNumberOfMeasures() const
+    {
+        return m_scoreData.getNumMeasures();
+    }
+
     int MxReader::getNumberOfParts() const
     {
         return m_scoreData.parts.size();
