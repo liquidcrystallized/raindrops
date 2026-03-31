@@ -42,7 +42,7 @@ namespace raindrops
         std::string m_copyright {};
 
         // Parts or instruments in a musical score.
-        int numberOfParts {};
+        int m_numberOfParts {};
 
         // Whether BPM info is present in the sheet. If it is set to false, each measure's BPM is set to a default of 120.
         bool m_hasBPMInfo {};

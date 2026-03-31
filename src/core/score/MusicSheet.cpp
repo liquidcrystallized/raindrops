@@ -82,7 +82,7 @@ namespace raindrops
         return static_cast<int>(m_measures.size());
     }
 
-    const std::vector<Measure> & MusicSheet::getMeasures() const
+    const std::vector<Measure>& MusicSheet::getMeasures() const
     {
         return m_measures;
     }
