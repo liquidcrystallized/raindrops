@@ -36,7 +36,7 @@ namespace raindrops
         [[nodiscard]] bool monitorThreadAlive() const;
 
     private:
-        bool m_running;
+        std::atomic<bool> m_running;
         unsigned int m_midiPort;
         unsigned int m_midiChannel;
         std::vector<MidiDevice> m_cachedDevices;
