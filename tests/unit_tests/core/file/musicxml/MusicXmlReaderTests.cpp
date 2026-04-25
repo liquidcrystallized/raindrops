@@ -1,14 +1,11 @@
 #include "MusicXmlReader.hpp"
 #include "MxReader.hpp"
+#include "TestInputFiles.hpp"
 #include <doctest.h>
 #include <sstream>
 #include <string>
 
 TEST_SUITE_BEGIN("MusicXmlReader");
-
-std::string helloWorldFilePath { "../../tests/inputs/musicxml/hello-world.xml" };
-std::string nonMusicXmlFilePath { "../../tests/inputs/musicxml/non-musicxml.xml" };
-std::string PitchesPitchesFilePath { "../../tests/inputs/musicxml/01a-Pitches-Pitches.xml" };
 
 TEST_CASE("MusicXmlReader::tryParseFileInputStream - Are contents musicxml")
 {
@@ -50,7 +47,7 @@ TEST_CASE("MusicXmlReader::getNumberOfMeasures")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(PitchesPitchesFilePath);
+    musicXmlReader.tryLoadFileIntoStream(pitchesPitchesFilePath);
     std::istringstream ss { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(ss);
 

@@ -1,4 +1,5 @@
 #include "SongSelectionState.hpp"
+#include "MusicXmlReader.hpp"
 #include "MxReader.hpp"
 #include "PlayingState.hpp"
 #include "StateMachine.hpp"
@@ -212,6 +213,8 @@ namespace raindrops
                 //TODO: Load stuff.
                 m_selectedSong->setComposer(m_musicXmlReader.getSongComposer());
                 m_selectedSong->setTitle(m_musicXmlReader.getSongTitle());
+
+                //
 
                 std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
                 return true;

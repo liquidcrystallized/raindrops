@@ -36,6 +36,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/file/musicxml/mx/MxReader.hpp
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
+        include/raindrops/core/file/musicxml/ScoreFactory.hpp
         include/raindrops/core/math/Vector2.hpp
         include/raindrops/core/score/Measure.hpp
         include/raindrops/core/score/Mode.hpp
@@ -62,6 +63,7 @@ set(RAINDROPS_HEADERS
 set(RAINDROPS_SOURCES
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
+        src/core/file/musicxml/ScoreFactory.cpp
         src/core/math/Vector2.cpp
         src/core/score/Measure.cpp
         src/core/score/MusicSheet.cpp
@@ -92,6 +94,7 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/render
         include/raindrops/state
         include/raindrops
+        include/tests
 )
 
 add_executable(raindrops
@@ -107,7 +110,11 @@ target_include_directories(raindrops PRIVATE
 #---------------------------------------------------------------------------------------
 # raindrops tests
 #---------------------------------------------------------------------------------------
-set(RAINDROPS_TESTS_SOURCES
+set(RAINDROPS_INTEGRATION_TESTS_SOURCES
+        tests/integration_tests/core/file/musicxml/MusicXmlReaderIntegrationTests.cpp
+)
+
+set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
         tests/unit_tests/core/score/MeasureTests.cpp
@@ -124,7 +131,8 @@ set(RAINDROPS_TESTS_SOURCES
 add_executable(raindrops_tests
         ${RAINDROPS_HEADERS}
         ${RAINDROPS_SOURCES}
-        ${RAINDROPS_TESTS_SOURCES}
+        ${RAINDROPS_INTEGRATION_TESTS_SOURCES}
+        ${RAINDROPS_UNIT_TESTS_SOURCES}
         tests/TestMain.cpp
 )
 
