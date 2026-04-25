@@ -2,6 +2,7 @@
 #include "MusicXmlReader.hpp"
 #include "MxReader.hpp"
 #include "PlayingState.hpp"
+#include "ScoreFactory.hpp"
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
 #include <filesystem>
@@ -201,9 +202,6 @@ namespace raindrops
 
     bool SongSelectionState::loadSelectedSong(const std::string& filePathForSelectedSong)
     {
-        m_selectedSong = std::make_unique<MusicSheet>();
-        m_selectedSong->setFilePath(filePathForSelectedSong);
-
         if (m_musicXmlReader.tryLoadFileIntoStream(filePathForSelectedSong))
         {
             auto inputStream = std::istringstream(m_musicXmlReader.getRawFileContents());
@@ -211,10 +209,7 @@ namespace raindrops
             if (m_musicXmlReader.tryParseFileInputStream(inputStream))
             {
                 //TODO: Load stuff.
-                m_selectedSong->setComposer(m_musicXmlReader.getSongComposer());
-                m_selectedSong->setTitle(m_musicXmlReader.getSongTitle());
-
-                //
+                m_selectedSong = ScoreFactory::createFromReader(m_musicXmlReader);
 
                 std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
                 return true;
