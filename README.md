@@ -14,7 +14,11 @@ or some other learning source.
 
 ## Loading songs
 
-This application accepts MusicXML files (.musicxml/.mxl) for songs.
+This application accepts MusicXML files for songs. Currently supported formats are:
+
+- [x] .xml
+- [x] .musicxml
+- [ ] .mxl
 
 ### Why MusicXML instead of Midi?
 
