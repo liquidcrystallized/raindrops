@@ -36,11 +36,11 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/file/musicxml/mx/MxReader.hpp
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
-        include/raindrops/core/file/musicxml/ScoreFactory.hpp
         include/raindrops/core/math/Vector2.hpp
         include/raindrops/core/score/Measure.hpp
         include/raindrops/core/score/Mode.hpp
         include/raindrops/core/score/MusicSheet.hpp
+        include/raindrops/core/score/ScoreFactory.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
         include/raindrops/midi/MidiMessageList.hpp
@@ -63,10 +63,10 @@ set(RAINDROPS_HEADERS
 set(RAINDROPS_SOURCES
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
-        src/core/file/musicxml/ScoreFactory.cpp
         src/core/math/Vector2.cpp
         src/core/score/Measure.cpp
         src/core/score/MusicSheet.cpp
+        src/core/score/ScoreFactory.cpp
         src/midi/MidiDevice.cpp
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.cpp
