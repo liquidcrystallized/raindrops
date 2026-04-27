@@ -208,8 +208,8 @@ namespace raindrops
 
             if (m_musicXmlReader.tryParseFileInputStream(inputStream))
             {
-                //TODO: Load stuff.
                 m_selectedSong = ScoreFactory::createFromReader(m_musicXmlReader);
+                m_stateMachine.setSelectedSong(std::move(m_selectedSong));
 
                 std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
                 return true;

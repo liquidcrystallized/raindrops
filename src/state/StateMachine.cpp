@@ -94,4 +94,14 @@ namespace raindrops
     {
         m_running = false;
     }
+
+    std::unique_ptr<MusicSheet> StateMachine::getSelectedSong()
+    {
+        return std::move(m_selectedSong);
+    }
+
+    void StateMachine::setSelectedSong(std::unique_ptr<MusicSheet> selectedSong)
+    {
+        m_selectedSong = std::move(selectedSong);
+    }
 }

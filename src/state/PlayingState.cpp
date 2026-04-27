@@ -8,7 +8,12 @@ namespace raindrops
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
     , m_sheetStartPosition { 100, 50 }
     {
-        if (!m_musicSheet)
+        std::unique_ptr<MusicSheet> selectedSong = stateMachine.getSelectedSong();
+        if (selectedSong)
+        {
+            loadMusicSheet(std::move(selectedSong));
+        }
+        else if (!m_musicSheet)
         {
             std::cout << "Warning: No music sheet provided\n";
         }

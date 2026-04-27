@@ -1,6 +1,7 @@
 #ifndef RAINDROPS_STATEMACHINE_HPP
 #define RAINDROPS_STATEMACHINE_HPP
 
+#include "MusicSheet.hpp"
 #include "IGraphics.hpp"
 #include "State.hpp"
 #include <raylib-cpp.hpp>
@@ -48,6 +49,10 @@ namespace raindrops
         [[nodiscard]] bool running() const;
         void quit();
 
+        //TODO: Temporary while working on the playing screen.
+        std::unique_ptr<MusicSheet> getSelectedSong();
+        void setSelectedSong(std::unique_ptr<MusicSheet> selectedSong);
+
         /**
          *
          * @tparam T The type of state to create.
@@ -61,6 +66,7 @@ namespace raindrops
         static std::unique_ptr<T> build(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
+        std::unique_ptr<MusicSheet> m_selectedSong; //TODO: Temporary to work on the PlayingScreen, handle this somewhere else.
 
         bool m_resume;
         bool m_running;
