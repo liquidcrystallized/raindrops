@@ -120,6 +120,7 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/core/score/MeasureTests.cpp
         tests/unit_tests/core/score/ModeTests.cpp
         tests/unit_tests/core/score/MusicSheetTests.cpp
+        tests/unit_tests/core/score/ScoreFactoryTests.cpp
         tests/unit_tests/midi/MidiDeviceTests.cpp
         tests/unit_tests/midi/MidiMonitorTests.cpp
         tests/unit_tests/midi/MidiReceiverTests.cpp
