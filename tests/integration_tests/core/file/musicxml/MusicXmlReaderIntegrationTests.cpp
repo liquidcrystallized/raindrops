@@ -13,7 +13,7 @@ TEST_CASE("Load measures from MusicXML into an empty MusicSheet")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    if (musicXmlReader.tryLoadFileIntoStream(pitchesPitchesFilePath))
+    if (musicXmlReader.tryLoadFileIntoStream(TestInputFiles::pitchesPitchesFilePath))
     {
         std::istringstream inputStream { musicXmlReader.getRawFileContents() };
 

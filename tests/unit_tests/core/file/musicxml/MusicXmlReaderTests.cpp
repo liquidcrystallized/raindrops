@@ -14,7 +14,7 @@ TEST_CASE("MusicXmlReader::tryParseFileInputStream - Are contents musicxml")
 
     SUBCASE("Should be true - file contents are musicxml")
     {
-        musicXmlReader.tryLoadFileIntoStream(helloWorldFilePath);
+        musicXmlReader.tryLoadFileIntoStream(TestInputFiles::helloWorldFilePath);
         std::istringstream ss { musicXmlReader.getRawFileContents() };
         bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
 
@@ -22,7 +22,7 @@ TEST_CASE("MusicXmlReader::tryParseFileInputStream - Are contents musicxml")
     }
     SUBCASE("Should be false - file contents are not musicxml")
     {
-        musicXmlReader.tryLoadFileIntoStream(nonMusicXmlFilePath);
+        musicXmlReader.tryLoadFileIntoStream(TestInputFiles::nonMusicXmlFilePath);
         std::istringstream ss { musicXmlReader.getRawFileContents() };
         bool contentsAreMusicXml = musicXmlReader.tryParseFileInputStream(ss);
 
@@ -35,7 +35,7 @@ TEST_CASE("MusicXmlReader::getMusicXmlVersion")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(helloWorldFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::helloWorldFilePath);
     std::istringstream ss { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(ss);
 
@@ -47,7 +47,7 @@ TEST_CASE("MusicXmlReader::getNumberOfMeasures")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(pitchesPitchesFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::pitchesPitchesFilePath);
     std::istringstream ss { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(ss);
 
@@ -61,7 +61,7 @@ TEST_CASE("MusicXmlReader::getNumberOfParts")
 
     SUBCASE("There is 1 part")
     {
-        musicXmlReader.tryLoadFileIntoStream(helloWorldFilePath);
+        musicXmlReader.tryLoadFileIntoStream(TestInputFiles::helloWorldFilePath);
         std::istringstream ss { musicXmlReader.getRawFileContents() };
         musicXmlReader.tryParseFileInputStream(ss);
 

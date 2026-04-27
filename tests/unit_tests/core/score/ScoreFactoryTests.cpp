@@ -13,7 +13,7 @@ TEST_CASE("ScoreFactory::createFromReader creates valid MusicSheet")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(clairDeLuneFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
@@ -29,7 +29,7 @@ TEST_CASE("ScoreFactory sets correct title from MusicXML")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(clairDeLuneFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
@@ -43,7 +43,7 @@ TEST_CASE("ScoreFactory sets correct composer from MusicXML")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(clairDeLuneFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
@@ -57,7 +57,7 @@ TEST_CASE("ScoreFactory creates correct number of measures")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(clairDeLuneFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
@@ -71,7 +71,7 @@ TEST_CASE("ScoreFactory measures have sequential numbers")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(clairDeLuneFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
@@ -89,7 +89,7 @@ TEST_CASE("ScoreFactory handles empty measure count")
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(noMeasuresXmlFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::noMeasuresXmlFilePath);
     std::istringstream inputStream { musicXmlReader.getRawFileContents() };
     musicXmlReader.tryParseFileInputStream(inputStream);
 
