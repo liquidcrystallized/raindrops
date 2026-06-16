@@ -7,13 +7,17 @@ namespace raindrops
 {
     class StaffLine {
     public:
-        explicit StaffLine(int positionY);
+        explicit StaffLine(int positionY, bool isVisible);
 
         [[nodiscard]] int getPositionY() const;
         void setPositionY(int value);
 
+        [[nodiscard]] bool isVisible() const;
+        void setVisible(bool visible);
+
     private:
         Vector2<int> m_position;
+        bool m_isVisible;
     };
 }
 

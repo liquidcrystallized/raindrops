@@ -6,14 +6,14 @@ TEST_SUITE_BEGIN("Staff");
 
 TEST_CASE("Staff constructor creates correct number of lines")
 {
-    raindrops::Staff staff { 0, 10, 5 };
+    raindrops::Staff staff { 0, 10 };
 
-    CHECK( staff.getNumberOfLines() == 5 );
+    CHECK( staff.getNumberOfLines() == 16 );
 }
 
 TEST_CASE("Staff constructor creates lines with correct spacing")
 {
-    raindrops::Staff staff { 100, 10, 5 };
+    raindrops::Staff staff { 100, 10 };
     const std::vector<raindrops::StaffLine>& lines = staff.getLines();
 
     CHECK( lines[0].getPositionY() == 100 );
@@ -23,23 +23,25 @@ TEST_CASE("Staff constructor creates lines with correct spacing")
     CHECK( lines[4].getPositionY() == 140 );
 }
 
-TEST_CASE("Staff with non-standard number of lines")
+TEST_CASE("Staff constructor visible treble and bass clefs")
 {
-    raindrops::Staff staff { 0, 5, 3 };
+    raindrops::Staff staff { 0, 10 };
     const std::vector<raindrops::StaffLine>& lines = staff.getLines();
 
-    CHECK( lines.size() == 3 );
-    CHECK( lines[0].getPositionY() == 0 );
-    CHECK( lines[1].getPositionY() == 5 );
-    CHECK( lines[2].getPositionY() == 10 );
-}
-
-TEST_CASE("Staff with zero lines")
-{
-    raindrops::Staff staff { 0, 10, 0 };
-    const std::vector<raindrops::StaffLine>& lines = staff.getLines();
-
-    CHECK( lines.empty() );
+    SUBCASE("Treble clef")
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            CHECK( lines[i].isVisible() == true );
+        }
+    }
+    SUBCASE("Bass clef")
+    {
+        for (int i = 11; i < lines.size(); i++)
+        {
+            CHECK( lines[i].isVisible() == true );
+        }
+    }
 }
 
 TEST_SUITE_END;

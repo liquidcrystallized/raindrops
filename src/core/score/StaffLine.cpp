@@ -2,7 +2,8 @@
 
 namespace raindrops
 {
-    StaffLine::StaffLine(const int positionY) : m_position { 0, positionY } {}
+    StaffLine::StaffLine(const int positionY, const bool isVisible)
+    : m_position { 0, positionY }, m_isVisible { isVisible } {}
 
     int StaffLine::getPositionY() const
     {
@@ -12,5 +13,15 @@ namespace raindrops
     void StaffLine::setPositionY(const int value)
     {
         m_position.setY(value);
+    }
+
+    bool StaffLine::isVisible() const
+    {
+        return m_isVisible;
+    }
+
+    void StaffLine::setVisible(const bool visible)
+    {
+        m_isVisible = visible;
     }
 }

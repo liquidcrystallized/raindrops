@@ -2,13 +2,20 @@
 
 namespace raindrops
 {
-    Staff::Staff(const int firstLinePosition, const int lineSpacing, const int numberOfLines)
+    Staff::Staff(const int firstLinePositionY, const int lineSpacing)
     {
-        int currentLinePosition = firstLinePosition;
-        for (int i = 0; i < numberOfLines; i++)
+        m_staffLines.reserve(16);
+        int currentLinePosition = firstLinePositionY;
+
+        // There are technically lines between the treble and bass clef on an actual music sheet.
+        // But they are generally not visible unless there happens to be a note there, and even then,
+        // only a tiny part of the line beneath the note is visible.
+        // So they'll still need to be tracked but not rendered.
+        for (int i = 0; i < 16; i++)
         {
-            StaffLine staffLine { currentLinePosition };
-            m_staffLines.push_back(staffLine);
+            // Treble clef: 0-4, Bass clef: 11-15
+            bool isClefLine = i < 5 || i >= 11;
+            m_staffLines.emplace_back(currentLinePosition, isClefLine);
             currentLinePosition += lineSpacing;
         }
     }

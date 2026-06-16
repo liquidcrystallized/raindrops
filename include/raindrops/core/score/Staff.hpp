@@ -12,11 +12,10 @@ namespace raindrops
     class Staff {
     public:
         /**
-         * @param firstLinePosition Y position of the first line of this specific staff.
+         * @param firstLinePositionY Y position of the first line of this specific staff.
          * @param lineSpacing Vertical spacing between the staff lines.
-         * @param numberOfLines Typically 5, but should be alterable just in case.
          */
-        explicit Staff(int firstLinePosition, int lineSpacing, int numberOfLines);
+        explicit Staff(int firstLinePositionY, int lineSpacing);
 
         [[nodiscard]] const std::vector<StaffLine>& getLines() const;
         [[nodiscard]] int getNumberOfLines() const;
