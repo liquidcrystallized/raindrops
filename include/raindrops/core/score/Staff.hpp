@@ -7,15 +7,11 @@
 namespace raindrops
 {
     /**
-     * @brief A musical staff, helps with managing line positioning.
+     * @brief A musical staff.
      */
     class Staff {
     public:
-        /**
-         * @param firstLinePositionY Y position of the first line of this specific staff.
-         * @param lineSpacing Vertical spacing between the staff lines.
-         */
-        explicit Staff(int firstLinePositionY, int lineSpacing);
+        explicit Staff();
 
         [[nodiscard]] const std::vector<StaffLine>& getLines() const;
         [[nodiscard]] int getNumberOfLines() const;
