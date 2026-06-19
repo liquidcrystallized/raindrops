@@ -1,4 +1,4 @@
-#include "GraphicsRaylib.hpp"
+#include "GraphicsNull.hpp"
 #include "MainMenuState.hpp"
 #include "MidiMonitor.hpp"
 #include "StateMachine.hpp"
@@ -9,11 +9,10 @@ TEST_SUITE_BEGIN("State");
 TEST_CASE("Default State/Screen window centre is correct")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
@@ -27,11 +26,10 @@ TEST_CASE("Default State/Screen window centre is correct")
 TEST_CASE("Arbitrary setting of new centre")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
@@ -47,11 +45,10 @@ TEST_CASE("Arbitrary setting of new centre")
 TEST_CASE("State initialization and properties")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     // Test default state properties
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);

@@ -1,4 +1,4 @@
-#include "GraphicsRaylib.hpp"
+#include "GraphicsNull.hpp"
 #include "StateMachine.hpp"
 #include "MainMenuState.hpp"
 #include "PlayingState.hpp"
@@ -9,11 +9,10 @@ TEST_SUITE_BEGIN("StateMachine");
 TEST_CASE("State transitions")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
@@ -36,11 +35,10 @@ TEST_CASE("State transitions")
 TEST_CASE("State management")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
@@ -52,11 +50,10 @@ TEST_CASE("State management")
 TEST_CASE("State transitions with replacement")
 {
     raindrops::StateMachine stateMachine;
-    raindrops::GraphicsRaylib renderer {};
+    raindrops::GraphicsNull renderer {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
-    renderer.toggleTestMode();
 
     // Test state replacement
     auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
