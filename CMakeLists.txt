@@ -34,6 +34,7 @@ add_subdirectory(external/mx)
 #---------------------------------------------------------------------------------------
 set(RAINDROPS_HEADERS
         include/raindrops/config/MidiConfig.hpp
+        include/raindrops/config/WindowConfig.hpp
         include/raindrops/core/file/musicxml/mx/MxReader.hpp
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
@@ -125,6 +126,7 @@ set(RAINDROPS_INTEGRATION_TESTS_SOURCES
 
 set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/config/MidiConfigTests.cpp
+        tests/unit_tests/config/WindowConfigTests.cpp
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
         tests/unit_tests/core/score/MeasureTests.cpp
