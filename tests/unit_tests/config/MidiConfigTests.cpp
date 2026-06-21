@@ -5,7 +5,7 @@ TEST_SUITE_BEGIN("MidiConfig");
 
 TEST_CASE("MidiConfig default values")
 {
-    raindrops::MidiConfig config;
+    raindrops::MidiConfig config {};
 
     CHECK( config.port == 0 );
     CHECK( config.channel == 0 );
@@ -14,7 +14,7 @@ TEST_CASE("MidiConfig default values")
 
 TEST_CASE("MidiConfig can be modified")
 {
-    raindrops::MidiConfig config;
+    raindrops::MidiConfig config {};
 
     SUBCASE("Set specific MIDI port")
     {
@@ -45,7 +45,7 @@ TEST_CASE("MidiConfig can be modified")
 
 TEST_CASE("MidiConfig validation")
 {
-    raindrops::MidiConfig config;
+    raindrops::MidiConfig config {};
 
     SUBCASE("Valid default config")
     {

@@ -8,9 +8,9 @@ namespace raindrops
      * Mostly dealing with connected devices.
      */
     struct MidiConfig {
-        unsigned int port = 0;
-        unsigned int channel = 0;
-        bool autoDetect = true; //TODO: Future feature.
+        unsigned int port { 0 };
+        unsigned int channel { 0 };
+        bool autoDetect { true }; //TODO: Future feature.
 
         [[nodiscard]] bool isValid() const
         {

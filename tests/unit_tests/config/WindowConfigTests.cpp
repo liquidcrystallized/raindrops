@@ -5,7 +5,7 @@ TEST_SUITE_BEGIN("WindowConfig");
 
 TEST_CASE("WindowConfig default value")
 {
-    raindrops::WindowConfig config;
+    raindrops::WindowConfig config {};
 
     CHECK( config.width == 1280 );
     CHECK( config.height == 720 );
@@ -16,7 +16,7 @@ TEST_CASE("WindowConfig default value")
 
 TEST_CASE("WindowConfig can be modified")
 {
-    raindrops::WindowConfig config;
+    raindrops::WindowConfig config {};
 
     SUBCASE("Set custom width and height")
     {
@@ -59,7 +59,7 @@ TEST_CASE("WindowConfig can be modified")
 
 TEST_CASE("WindowConfig validation")
 {
-    raindrops::WindowConfig config;
+    raindrops::WindowConfig config {};
 
     SUBCASE("Valid default config")
     {
