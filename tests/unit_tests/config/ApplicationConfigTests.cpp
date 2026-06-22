@@ -13,7 +13,7 @@ TEST_CASE("ApplicationConfig default values")
     CHECK( config.windowConfig.height == 720 );
 
     // Metadata defaults.
-    CHECK( config.appName == "Raindrops" );
+    CHECK( config.appName == "raindrops" );
     CHECK( config.appVersion == "0.1.0" );
 }
 

@@ -16,7 +16,7 @@ namespace raindrops
         MusicSheetDisplayConfig musicSheetDisplayConfig {};
         WindowConfig windowConfig {};
 
-        std::string appName { "Raindrops" };
+        std::string appName { "raindrops" };
         std::string appVersion { "0.1.0" };
 
         [[nodiscard]] bool isValid() const
