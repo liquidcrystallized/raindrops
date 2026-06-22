@@ -22,12 +22,14 @@ include_directories(external/rtmidi)
 include_directories(external/raygui-cpp/include)
 include_directories(external/mx/Sourcecode/include)
 include_directories(external/mx/Sourcecode/private/)
+include_directories(external/glaze/include/)
 #add_subdirectory(external/raylib)
 add_subdirectory(external/raylib-cpp)
 add_subdirectory(external/doctest)
 add_subdirectory(external/rtmidi)
 add_subdirectory(external/raygui-cpp)
 add_subdirectory(external/mx)
+add_subdirectory(external/glaze)
 
 #---------------------------------------------------------------------------------------
 # raindrops application
@@ -181,6 +183,10 @@ target_link_libraries(raindrops_tests PRIVATE raygui_cpp)
 # mx (music xml)
 target_link_libraries(raindrops PRIVATE mx)
 target_link_libraries(raindrops_tests PRIVATE mx)
+
+# glaze
+target_link_libraries(raindrops PRIVATE glaze::glaze)
+target_link_libraries(raindrops_tests PRIVATE glaze::glaze)
 
 # Suppress warnings from external
 get_target_property(raygui_cpp_include_dirs raygui_cpp INTERFACE_INCLUDE_DIRECTORIES)

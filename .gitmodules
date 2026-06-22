@@ -19,3 +19,6 @@
 [submodule "external/mx"]
 	path = external/mx
 	url = https://github.com/webern/mx.git
+[submodule "external/glaze"]
+	path = external/glaze
+	url = https://github.com/stephenberry/glaze.git

@@ -54,3 +54,4 @@ These are the licenses for the dependencies:
 - [doctest](https://github.com/doctest/doctest) - MIT
 - [rtmidi](https://github.com/thestk/rtmidi) - [LICENSE](https://github.com/thestk/rtmidi/blob/master/LICENSE)
 - [mx](https://github.com/webern/mx) - MIT
+- [glaze](https://github.com/stephenberry/glaze) - MIT
