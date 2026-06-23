@@ -1,6 +1,8 @@
 #ifndef RAINDROPS_CONFIGMANAGER_HPP
 #define RAINDROPS_CONFIGMANAGER_HPP
 
+#include "ApplicationConfig.hpp"
+
 namespace raindrops
 {
     /**
@@ -16,7 +18,12 @@ namespace raindrops
 
         static ConfigManager& getInstance();
 
+        [[nodiscard]] const ApplicationConfig& getConfig() const;
+        void setConfig(const ApplicationConfig& config);
+
     private:
+        ApplicationConfig m_config;
+
         ConfigManager() = default;
     };
 }
