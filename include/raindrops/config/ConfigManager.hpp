@@ -21,6 +21,8 @@ namespace raindrops
         [[nodiscard]] const ApplicationConfig& getConfig() const;
         void setConfig(const ApplicationConfig& config);
 
+        void resetToDefaults();
+
     private:
         ApplicationConfig m_config;
 

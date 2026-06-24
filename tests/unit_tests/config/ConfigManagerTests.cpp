@@ -39,4 +39,22 @@ TEST_CASE("ConfigManager overrides config with another")
     CHECK( currentConfig.appVersion == "2.0.0" );
 }
 
+TEST_CASE("ConfigManager reset to defaults works")
+{
+    raindrops::ConfigManager& manager = raindrops::ConfigManager::getInstance();
+
+    raindrops::ApplicationConfig newConfig {};
+    newConfig.midiConfig.port = 1;
+    newConfig.windowConfig.width = 1920;
+    newConfig.appVersion = "2.0.0";
+    manager.setConfig(newConfig);
+
+    manager.resetToDefaults();
+    const raindrops::ApplicationConfig& currentConfig = manager.getConfig();
+
+    CHECK( currentConfig.midiConfig.port == 0 );
+    CHECK( currentConfig.windowConfig.width == 1280 );
+    CHECK( currentConfig.appVersion == "0.1.0" );
+}
+
 TEST_SUITE_END;

@@ -1,4 +1,5 @@
 #include "ConfigManager.hpp"
+#include "DefaultConfigFactory.hpp"
 
 namespace raindrops
 {
@@ -16,5 +17,10 @@ namespace raindrops
     void ConfigManager::setConfig(const ApplicationConfig& config)
     {
         m_config = config;
+    }
+
+    void ConfigManager::resetToDefaults()
+    {
+        m_config = DefaultConfigFactory::create();
     }
 }
