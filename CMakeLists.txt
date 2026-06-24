@@ -37,6 +37,7 @@ add_subdirectory(external/glaze)
 set(RAINDROPS_HEADERS
         include/raindrops/config/ApplicationConfig.hpp
         include/raindrops/config/ConfigManager.hpp
+        include/raindrops/config/DefaultConfigFactory.hpp
         include/raindrops/config/MidiConfig.hpp
         include/raindrops/config/MusicSheetDisplayConfig.hpp
         include/raindrops/config/WindowConfig.hpp
@@ -73,6 +74,7 @@ set(RAINDROPS_HEADERS
 set(RAINDROPS_SOURCES
         src/config/ApplicationConfig.cpp
         src/config/ConfigManager.cpp
+        src/config/DefaultConfigFactory.cpp
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
         src/core/math/Vector2.cpp
@@ -134,6 +136,7 @@ set(RAINDROPS_INTEGRATION_TESTS_SOURCES
 set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/config/ApplicationConfigTests.cpp
         tests/unit_tests/config/ConfigManagerTests.cpp
+        tests/unit_tests/config/DefaultConfigFactoryTests.cpp
         tests/unit_tests/config/MidiConfigTests.cpp
         tests/unit_tests/config/MusicSheetDisplayConfigTests.cpp
         tests/unit_tests/config/WindowConfigTests.cpp
