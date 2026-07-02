@@ -1,5 +1,7 @@
 #include "ConfigManager.hpp"
 #include "DefaultConfigFactory.hpp"
+#include <filesystem>
+#include <iostream>
 
 namespace raindrops
 {
@@ -22,5 +24,21 @@ namespace raindrops
     void ConfigManager::resetToDefaults()
     {
         m_config = DefaultConfigFactory::create();
+    }
+
+    bool ConfigManager::ensureDirectoryExists(const std::string& filePath)
+    {
+        const std::filesystem::path directory = std::filesystem::path(filePath).parent_path();
+
+        try
+        {
+            std::filesystem::create_directory(directory);
+            return true;
+        }
+        catch (const std::filesystem::filesystem_error& e)
+        {
+            std::cerr << "Failed to ensure directory exists: " << e.what() << '\n';
+            return false;
+        }
     }
 }

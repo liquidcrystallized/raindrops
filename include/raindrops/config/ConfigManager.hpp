@@ -27,6 +27,8 @@ namespace raindrops
         ApplicationConfig m_config;
 
         ConfigManager() = default;
+
+        static bool ensureDirectoryExists(const std::string& filePath);
     };
 }
 
