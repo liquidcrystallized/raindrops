@@ -29,6 +29,8 @@ namespace raindrops
         ConfigManager() = default;
 
         static bool ensureDirectoryExists(const std::string& filePath);
+        bool parseConfigFile(const std::string& filePath);
+        [[nodiscard]] bool serializeConfigFile(const std::string& filePath) const;
     };
 }
 
