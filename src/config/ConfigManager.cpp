@@ -1,7 +1,6 @@
 #include "ConfigManager.hpp"
 #include "DefaultConfigFactory.hpp"
 #include <glaze/json.hpp>
-#include <filesystem>
 #include <fstream>
 #include <iostream>
 
@@ -28,7 +27,7 @@ namespace raindrops
         m_config = DefaultConfigFactory::create();
     }
 
-    bool ConfigManager::ensureDirectoryExists(const std::string& filePath)
+    bool ConfigManager::ensureDirectoryExists(const std::filesystem::path& filePath)
     {
         const std::filesystem::path directory = std::filesystem::path(filePath).parent_path();
 
@@ -44,7 +43,7 @@ namespace raindrops
         }
     }
 
-    bool ConfigManager::parseConfigFile(const std::string& filePath)
+    bool ConfigManager::parseConfigFile(const std::filesystem::path& filePath)
     {
         std::ifstream file(filePath);
         if (!file.is_open())
@@ -62,7 +61,7 @@ namespace raindrops
         return true;
     }
 
-    bool ConfigManager::serializeConfigFile(const std::string& filePath) const
+    bool ConfigManager::serializeConfigFile(const std::filesystem::path& filePath) const
     {
         std::ofstream file(filePath);
         if (!file.is_open())
