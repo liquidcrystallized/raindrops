@@ -22,6 +22,41 @@ namespace raindrops
         m_config = config;
     }
 
+    bool ConfigManager::loadFromFile(const std::filesystem::path& filePath)
+    {
+        std::cout << "Attempting to load config from: " << filePath << '\n';
+
+        if (parseConfigFile(filePath))
+        {
+            std::cout << "Config loaded successfully.\n";
+            return true;
+        }
+
+        std::cout << "Failed to load config\n";
+        resetToDefaults();
+        return false;
+    }
+
+    bool ConfigManager::saveToFile(const std::filesystem::path& filePath) const
+    {
+        std::cout << "Saving config to: " << filePath << '\n';
+
+        if (ensureDirectoryExists(filePath))
+        {
+            if (serializeConfigFile(filePath))
+            {
+                std::cout << "Config successfully saved.\n";
+                return true;
+            }
+
+            std::cout << "Failed to save config.\n";
+            return false;
+        }
+
+        std::cout << "Failed to create directory for: " << filePath << '\n';
+        return false;
+    }
+
     void ConfigManager::resetToDefaults()
     {
         m_config = DefaultConfigFactory::create();

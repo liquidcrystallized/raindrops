@@ -22,6 +22,9 @@ namespace raindrops
         [[nodiscard]] const ApplicationConfig& getConfig() const;
         void setConfig(const ApplicationConfig& config);
 
+        bool loadFromFile(const std::filesystem::path& filePath);
+        bool saveToFile(const std::filesystem::path& filePath) const;
+
         void resetToDefaults();
 
     private:
