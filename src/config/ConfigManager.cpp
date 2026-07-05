@@ -111,4 +111,36 @@ namespace raindrops
         file.close();
         return true;
     }
+
+    std::filesystem::path ConfigManager::getDefaultConfigPath()
+    {
+        std::filesystem::path platformSpecificUserApplicationConfigDirectory;
+        const std::filesystem::path applicationConfigSubdirectory { "liquidcrystallized/raindrops/config.json" };
+
+#if defined(_WIN32)
+        const char* appDataPath = std::getenv("APPDATA");
+        if (appDataPath)
+        {
+            platformSpecificUserApplicationConfigDirectory = std::filesystem::path(appDataPath) / applicationConfigSubdirectory;
+        }
+        else
+        {
+            std::cout << "Appdata doesn't exist\n";
+        }
+#elif defined(__linux__)
+        const char* xdgConfigHomePath = std::getenv("XDG_CONFIG_HOME");
+        if (xdgConfigHomePath)
+        {
+            platformSpecificUserApplicationConfigDirectory = std::filesystem::path(xdgConfigHomePath) / applicationConfigSubdirectory;
+        }
+        else
+        {
+            std::cout << "XDG_CONFIG_HOME environment variable not set.\n";
+        }
+#else
+        std::cout << "getDefaultConfigPath() unsupported platform.\n";
+#endif
+
+        return platformSpecificUserApplicationConfigDirectory;
+    }
 }

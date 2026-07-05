@@ -35,6 +35,12 @@ namespace raindrops
         static bool ensureDirectoryExists(const std::filesystem::path& filePath);
         bool parseConfigFile(const std::filesystem::path& filePath);
         [[nodiscard]] bool serializeConfigFile(const std::filesystem::path& filePath) const;
+
+        /**
+         * Platform specific directories where user-specific configs should be written.
+         * @return Full path to the config file.
+         */
+        static std::filesystem::path getDefaultConfigPath();
     };
 }
 
