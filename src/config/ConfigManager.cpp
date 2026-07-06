@@ -80,7 +80,7 @@ namespace raindrops
 
         try
         {
-            std::filesystem::create_directory(directory);
+            std::filesystem::create_directories(directory);
             return true;
         }
         catch (const std::filesystem::filesystem_error& e)
