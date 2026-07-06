@@ -57,6 +57,18 @@ namespace raindrops
         return false;
     }
 
+    bool ConfigManager::loadFromDefaultLocation()
+    {
+        const std::filesystem::path defaultPath = getDefaultConfigPath();
+        return loadFromFile(defaultPath);
+    }
+
+    bool ConfigManager::saveToDefaultLocation() const
+    {
+        const std::filesystem::path defaultPath = getDefaultConfigPath();
+        return saveToFile(defaultPath);
+    }
+
     void ConfigManager::resetToDefaults()
     {
         m_config = DefaultConfigFactory::create();

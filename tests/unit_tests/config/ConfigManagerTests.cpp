@@ -125,4 +125,21 @@ TEST_CASE("ConfigManager save and load")
     std::filesystem::remove(testFile);
 }
 
+TEST_CASE("ConfigManager save to platform default location successfully creates file")
+{
+    raindrops::ConfigManager& manager = raindrops::ConfigManager::getInstance();
+
+    raindrops::ApplicationConfig newConfig {};
+    newConfig.midiConfig.port = 7;
+    newConfig.midiConfig.channel = 12;
+    newConfig.midiConfig.autoDetect = false;
+    newConfig.windowConfig.width = 1920;
+    newConfig.windowConfig.height = 1080;
+    newConfig.windowConfig.fullscreen = true;
+    newConfig.musicSheetDisplayConfig.staffSpacing = 35.0f;
+    manager.setConfig(newConfig);
+
+    CHECK( manager.saveToDefaultLocation() == true );
+}
+
 TEST_SUITE_END;

@@ -25,6 +25,9 @@ namespace raindrops
         bool loadFromFile(const std::filesystem::path& filePath);
         bool saveToFile(const std::filesystem::path& filePath) const;
 
+        bool loadFromDefaultLocation();
+        bool saveToDefaultLocation() const;
+
         void resetToDefaults();
 
     private:
