@@ -142,4 +142,26 @@ TEST_CASE("ConfigManager save to platform default location successfully creates 
     CHECK( manager.saveToDefaultLocation() == true );
 }
 
+TEST_CASE("ConfigManager loads from an already created config at platform specific default locations")
+{
+    raindrops::ConfigManager& manager = raindrops::ConfigManager::getInstance();
+
+    raindrops::ApplicationConfig newConfig {};
+    newConfig.midiConfig.port = 7;
+    newConfig.midiConfig.channel = 12;
+    newConfig.midiConfig.autoDetect = false;
+    newConfig.windowConfig.width = 1920;
+    newConfig.windowConfig.height = 1080;
+    newConfig.windowConfig.fullscreen = true;
+    newConfig.musicSheetDisplayConfig.staffSpacing = 35.0f;
+    manager.setConfig(newConfig);
+    manager.saveToDefaultLocation();
+
+    manager.resetToDefaults();
+    CHECK( manager.getConfig().midiConfig.port == 0 );
+
+    CHECK( manager.loadFromDefaultLocation() == true );
+    CHECK( manager.getConfig().midiConfig.port == 7 );
+}
+
 TEST_SUITE_END;
