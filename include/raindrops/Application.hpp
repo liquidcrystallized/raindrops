@@ -2,6 +2,7 @@
 #define RAINDROPS_APPLICATION_HPP
 
 #include "IGraphics.hpp"
+#include "ApplicationConfig.hpp"
 #include "MidiDevice.hpp"
 #include "MidiMonitor.hpp"
 #include "StateMachine.hpp"
@@ -19,12 +20,13 @@ namespace raindrops
         StateMachine m_stateMachine;
         std::vector<MidiDevice> m_midiDevices;
         MidiMonitor m_midiMonitor;
+        ApplicationConfig m_config;
 
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
 
         void startApplication();
-
+        void setupMidi();
         void onWindowResize();
     };
 }
