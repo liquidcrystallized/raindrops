@@ -18,7 +18,7 @@ namespace raindrops
         }
     }
 
-    const std::vector<StaffLine>& Staff::getLines() const
+    std::vector<StaffLine>& Staff::getLines()
     {
         return m_staffLines;
     }
