@@ -1,4 +1,5 @@
 #include "PlayingState.hpp"
+#include "ConfigManager.hpp"
 #include "MainMenuState.hpp"
 #include "StateMachine.hpp"
 
@@ -8,6 +9,10 @@ namespace raindrops
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
     , m_sheetStartPosition { 100, 50 }
     {
+        m_config = ConfigManager::getInstance().getConfig();
+        m_staffLineSpacing = m_config.musicSheetDisplayConfig.staffSpacing;
+        m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
+
         std::unique_ptr<MusicSheet> selectedSong = stateMachine.getSelectedSong();
         if (selectedSong)
         {

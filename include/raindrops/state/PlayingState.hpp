@@ -1,6 +1,7 @@
 #ifndef RAINDROPS_PLAYINGSTATE_HPP
 #define RAINDROPS_PLAYINGSTATE_HPP
 
+#include "ApplicationConfig.hpp"
 #include "State.hpp"
 #include "MusicSheet.hpp"
 
@@ -24,10 +25,10 @@ namespace raindrops
         std::string m_compositionComposer {};
         std::string m_compositionTitle {};
 
-        //TODO: Get rid of these magic numbers :c
-        float m_staffLineSpacing { 30.0f };
-        float m_noteWidth { 40.0f };
-        float m_measureWidth { 150.0f };
+        ApplicationConfig  m_config;
+        float m_staffLineSpacing {};
+        float m_noteWidth {};
+        float m_measureWidth {};
         Vector2<int> m_sheetStartPosition;
 
         void drawMusicSheet();
