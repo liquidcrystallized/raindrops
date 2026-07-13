@@ -18,6 +18,11 @@ namespace raindrops
         }
     }
 
+    StaffLine& Staff::getLine(const int lineNumber)
+    {
+        return m_staffLines[lineNumber];
+    }
+
     std::vector<StaffLine>& Staff::getLines()
     {
         return m_staffLines;

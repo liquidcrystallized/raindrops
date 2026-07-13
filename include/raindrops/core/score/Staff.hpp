@@ -13,6 +13,7 @@ namespace raindrops
     public:
         explicit Staff();
 
+        [[nodiscard]] StaffLine& getLine(int lineNumber);
         [[nodiscard]] std::vector<StaffLine>& getLines();
         [[nodiscard]] int getNumberOfLines() const;
 

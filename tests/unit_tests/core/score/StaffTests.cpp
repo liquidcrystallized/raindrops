@@ -43,4 +43,40 @@ TEST_CASE("Staff constructor lines between clefs should be invisible")
     }
 }
 
+TEST_CASE("Staff can edit internally stored staff lines")
+{
+    raindrops::Staff staff {};
+    staff.getLine(0).setPositionY(100);
+
+    CHECK( staff.getLine(0).getPositionY() == 100 );
+}
+
+TEST_CASE("Staff can edit internally stored lines multi case")
+{
+    raindrops::Staff staff {};
+
+    for (int i = 0; i < staff.getNumberOfLines(); i++)
+    {
+        staff.getLine(i).setPositionY(i * 2);
+    }
+
+    CHECK( staff.getLine(4).getPositionY() == 8 );
+    CHECK( staff.getLine(8).getPositionY() == 16 );
+}
+
+TEST_CASE("Staff can edit internally stored lines multi case + reference works")
+{
+    raindrops::Staff staff {};
+
+    int someVal { 0 };
+    for (raindrops::StaffLine& staffLine : staff.getLines())
+    {
+        staffLine.setPositionY(someVal * 2);
+        someVal++;
+    }
+
+    CHECK( staff.getLine(4).getPositionY() == 8 );
+    CHECK( staff.getLine(8).getPositionY() == 16 );
+}
+
 TEST_SUITE_END;
