@@ -7,11 +7,10 @@ namespace raindrops
 {
     PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
-    , m_sheetStartPosition { 100, 50 }
     {
         m_config = ConfigManager::getInstance().getConfig();
-        m_staffLineSpacing = m_config.musicSheetDisplayConfig.staffSpacing;
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
+        m_staffLineThickness = 3; //TODO: Config.
 
         std::unique_ptr<MusicSheet> selectedSong = stateMachine.getSelectedSong();
         if (selectedSong)
@@ -22,6 +21,8 @@ namespace raindrops
         {
             std::cout << "Warning: No music sheet provided\n";
         }
+
+        positionUIComponents();
     }
 
     void PlayingState::pause()
@@ -53,7 +54,7 @@ namespace raindrops
 
     void PlayingState::onWindowResize()
     {
-        //TODO
+        positionUIComponents();
     }
 
     void PlayingState::loadMusicSheet(std::unique_ptr<MusicSheet> musicSheet)
@@ -63,7 +64,6 @@ namespace raindrops
         m_compositionTitle = m_musicSheet->getTitle();
     }
 
-    //TODO: Rewrite to be less verbose.
     void PlayingState::drawMusicSheet()
     {
         const Vector2<float> labelSize { 800, 100 };
@@ -77,11 +77,20 @@ namespace raindrops
         m_renderer.drawText(m_musicSheet->getTitle(), 100, 100, 20, Colour::black);
 
         //TODO: Draw staves and measures.
+        drawStaffLines();
     }
 
-    void PlayingState::drawStaffLines(float positionY, int staffCount)
+    void PlayingState::drawStaffLines()
     {
-        //TODO
+        for (StaffLine staffLine : m_staff.getLines())
+        {
+            if (staffLine.isVisible())
+            {
+                m_renderer.drawLine(0, staffLine.getPositionY(),
+                    static_cast<float>(m_renderer.getWindowWidth()), staffLine.getPositionY(),
+                    m_staffLineThickness, Colour::black);
+            }
+        }
     }
 
     void PlayingState::drawMeasure(Measure& measure, float positionX, float positionY)
@@ -92,5 +101,16 @@ namespace raindrops
     void PlayingState::drawNote(int pitch, int duration, float positionX, float positionY)
     {
         //TODO
+    }
+
+    void PlayingState::positionUIComponents()
+    {
+        m_staffLineSpacing = m_renderer.getWindowHeight() / (m_staff.getNumberOfLines() + 1);
+
+        for (int i = 0; i < m_staff.getNumberOfLines(); i++)
+        {
+            const float linePositionY = m_staffLineSpacing * (i + 1) - m_staffLineThickness / 2.0f;
+            m_staff.getLine(i).setPositionY(linePositionY);
+        }
     }
 }

@@ -2,6 +2,7 @@
 #define RAINDROPS_PLAYINGSTATE_HPP
 
 #include "ApplicationConfig.hpp"
+#include "Staff.hpp"
 #include "State.hpp"
 #include "MusicSheet.hpp"
 
@@ -25,16 +26,20 @@ namespace raindrops
         std::string m_compositionComposer {};
         std::string m_compositionTitle {};
 
+        Staff m_staff {};
+
         ApplicationConfig  m_config;
         float m_staffLineSpacing {};
+        float m_staffLineThickness {};
         float m_noteWidth {};
         float m_measureWidth {};
-        Vector2<int> m_sheetStartPosition;
 
         void drawMusicSheet();
-        void drawStaffLines(float positionY, int staffCount);
+        void drawStaffLines();
         void drawMeasure(Measure& measure, float positionX, float positionY);
         void drawNote(int pitch, int duration, float positionX, float positionY);
+
+        void positionUIComponents();
     };
 }
 
