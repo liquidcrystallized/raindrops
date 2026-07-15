@@ -73,4 +73,27 @@ TEST_CASE("MusicXmlReader::getNumberOfParts")
     }
 }
 
+// This is just for stepping through with a debugger to see how mx works, and what the functions return.
+// Based on the "Reading MusicXML with mx::api" example found here: https://github.com/webern/mx
+TEST_CASE("Reading MusicXML with mx::api")
+{
+    auto& manager = mx::api::DocumentManager::getInstance();
+    const auto idResult = manager.createFromFile( TestInputFiles::clairDeLuneFilePath );
+    const auto scoreResult = manager.getData(idResult);
+    manager.destroyDocument(idResult);
+
+    const auto& score = scoreResult;
+
+    CHECK( score.parts.size() > 0 );
+
+    // Drill down into the data structure to retrieve a note.
+    const auto& part = score.parts.at( 0 );
+    const auto& measure = part.measures.at( 0 );
+    const auto& staff = measure.staves.at( 0 );
+    const auto& voice = staff.voices.at( 0 );
+    const auto& note = voice.notes.at( 0 );
+
+    CHECK( true );
+}
+
 TEST_SUITE_END();
