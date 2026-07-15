@@ -10,7 +10,8 @@ namespace raindrops
     {
         m_config = ConfigManager::getInstance().getConfig();
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
-        m_staffLineThickness = 3; //TODO: Config.
+        m_staffLineThicknessScaleFactor = 0.005f; //TODO: config.
+        m_staffLineBufferRatio = 0.12f; //TODO: config.
 
         std::unique_ptr<MusicSheet> selectedSong = stateMachine.getSelectedSong();
         if (selectedSong)
@@ -105,12 +106,16 @@ namespace raindrops
 
     void PlayingState::positionUIComponents()
     {
-        m_staffLineSpacing = m_renderer.getWindowHeight() / (m_staff.getNumberOfLines() + 1);
+        // This mess is to try and position all the staff lines within window bounds + additional whitespace buffer.
+        const float buffer = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineBufferRatio;
+        const float staffLineDrawArea = static_cast<float>(m_renderer.getWindowHeight()) - 2.0f * buffer;
+        m_staffLineSpacing = staffLineDrawArea / (m_staff.getNumberOfLines() + 1);
+        m_staffLineThickness = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineThicknessScaleFactor;
 
         for (int i = 0; i < m_staff.getNumberOfLines(); i++)
         {
-            const float linePositionY = m_staffLineSpacing * (i + 1) - m_staffLineThickness / 2.0f;
-            m_staff.getLine(i).setPositionY(linePositionY);
+            const float linePositionY = buffer + m_staffLineSpacing * static_cast<float>(i + 1) - m_staffLineThickness / 2.0f;
+            m_staff.getLine(i).setPositionY(static_cast<int>(linePositionY));
         }
     }
 }
