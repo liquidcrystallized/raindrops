@@ -85,6 +85,11 @@ namespace raindrops
         return m_scoreData.getNumMeasures();
     }
 
+    std::vector<Measure> MxReader::getMeasures() const
+    {
+        return {};
+    }
+
     int MxReader::getNumberOfParts() const
     {
         return m_scoreData.parts.size();

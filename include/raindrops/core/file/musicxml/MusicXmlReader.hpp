@@ -22,6 +22,7 @@ namespace raindrops
         [[nodiscard]] std::string getMusicXmlVersion() const;
 
         [[nodiscard]] int getNumberOfMeasures() const;
+        [[nodiscard]] std::vector<Measure> getMeasures() const;
 
         [[nodiscard]] int getNumberOfParts() const;
 

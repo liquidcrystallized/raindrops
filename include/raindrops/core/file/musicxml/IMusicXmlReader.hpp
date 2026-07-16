@@ -1,7 +1,9 @@
 #ifndef RAINDROPS_IMUSICXMLREADER_HPP
 #define RAINDROPS_IMUSICXMLREADER_HPP
 
+#include "Measure.hpp"
 #include <string>
+#include <vector>
 
 namespace raindrops
 {
@@ -31,6 +33,7 @@ namespace raindrops
         [[nodiscard]] virtual int getNumberOfParts() const = 0;
 
         [[nodiscard]] virtual int getNumberOfMeasures() const = 0;
+        [[nodiscard]] virtual std::vector<Measure> getMeasures() const = 0;
 
         [[nodiscard]] virtual std::string getSongComposer() const = 0;
 

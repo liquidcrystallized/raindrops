@@ -32,6 +32,11 @@ namespace raindrops
         return m_reader.getNumberOfMeasures();
     }
 
+    std::vector<Measure> MusicXmlReader::getMeasures() const
+    {
+        return m_reader.getMeasures();
+    }
+
     int MusicXmlReader::getNumberOfParts() const
     {
         return m_reader.getNumberOfParts();
