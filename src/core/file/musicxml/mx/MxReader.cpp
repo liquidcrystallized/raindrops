@@ -87,7 +87,30 @@ namespace raindrops
 
     std::vector<Measure> MxReader::getMeasures() const
     {
-        return {};
+        mx::api::PartData pianoPart {};
+        for (const mx::api::PartData& partData : m_scoreData.parts)
+        {
+            if (partData.name == "Piano")
+            {
+                pianoPart = partData;
+                break;
+            }
+        }
+
+        if (pianoPart.name.empty() || pianoPart.measures.empty())
+        {
+            return {};
+        }
+
+        std::vector<Measure> measures;
+        for (size_t i = 0; i < pianoPart.measures.size(); i++)
+        {
+            Measure measure;
+            measure.setMeasureNumber(i);
+            measures.push_back(measure);
+        }
+
+        return measures;
     }
 
     int MxReader::getNumberOfParts() const

@@ -54,6 +54,42 @@ TEST_CASE("MusicXmlReader::getNumberOfMeasures")
     CHECK( musicXmlReader.getNumberOfMeasures() == 27 );
 }
 
+TEST_CASE("MusicXmlReader::getMeasures")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::clairDeLuneFilePath);
+    std::istringstream ss { musicXmlReader.getRawFileContents() };
+    musicXmlReader.tryParseFileInputStream(ss);
+
+    CHECK( musicXmlReader.getMeasures().size() == 72 );
+}
+
+TEST_CASE("MusicXmlReader::getMeasures - No piano part - Should return empty measures")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::pitchesPitchesFilePath);
+    std::istringstream ss { musicXmlReader.getRawFileContents() };
+
+    musicXmlReader.tryParseFileInputStream(ss);
+    CHECK( musicXmlReader.getMeasures().empty() );
+}
+
+TEST_CASE("MusicXmlReader::getMeasures - No measures - Should return empty measures")
+{
+    raindrops::MxReader mx {};
+    raindrops::MusicXmlReader musicXmlReader { mx };
+
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::noMeasuresXmlFilePath);
+    std::istringstream ss { musicXmlReader.getRawFileContents() };
+
+    musicXmlReader.tryParseFileInputStream(ss);
+    CHECK( musicXmlReader.getMeasures().empty() );
+}
+
 TEST_CASE("MusicXmlReader::getNumberOfParts")
 {
     raindrops::MxReader mx {};
