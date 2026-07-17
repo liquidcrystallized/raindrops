@@ -48,6 +48,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/score/Measure.hpp
         include/raindrops/core/score/Mode.hpp
         include/raindrops/core/score/MusicSheet.hpp
+        include/raindrops/core/score/Note.hpp
         include/raindrops/core/score/ScoreFactory.hpp
         include/raindrops/core/score/Staff.hpp
         include/raindrops/core/score/StaffLine.hpp
@@ -80,6 +81,7 @@ set(RAINDROPS_SOURCES
         src/core/math/Vector2.cpp
         src/core/score/Measure.cpp
         src/core/score/MusicSheet.cpp
+        src/core/score/Note.cpp
         src/core/score/ScoreFactory.cpp
         src/core/score/Staff.cpp
         src/core/score/StaffLine.cpp
@@ -144,6 +146,7 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/core/math/Vector2Tests.cpp
         tests/unit_tests/core/score/MeasureTests.cpp
         tests/unit_tests/core/score/ModeTests.cpp
+        tests/unit_tests/core/score/NoteTests.cpp
         tests/unit_tests/core/score/MusicSheetTests.cpp
         tests/unit_tests/core/score/ScoreFactoryTests.cpp
         tests/unit_tests/core/score/StaffTests.cpp
