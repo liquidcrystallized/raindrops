@@ -36,6 +36,8 @@ namespace raindrops
         std::string m_fileContents;
         int numberOfMeasures;
         int numberOfParts;
+
+        static int convertMxPitchDataToMidiKey(mx::api::Step step, int octave, int alter);
     };
 }
 
