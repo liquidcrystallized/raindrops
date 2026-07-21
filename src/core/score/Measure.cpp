@@ -11,6 +11,13 @@ namespace raindrops
 
     void Measure::setMeasureNumber(const int number)
     {
-        m_measureNumber = number;
+        if (number < 0)
+        {
+            m_measureNumber = -1;
+        }
+        else
+        {
+            m_measureNumber = number;
+        }
     }
 }

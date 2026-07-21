@@ -20,4 +20,12 @@ TEST_CASE("Measure number get/set")
     CHECK( expectedMeasureNumber == actualMeasureNumber );
 }
 
+TEST_CASE("Measure number set invalid value")
+{
+    raindrops::Measure measure;
+    measure.setMeasureNumber(-100);
+
+    CHECK( measure.getMeasureNumber() == -1 );
+}
+
 TEST_SUITE_END();
