@@ -6,6 +6,8 @@
 namespace TestInputFiles
 {
     inline std::string pitchesPitchesFilePath { "../../tests/inputs/musicxml/01a-Pitches-Pitches.xml" };
+    inline std::string chordBasicFilePath { "../../tests/inputs/musicxml/21a-Chord-Basic.xml" };
+    inline std::string chordTwoNotesFilePath { "../../tests/inputs/musicxml/21b-Chords-TwoNotes.xml" };
     inline std::string helloWorldFilePath { "../../tests/inputs/musicxml/hello-world.xml" };
     inline std::string nonMusicXmlFilePath { "../../tests/inputs/musicxml/non-musicxml.xml" };
     inline std::string noMeasuresXmlFilePath { "../../tests/inputs/musicxml/no-measures.xml" };
