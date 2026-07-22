@@ -3,6 +3,13 @@
 
 TEST_SUITE_BEGIN("Note");
 
+TEST_CASE("Note - default initialisation")
+{
+    raindrops::Note note { 0 };
+
+    CHECK( note.isPartOfChord == false );
+}
+
 TEST_CASE("Note - valid MIDI key (0)")
 {
     raindrops::Note note { 0 };

@@ -6,6 +6,8 @@ namespace raindrops
 {
     class Note {
     public:
+        bool isPartOfChord { false };
+
         explicit Note(int pitchMidiKey);
 
         [[nodiscard]] int getPitchMidiKey() const;
