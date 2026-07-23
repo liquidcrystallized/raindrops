@@ -20,4 +20,14 @@ namespace raindrops
             m_measureNumber = number;
         }
     }
+
+    const std::vector<Note>& Measure::getNotes() const
+    {
+        return m_notes;
+    }
+
+    void Measure::addNote(const Note& note)
+    {
+        m_notes.push_back(note);
+    }
 }
