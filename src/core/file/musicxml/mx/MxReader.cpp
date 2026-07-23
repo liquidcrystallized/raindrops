@@ -167,4 +167,19 @@ namespace raindrops
         note.isPartOfChord = mxNote.isChord;
         return note;
     }
+
+    std::vector<Note> MxReader::extractNotesFromMxStaff(const mx::api::StaffData& staff)
+    {
+        std::vector<Note> notes;
+
+        for (const auto& voice : staff.voices)
+        {
+            for (const auto& mxNote : voice.second.notes)
+            {
+                notes.push_back(createNoteFromMxNote(mxNote));
+            }
+        }
+
+        return notes;
+    }
 }

@@ -42,6 +42,7 @@ namespace raindrops
         // using mx so ¯\_(ツ)_/¯
         static int convertMxPitchDataToMidiKey(mx::api::Step step, int octave, int alter);
         static Note createNoteFromMxNote(const mx::api::NoteData& mxNote);
+        static std::vector<Note> extractNotesFromMxStaff(const mx::api::StaffData& staff);
     };
 }
 
