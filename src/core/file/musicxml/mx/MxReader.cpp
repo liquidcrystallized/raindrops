@@ -160,4 +160,11 @@ namespace raindrops
 
         return midiValue;
     }
+
+    Note MxReader::createNoteFromMxNote(const mx::api::NoteData& mxNote)
+    {
+        Note note(convertMxPitchDataToMidiKey(mxNote.pitchData.step, mxNote.pitchData.octave, mxNote.pitchData.alter));
+        note.isPartOfChord = mxNote.isChord;
+        return note;
+    }
 }
