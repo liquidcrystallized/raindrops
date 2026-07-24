@@ -4,13 +4,10 @@
 # What is this?
 
 raindrops is an application that displays music notes in an intuitive way to 
-help piano players sight read. This application does not teach you how to play the
+help piano players sight-read. This application does not teach you how to play the
 piano, it is expected that users already know at least the basics from a teacher
-or some other learning source.
-
-## Hardware requirements
-
-- Midi keyboard/Digital piano (preferably with 88 keys), must connect directly to the machine running the application.
+or some other learning source. You'll also need a midi keyboard/digital piano that can connect directly to your
+device via USB.
 
 ## Loading songs
 
@@ -34,8 +31,6 @@ display them. To briefly name a *few things* missing from a MIDI file:
 
 As this application focuses on the development of *sight reading skills*, basically being able to read any music
 sheet/score placed in front of the player with confidence, missing the above elements and more is detrimental to the application's functionality and goals.
-
-## Developers
 
 The [unofficial MusicXML test suite music xml files](https://github.com/lilypond/lilypond/tree/master/input/regression/musicxml)
 supplied by the [LilyPond](https://lilypond.org/) devs can be used as test "songs" for development. The license for the tests and files 
