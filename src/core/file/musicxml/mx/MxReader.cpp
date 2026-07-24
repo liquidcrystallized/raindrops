@@ -103,11 +103,10 @@ namespace raindrops
         }
 
         std::vector<Measure> measures;
+        measures.reserve(pianoPart.measures.size());
         for (size_t i = 0; i < pianoPart.measures.size(); i++)
         {
-            Measure measure;
-            measure.setMeasureNumber(i);
-            measures.push_back(measure);
+            measures.push_back(convertFromMxMeasure(pianoPart.measures[i], i));
         }
 
         return measures;
