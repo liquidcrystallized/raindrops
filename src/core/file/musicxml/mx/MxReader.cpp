@@ -182,4 +182,22 @@ namespace raindrops
 
         return notes;
     }
+
+    Measure MxReader::convertFromMxMeasure(const mx::api::MeasureData& mxMeasure, const int index)
+    {
+        Measure measure;
+        measure.setMeasureNumber(index + 1);
+
+        for (const auto& staff : mxMeasure.staves)
+        {
+            std::vector<Note> staffNotes = extractNotesFromMxStaff(staff);
+
+            for (Note note : staffNotes)
+            {
+                measure.addNote(note);
+            }
+        }
+
+        return measure;
+    }
 }
