@@ -42,6 +42,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/config/MusicSheetDisplayConfig.hpp
         include/raindrops/config/WindowConfig.hpp
         include/raindrops/core/file/musicxml/mx/MxReader.hpp
+        include/raindrops/core/file/musicxml/mx/MxUtils.hpp
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
         include/raindrops/core/file/musicxml/MusicXmlReader.hpp
         include/raindrops/core/math/Vector2.hpp
@@ -77,6 +78,7 @@ set(RAINDROPS_SOURCES
         src/config/ConfigManager.cpp
         src/config/DefaultConfigFactory.cpp
         src/core/file/musicxml/mx/MxReader.cpp
+        src/core/file/musicxml/mx/MxUtils.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
         src/core/math/Vector2.cpp
         src/core/score/Measure.cpp
