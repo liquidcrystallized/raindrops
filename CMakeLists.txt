@@ -144,6 +144,7 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/config/MidiConfigTests.cpp
         tests/unit_tests/config/MusicSheetDisplayConfigTests.cpp
         tests/unit_tests/config/WindowConfigTests.cpp
+        tests/unit_tests/core/file/musicxml/mx/MxUtilsTests.cpp
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
         tests/unit_tests/core/score/MeasureTests.cpp
