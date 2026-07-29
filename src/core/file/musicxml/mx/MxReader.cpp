@@ -2,7 +2,7 @@
 #include "MxUtils.hpp"
 #include <mx/core/Document.h>
 #include <mx/core/elements/ScorePartwise.h>
-#include <iostream>
+#include <print>
 
 namespace raindrops
 {
@@ -47,9 +47,9 @@ namespace raindrops
 
             m_documentManager.destroyDocument(documentID);
         }
-        catch (std::runtime_error& error)
+        catch (const std::runtime_error& error)
         {
-            std::cout << error.what() << '\n';
+            std::println("{}", error.what());
             return false;
         }
 

@@ -2,7 +2,7 @@
 #include "DefaultConfigFactory.hpp"
 #include <glaze/json.hpp>
 #include <fstream>
-#include <iostream>
+#include <print>
 
 namespace raindrops
 {
@@ -24,36 +24,36 @@ namespace raindrops
 
     bool ConfigManager::loadFromFile(const std::filesystem::path& filePath)
     {
-        std::cout << "Attempting to load config from: " << filePath << '\n';
+        std::println("Attempting to load config from: {}", filePath.string());
 
         if (parseConfigFile(filePath))
         {
-            std::cout << "Config loaded successfully.\n";
+            std::println("Config loaded successfully.");
             return true;
         }
 
-        std::cout << "Failed to load config\n";
+        std::println("Failed to load config.");
         resetToDefaults();
         return false;
     }
 
     bool ConfigManager::saveToFile(const std::filesystem::path& filePath) const
     {
-        std::cout << "Saving config to: " << filePath << '\n';
+        std::println("Saving config to: {}", filePath.string());
 
         if (ensureDirectoryExists(filePath))
         {
             if (serializeConfigFile(filePath))
             {
-                std::cout << "Config successfully saved.\n";
+                std::println("Config successfully saved.");
                 return true;
             }
 
-            std::cout << "Failed to save config.\n";
+            std::println("Failed to save config.");
             return false;
         }
 
-        std::cout << "Failed to create directory for: " << filePath << '\n';
+        std::println("Failed to create directory for: {}", filePath.string());
         return false;
     }
 
@@ -83,9 +83,9 @@ namespace raindrops
             std::filesystem::create_directories(directory);
             return true;
         }
-        catch (const std::filesystem::filesystem_error& e)
+        catch (const std::filesystem::filesystem_error& error)
         {
-            std::cerr << "Failed to ensure directory exists: " << e.what() << '\n';
+            std::println("Failed to ensure directory exists: {}", error.what());
             return false;
         }
     }
@@ -95,7 +95,7 @@ namespace raindrops
         std::ifstream file(filePath);
         if (!file.is_open())
         {
-            std::cerr << "Could not open file for parsing: " << filePath << '\n';
+            std::println("Could not open file for parsing: {}", filePath.string());
             return false;
         }
 
@@ -113,7 +113,7 @@ namespace raindrops
         std::ofstream file(filePath);
         if (!file.is_open())
         {
-            std::cerr << "Could not open file for writing: " << filePath << '\n';
+            std::println("Could not open file for writing: {}", filePath.string());
             return false;
         }
 
@@ -147,7 +147,7 @@ namespace raindrops
         }
         else
         {
-            std::cout << "XDG_CONFIG_HOME environment variable not set.\n";
+            std::println("XDG_CONFIG_HOME environment variable not set.");
         }
 #else
         std::cout << "getDefaultConfigPath() unsupported platform.\n";

@@ -1,5 +1,5 @@
 #include "MidiReceiver.hpp"
-#include <iostream>
+#include <print>
 
 namespace raindrops
 {
@@ -7,20 +7,17 @@ namespace raindrops
 
     bool MidiReceiver::onNoteOn(const unsigned int keyNumber, const unsigned int velocity, const unsigned int midiChannel)
     {
-        std::cout   << "MidiReceiver::onNoteOn: keyNumber " << keyNumber
-                    << " velocity: " << velocity
-                    << " channel: " << midiChannel
-                    << '\n';
+        std::println("MidiReceiver::onNoteOn: keyNumber {} velocity: {} channel: {}",
+                     keyNumber, velocity, midiChannel);
 
         return true;
     }
 
     bool MidiReceiver::onNoteOff(const unsigned int keyNumber, const unsigned int velocity, const unsigned int midiChannel)
     {
-        std::cout   << "MidiReceiver::onNoteOff: keyNumber " << keyNumber
-                    << " velocity: " << velocity
-                    << " midiChannel: " << midiChannel
-                    << '\n';
+        std::println("MidiReceiver::onNoteOff: keyNumber {} velocity: {} channel: {}",
+             keyNumber, velocity, midiChannel);
+
         return true;
     }
 

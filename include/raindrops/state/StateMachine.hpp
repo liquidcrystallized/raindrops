@@ -5,8 +5,8 @@
 #include "IGraphics.hpp"
 #include "State.hpp"
 #include <raylib-cpp.hpp>
-#include <iostream>
 #include <memory>
+#include <print>
 #include <stack>
 
 namespace raindrops
@@ -81,10 +81,9 @@ namespace raindrops
         {
             newState = std::make_unique<T>(stateMachine, renderer, midiMonitor, replace);
         }
-        catch (std::runtime_error& exception)
+        catch (const std::runtime_error& error)
         {
-            std::cout << "Creation of new state was unsuccessful\n";
-            std::cout << exception.what() << '\n';
+            std::println("Creation of new state was unsuccessful: {}", error.what());
         }
 
         return newState;

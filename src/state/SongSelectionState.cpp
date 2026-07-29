@@ -6,7 +6,6 @@
 #include "StateMachine.hpp"
 #include <raygui-cpp/Utils.h>
 #include <filesystem>
-#include <iostream>
 
 namespace raindrops
 {
@@ -162,7 +161,7 @@ namespace raindrops
             }
             else
             {
-                std::cout << "Could not load song.\n";
+                std::println("Could not load song.");
             }
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_playButton));
@@ -183,7 +182,7 @@ namespace raindrops
         //TODO: or grant the user the ability to specify a custom song directory.
         if (!std::filesystem::exists(m_songDirectory))
         {
-            std::cout << "The songs folder does not exist. Creating.\n";
+            std::println("The songs folder does not exist. Creating.");
             std::filesystem::create_directory(m_songDirectory);
         }
 
@@ -211,7 +210,7 @@ namespace raindrops
                 m_selectedSong = ScoreFactory::createFromReader(m_musicXmlReader);
                 m_stateMachine.setSelectedSong(std::move(m_selectedSong));
 
-                std::cout << "Successfully loaded: " << filePathForSelectedSong << std::endl;
+                std::println("Successfully loaded: {}", filePathForSelectedSong);
                 return true;
             }
         }
