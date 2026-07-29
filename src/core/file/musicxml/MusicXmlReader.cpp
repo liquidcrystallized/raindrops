@@ -1,5 +1,4 @@
 #include "MusicXmlReader.hpp"
-#include <iostream>
 
 namespace raindrops
 {
