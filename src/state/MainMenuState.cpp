@@ -35,7 +35,7 @@ namespace raindrops
             m_stateMachine.quit();
         }
 
-        m_connectedDeviceLabelText = "Connected device: " + m_midiMonitor.getConnectedDeviceName();
+        m_connectedDeviceLabelText = std::format("Connected device: {}", m_midiMonitor.getConnectedDeviceName());
         m_connectedDeviceLabel.SetText(m_connectedDeviceLabelText.c_str());
 
         m_verticalStackPanel.Update();

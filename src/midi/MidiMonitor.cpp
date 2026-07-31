@@ -151,7 +151,7 @@ namespace raindrops
         }
         catch (std::system_error& error)
         {
-            throw std::runtime_error("Failed to create MIDI monitoring thread: " + std::string(error.what()));
+            throw std::runtime_error(std::format("Failed to create MIDI monitoring thread: {}", error.what()));
         }
     }
 
