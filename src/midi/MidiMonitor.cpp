@@ -83,8 +83,7 @@ namespace raindrops
             {
                 try
                 {
-                    std::string portName = m_rtMidiIn->getPortName(i);
-                    appendNewDevice(portName, i, midiDevices);
+                    appendNewDevice(m_rtMidiIn->getPortName(i), i, midiDevices);
                 }
                 catch (RtMidiError& error)
                 {
