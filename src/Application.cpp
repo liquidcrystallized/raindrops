@@ -47,7 +47,7 @@ namespace raindrops
         if (m_config.midiConfig.autoDetect && !m_midiDevices.empty())
         {
             m_midiMonitor.setMidiPort(m_midiDevices[0].getPortNumber());
-            std::cout << "Auto-detected MIDI device: " << m_midiDevices[0].getPortName() << '\n';
+            std::println("Auto-detected MIDI device: {}", m_midiDevices[0].getPortName());
         }
         else
         {
@@ -56,8 +56,9 @@ namespace raindrops
 
         m_midiMonitor.setMidiChannel(m_config.midiConfig.channel);
 
-        std::cout << "MIDI device configured: Port=" << m_midiMonitor.getMidiPortNumber()
-                  << ", Channel=" << m_midiMonitor.getMidiChannelNumber() << std::endl;
+        std::println("MIDI device configured: Port={}, Channel={}",
+                    m_midiMonitor.getMidiPortNumber(),
+                    m_midiMonitor.getMidiChannelNumber());
 
         m_midiMonitor.startMonitoring(m_midiMonitor.getMidiPortNumber(), m_midiMonitor.getMidiChannelNumber());
     }

@@ -137,7 +137,7 @@ namespace raindrops
         }
         else
         {
-            std::cout << "Appdata doesn't exist\n";
+            std::println("Appdata doesn't exist");
         }
 #elif defined(__linux__)
         const char* xdgConfigHomePath = std::getenv("XDG_CONFIG_HOME");
@@ -150,7 +150,7 @@ namespace raindrops
             std::println("XDG_CONFIG_HOME environment variable not set.");
         }
 #else
-        std::cout << "getDefaultConfigPath() unsupported platform.\n";
+        std::println("getDefaultConfigPath() unsupported platform.");
 #endif
 
         return platformSpecificUserApplicationConfigDirectory;

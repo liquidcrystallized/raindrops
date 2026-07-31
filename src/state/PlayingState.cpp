@@ -20,7 +20,7 @@ namespace raindrops
         }
         else if (!m_musicSheet)
         {
-            std::cout << "Warning: No music sheet provided\n";
+            std::println("Warning: No music sheet provided");
         }
 
         positionUIComponents();

@@ -10,7 +10,7 @@ int main()
 
     if (!configLoaded)
     {
-        std::cout << "Creating and using default config." << std::endl;
+        std::println("Creating and using default config.");
         configManger.resetToDefaults();
         configManger.saveToDefaultLocation();
         configManger.loadFromDefaultLocation();
