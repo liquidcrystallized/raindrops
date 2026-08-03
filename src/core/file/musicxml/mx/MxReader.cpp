@@ -3,6 +3,7 @@
 #include <mx/core/Document.h>
 #include <mx/core/elements/ScorePartwise.h>
 #include <print>
+#include <ranges>
 
 namespace raindrops
 {
@@ -105,9 +106,9 @@ namespace raindrops
 
         std::vector<Measure> measures;
         measures.reserve(pianoPart.measures.size());
-        for (size_t i = 0; i < pianoPart.measures.size(); i++)
+        for (const auto& [index, measure] : pianoPart.measures | std::views::enumerate)
         {
-            measures.push_back(MxUtils::convertFromMxMeasure(pianoPart.measures[i], i));
+            measures.push_back(MxUtils::convertFromMxMeasure(measure, index));
         }
 
         return measures;
