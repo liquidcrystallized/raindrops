@@ -32,7 +32,7 @@ namespace raindrops
 
         [[nodiscard]] int getMeasureCount() const;
         [[nodiscard]] const std::vector<Measure>& getMeasures() const;
-        void addMeasure(Measure measure);
+        void addMeasure(const Measure& measure);
     private:
         std::string m_filePath {};
         std::string m_title {};

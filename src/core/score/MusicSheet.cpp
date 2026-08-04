@@ -87,7 +87,7 @@ namespace raindrops
         return m_measures;
     }
 
-    void MusicSheet::addMeasure(const Measure measure)
+    void MusicSheet::addMeasure(const Measure& measure)
     {
         m_measures.push_back(measure);
     }
