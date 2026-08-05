@@ -108,7 +108,7 @@ namespace raindrops
         measures.reserve(pianoPart.measures.size());
         for (const auto& [index, measure] : pianoPart.measures | std::views::enumerate)
         {
-            measures.push_back(MxUtils::convertFromMxMeasure(measure, index));
+            measures.push_back(MxUtils::convertFromMxMeasure(measure, static_cast<int>(index)));
         }
 
         return measures;
@@ -116,7 +116,7 @@ namespace raindrops
 
     int MxReader::getNumberOfParts() const
     {
-        return m_scoreData.parts.size();
+        return static_cast<int>(m_scoreData.parts.size());
     }
 
     std::string MxReader::getSongComposer() const
