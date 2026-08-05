@@ -54,7 +54,7 @@ namespace raindrops
             return false;
         }
 
-        if (m_scoreData.parts.size() < 1)
+        if (m_scoreData.parts.empty())
         {
             return false;
         }
