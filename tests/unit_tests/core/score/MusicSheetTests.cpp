@@ -119,4 +119,22 @@ TEST_CASE("Music sheet measure retrieval by count")
     CHECK( measures[4].getMeasureNumber() == 5 );
 }
 
+TEST_CASE("Music sheet set vector of measures")
+{
+    raindrops::MusicSheet sheet;
+    std::vector<raindrops::Measure> measures {};
+
+    raindrops::Measure measure1 {};
+    measure1.setMeasureNumber(1);
+
+    raindrops::Measure measure2 {};
+    measure2.setMeasureNumber(2);
+
+    measures.push_back(measure1);
+    measures.push_back(measure2);
+    sheet.setMeasures(measures);
+
+    CHECK( sheet.getMeasureCount() == 2 );
+}
+
 TEST_SUITE_END();
