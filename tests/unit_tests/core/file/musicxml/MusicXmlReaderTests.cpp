@@ -71,7 +71,7 @@ TEST_CASE("MusicXmlReader::getMeasures - No piano part - Should return empty mea
     raindrops::MxReader mx {};
     raindrops::MusicXmlReader musicXmlReader { mx };
 
-    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::pitchesPitchesFilePath);
+    musicXmlReader.tryLoadFileIntoStream(TestInputFiles::notPianoXmlFilePath);
     std::istringstream ss { musicXmlReader.getRawFileContents() };
 
     musicXmlReader.tryParseFileInputStream(ss);
