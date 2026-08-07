@@ -10,12 +10,7 @@ namespace raindrops
         musicSheet->setComposer(reader.getSongComposer());
         //musicSheet->setHasBPMInfo(reader.getHasBPMInfo()); //TODO
 
-        for (int i = 1; i <= reader.getNumberOfMeasures(); i++)
-        {
-            Measure measure;
-            measure.setMeasureNumber(i);
-            musicSheet->addMeasure(measure);
-        }
+        musicSheet->setMeasures(reader.getMeasures());
 
         return musicSheet;
     }
