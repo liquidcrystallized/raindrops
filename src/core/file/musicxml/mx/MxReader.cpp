@@ -111,6 +111,18 @@ namespace raindrops
             measures.push_back(MxUtils::convertFromMxMeasure(measure, static_cast<int>(index)));
         }
 
+        // mx returns "empty" measures as a single empty measure object, so tests can't check for emptiness.
+        if (measures.size() == 1)
+        {
+            std::vector<Note> notes = measures[0].getNotes();
+
+            //TODO: More checks needed later maybe.
+            if (notes.empty())
+            {
+                return {};
+            }
+        }
+
         return measures;
     }
 
