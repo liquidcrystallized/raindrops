@@ -96,7 +96,7 @@ TEST_CASE("ScoreFactory handles empty measure count")
     auto musicSheet = raindrops::ScoreFactory::createFromReader(musicXmlReader);
 
     CHECK( musicSheet != nullptr );
-    CHECK( musicSheet->getMeasureCount() == 1 ); // May be an mx thing, no measures will still add 1 empty measure with on data.
+    CHECK( musicSheet->getMeasureCount() == 0 );
 }
 
 TEST_SUITE_END;
