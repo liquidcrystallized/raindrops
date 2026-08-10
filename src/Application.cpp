@@ -6,10 +6,9 @@
 namespace raindrops
 {
     Application::Application(IGraphics& renderer)
-    : m_renderer { renderer }
+    : m_renderer { renderer },
+      m_config(ConfigManager::getInstance().getConfig())
     {
-        m_config = ConfigManager::getInstance().getConfig();
-
         setupMidi();
 
         m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderer, m_midiMonitor, true));

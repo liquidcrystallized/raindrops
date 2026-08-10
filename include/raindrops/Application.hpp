@@ -20,7 +20,7 @@ namespace raindrops
         StateMachine m_stateMachine;
         std::vector<MidiDevice> m_midiDevices;
         MidiMonitor m_midiMonitor;
-        ApplicationConfig m_config;
+        const ApplicationConfig& m_config;
 
         unsigned int m_midiPort{};
         unsigned int m_midiChannel{};
