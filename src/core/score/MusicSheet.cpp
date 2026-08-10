@@ -87,11 +87,6 @@ namespace raindrops
         return m_measures;
     }
 
-    void MusicSheet::addMeasure(const Measure& measure)
-    {
-        m_measures.push_back(measure);
-    }
-
     void MusicSheet::setMeasures(const std::vector<Measure>& measures)
     {
         m_measures = measures;
