@@ -28,7 +28,7 @@ namespace raindrops
 
         Staff m_staff {};
 
-        ApplicationConfig  m_config;
+        const ApplicationConfig& m_config;
         float m_staffLineBufferRatio {}; // How much (in percentage %) of the window height as top/bot buffer.
         float m_staffLineSpacing {};
         float m_staffLineThickness {};

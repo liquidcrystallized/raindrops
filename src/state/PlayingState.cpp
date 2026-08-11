@@ -7,8 +7,8 @@ namespace raindrops
 {
     PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
+    , m_config { ConfigManager::getInstance().getConfig() }
     {
-        m_config = ConfigManager::getInstance().getConfig();
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
         m_staffLineThicknessScaleFactor = 0.005f; //TODO: config.
         m_staffLineBufferRatio = 0.12f; //TODO: config.
