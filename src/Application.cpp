@@ -6,8 +6,8 @@
 namespace raindrops
 {
     Application::Application(IGraphics& renderer)
-    : m_renderer { renderer },
-      m_config(ConfigManager::getInstance().getConfig())
+    : m_renderer { renderer }
+    , m_config { ConfigManager::getInstance().getConfig() }
     {
         setupMidi();
 
