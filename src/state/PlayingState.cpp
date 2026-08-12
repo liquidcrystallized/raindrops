@@ -29,12 +29,12 @@ namespace raindrops
 
     void PlayingState::pause()
     {
-        //TODO
+        m_scrollSpeed = 0.0f;
     }
 
     void PlayingState::resume()
     {
-        //TODO
+        m_scrollSpeed = 100.0f;
     }
 
     void PlayingState::update()
@@ -43,6 +43,8 @@ namespace raindrops
         {
             m_stateMachine.lastState();
         }
+
+        updateScrollPosition();
     }
 
     void PlayingState::draw()
@@ -116,6 +118,22 @@ namespace raindrops
     void PlayingState::drawNote(int pitch, int duration, float positionX, float positionY)
     {
         //TODO
+    }
+
+    void PlayingState::updateScrollPosition()
+    {
+        const auto now = std::chrono::steady_clock::now();
+        static auto lastTime = now;
+        const float delta = std::chrono::duration<float>(now - lastTime).count();
+        lastTime = now;
+
+        m_scrollOffset += m_scrollSpeed * delta;
+
+        float totalWidth = static_cast<float>(m_musicSheet->getMeasureCount()) * m_measureWidth;
+        if (m_scrollOffset > totalWidth + static_cast<float>(m_renderer.getWindowWidth()))
+        {
+            m_scrollOffset = 0.0f; // TODO: Loop back or could stop.
+        }
     }
 
     void PlayingState::positionUIComponents()
