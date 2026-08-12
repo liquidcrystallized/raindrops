@@ -36,9 +36,11 @@ namespace raindrops
         float m_noteWidth {};
         float m_measureWidth {};
 
+        float m_scrollOffset {}; // Pixels scrolled left.
+
         void drawMusicSheet();
         void drawStaffLines();
-        void drawMeasure(Measure& measure, float positionX, float positionY);
+        void drawMeasure(const Measure& measure, float positionX, float positionY);
         void drawNote(int pitch, int duration, float positionX, float positionY);
 
         void positionUIComponents();

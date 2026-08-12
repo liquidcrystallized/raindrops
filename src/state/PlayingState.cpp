@@ -2,6 +2,7 @@
 #include "ConfigManager.hpp"
 #include "MainMenuState.hpp"
 #include "StateMachine.hpp"
+#include <ranges>
 
 namespace raindrops
 {
@@ -79,6 +80,17 @@ namespace raindrops
 
         //TODO: Draw staves and measures.
         drawStaffLines();
+        for (const auto& [index, measure] : m_musicSheet->getMeasures() | std::views::enumerate)
+        {
+            float measureX = static_cast<float>(index) * m_measureWidth - m_scrollOffset;
+
+            if (measureX + m_measureWidth < 0 || measureX > static_cast<float>(m_renderer.getWindowWidth()))
+            {
+                continue;
+            }
+
+            drawMeasure(measure, measureX, 0);
+        }
     }
 
     void PlayingState::drawStaffLines()
@@ -94,9 +106,11 @@ namespace raindrops
         }
     }
 
-    void PlayingState::drawMeasure(Measure& measure, float positionX, float positionY)
+    void PlayingState::drawMeasure(const Measure& measure, float positionX, float positionY)
     {
-        //TODO
+        //TODO: Measure numbers for testing, but change it to actual vertical lines ||
+        std::string measureNumber = std::format("M{}", measure.getMeasureNumber());
+        m_renderer.drawText(measureNumber, positionX, positionY, 12, Colour::grey);
     }
 
     void PlayingState::drawNote(int pitch, int duration, float positionX, float positionY)
@@ -117,5 +131,7 @@ namespace raindrops
             const float linePositionY = buffer + m_staffLineSpacing * static_cast<float>(i + 1) - m_staffLineThickness / 2.0f;
             m_staff.getLine(i).setPositionY(static_cast<int>(linePositionY));
         }
+
+        m_measureWidth = m_noteWidth * 8.0f; //TODO: Assuming ~8 notes per measure, do something else maybe.
     }
 }
