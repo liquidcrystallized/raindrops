@@ -37,7 +37,7 @@ namespace raindrops
         float m_measureWidth {};
 
         //TODO: Move these into the config.
-        float m_scrollOffset {}; // Pixels scrolled left.
+        float m_scrollOffset { -1000.0f }; // Pixels scrolled left. Negative for a bit of a buffer before song starts.
         float m_scrollSpeed { 100.0f };
 
         void drawMusicSheet();
