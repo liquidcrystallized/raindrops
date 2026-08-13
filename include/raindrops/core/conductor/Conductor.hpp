@@ -15,6 +15,13 @@ namespace raindrops
 
         void setMusicSheet(std::unique_ptr<MusicSheet> musicSheet);
 
+        [[nodiscard]] bool isPlaying() const;
+
+        [[nodiscard]] float getScrollOffset() const;
+        [[nodiscard]] float getScrollSpeed() const;
+
+        void reset();
+
     private:
         std::unique_ptr<MusicSheet> m_musicSheet {};
 
