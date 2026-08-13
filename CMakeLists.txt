@@ -41,6 +41,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/config/MidiConfig.hpp
         include/raindrops/config/MusicSheetDisplayConfig.hpp
         include/raindrops/config/WindowConfig.hpp
+        include/raindrops/core/conductor/Conductor.hpp
         include/raindrops/core/file/musicxml/mx/MxReader.hpp
         include/raindrops/core/file/musicxml/mx/MxUtils.hpp
         include/raindrops/core/file/musicxml/IMusicXmlReader.hpp
@@ -77,6 +78,7 @@ set(RAINDROPS_SOURCES
         src/config/ApplicationConfig.cpp
         src/config/ConfigManager.cpp
         src/config/DefaultConfigFactory.cpp
+        src/core/conductor/Conductor.cpp
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/mx/MxUtils.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
@@ -105,6 +107,7 @@ set(RAINDROPS_SOURCES
 
 set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/config
+        include/raindrops/core/conductor
         include/raindrops/core/file/musicxml/mx
         include/raindrops/core/file/musicxml
         include/raindrops/core/math
@@ -144,6 +147,7 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/config/MidiConfigTests.cpp
         tests/unit_tests/config/MusicSheetDisplayConfigTests.cpp
         tests/unit_tests/config/WindowConfigTests.cpp
+        tests/unit_tests/core/conductor/ConductorTests.cpp
         tests/unit_tests/core/file/musicxml/mx/MxUtilsTests.cpp
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
