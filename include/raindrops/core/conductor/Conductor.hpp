@@ -15,6 +15,15 @@ namespace raindrops
 
         void setMusicSheet(std::unique_ptr<MusicSheet> musicSheet);
 
+        /**
+         * @brief Scrolling stuff happens here.
+         */
+        void update(float deltaTime);
+
+        void pause();
+        void resume();
+        void stop();
+
         [[nodiscard]] bool isPlaying() const;
 
         [[nodiscard]] float getScrollOffset() const;
