@@ -14,7 +14,7 @@ namespace raindrops
         m_staffLineThicknessScaleFactor = 0.005f; //TODO: config.
         m_staffLineBufferRatio = 0.12f; //TODO: config.
 
-        std::unique_ptr<MusicSheet> selectedSong = stateMachine.getSelectedSong();
+        std::unique_ptr<MusicSheet> selectedSong { stateMachine.getSelectedSong() };
         if (selectedSong)
         {
             loadMusicSheet(std::move(selectedSong));
@@ -84,7 +84,7 @@ namespace raindrops
         drawStaffLines();
         for (const auto& [index, measure] : m_musicSheet->getMeasures() | std::views::enumerate)
         {
-            float measureX = static_cast<float>(index) * m_measureWidth - m_scrollOffset;
+            const float measureX { static_cast<float>(index) * m_measureWidth - m_scrollOffset };
 
             if (measureX + m_measureWidth < 0 || measureX > static_cast<float>(m_renderer.getWindowWidth()))
             {
@@ -111,7 +111,7 @@ namespace raindrops
     void PlayingState::drawMeasure(const Measure& measure, float positionX, float positionY)
     {
         //TODO: Measure numbers for testing, but change it to actual vertical lines ||
-        std::string measureNumber = std::format("M{}", measure.getMeasureNumber());
+        const std::string measureNumber { std::format("M{}", measure.getMeasureNumber()) };
         m_renderer.drawText(measureNumber, positionX, positionY, 12, Colour::grey);
     }
 
@@ -122,14 +122,14 @@ namespace raindrops
 
     void PlayingState::updateScrollPosition()
     {
-        const auto now = std::chrono::steady_clock::now();
-        static auto lastTime = now;
-        const float delta = std::chrono::duration<float>(now - lastTime).count();
+        const std::chrono::time_point now { std::chrono::steady_clock::now() };
+        static std::chrono::time_point lastTime { now };
+        const float delta { std::chrono::duration<float>(now - lastTime).count() };
         lastTime = now;
 
         m_scrollOffset += m_scrollSpeed * delta;
 
-        float totalWidth = static_cast<float>(m_musicSheet->getMeasureCount()) * m_measureWidth;
+        float totalWidth { static_cast<float>(m_musicSheet->getMeasureCount()) * m_measureWidth };
         if (m_scrollOffset > totalWidth + static_cast<float>(m_renderer.getWindowWidth()))
         {
             m_scrollOffset = 0.0f; // TODO: Loop back or could stop.
@@ -139,14 +139,14 @@ namespace raindrops
     void PlayingState::positionUIComponents()
     {
         // This mess is to try and position all the staff lines within window bounds + additional whitespace buffer.
-        const float buffer = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineBufferRatio;
-        const float staffLineDrawArea = static_cast<float>(m_renderer.getWindowHeight()) - 2.0f * buffer;
+        const float buffer { static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineBufferRatio };
+        const float staffLineDrawArea { static_cast<float>(m_renderer.getWindowHeight()) - 2.0f * buffer };
         m_staffLineSpacing = staffLineDrawArea / (m_staff.getNumberOfLines() + 1);
         m_staffLineThickness = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineThicknessScaleFactor;
 
         for (int i = 0; i < m_staff.getNumberOfLines(); i++)
         {
-            const float linePositionY = buffer + m_staffLineSpacing * static_cast<float>(i + 1) - m_staffLineThickness / 2.0f;
+            const float linePositionY { buffer + m_staffLineSpacing * static_cast<float>(i + 1) - m_staffLineThickness / 2.0f };
             m_staff.getLine(i).setPositionY(static_cast<int>(linePositionY));
         }
 
