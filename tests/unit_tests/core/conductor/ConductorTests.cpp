@@ -29,15 +29,16 @@ TEST_CASE("Updates scroll position based on delta time")
     conductor.setMusicSheet(std::move(sheet));
     conductor.resume();
 
-    // TODO: explicitly set these when setters are implemented instead of relying on defaults.
+    conductor.setScrollSpeed(200.0f);
+
     CHECK( conductor.getScrollOffset() == doctest::Approx(-1000.0f) );
-    CHECK( conductor.getScrollSpeed() == doctest::Approx(100.0f) );
+    CHECK( conductor.getScrollSpeed() == doctest::Approx(200.0f) );
 
     conductor.update(1.0f);
-    CHECK( conductor.getScrollOffset() == doctest::Approx(-900.0f) );
+    CHECK( conductor.getScrollOffset() == doctest::Approx(-800.0f) );
 
     conductor.update(2.0f);
-    CHECK( conductor.getScrollOffset() == doctest::Approx(-700.0f) );
+    CHECK( conductor.getScrollOffset() == doctest::Approx(-400.0f) );
 }
 
 TEST_SUITE_END;
