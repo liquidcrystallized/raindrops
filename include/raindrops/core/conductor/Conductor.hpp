@@ -27,7 +27,10 @@ namespace raindrops
         [[nodiscard]] bool isPlaying() const;
 
         [[nodiscard]] float getScrollOffset() const;
+        void setScrollOffset(float offset);
+
         [[nodiscard]] float getScrollSpeed() const;
+        void setScrollSpeed(float speed);
 
         void reset();
 

@@ -49,9 +49,19 @@ namespace raindrops
         return m_scrollOffset;
     }
 
+    void Conductor::setScrollOffset(const float offset)
+    {
+        m_scrollOffset = std::max(-1000.0f, offset);
+    }
+
     float Conductor::getScrollSpeed() const
     {
         return m_scrollSpeed;
+    }
+
+    void Conductor::setScrollSpeed(const float speed)
+    {
+        m_scrollSpeed = std::max(0.0f, speed);
     }
 
     void Conductor::reset()
