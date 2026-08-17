@@ -13,7 +13,7 @@ namespace raindrops
         reset();
     }
 
-    void Conductor::update(float deltaTime)
+    void Conductor::update(const float deltaTime)
     {
         if (!m_playing || !m_musicSheet)
         {
