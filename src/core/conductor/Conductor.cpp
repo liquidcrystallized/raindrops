@@ -36,7 +36,7 @@ namespace raindrops
     void Conductor::stop()
     {
         m_playing = false;
-        m_scrollOffset = -1000.0f;
+        m_scrollOffset = m_songStartScrollBuffer;
     }
 
     bool Conductor::isPlaying() const
@@ -51,7 +51,7 @@ namespace raindrops
 
     void Conductor::setScrollOffset(const float offset)
     {
-        m_scrollOffset = std::max(-1000.0f, offset);
+        m_scrollOffset = std::clamp(offset, m_songStartScrollBuffer, std::numeric_limits<float>::max());
     }
 
     float Conductor::getScrollSpeed() const
@@ -61,12 +61,12 @@ namespace raindrops
 
     void Conductor::setScrollSpeed(const float speed)
     {
-        m_scrollSpeed = std::max(0.0f, speed);
+        m_scrollSpeed = std::clamp(speed, 0.0f, std::numeric_limits<float>::max());
     }
 
     void Conductor::reset()
     {
-        m_scrollOffset = -1000.0f;
         m_playing = false;
+        m_scrollOffset = m_songStartScrollBuffer;
     }
 }

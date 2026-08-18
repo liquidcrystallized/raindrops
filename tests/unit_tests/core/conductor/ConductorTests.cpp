@@ -87,4 +87,36 @@ TEST_CASE("No updates without a loaded music sheet")
     CHECK( conductor.getScrollOffset() == doctest::Approx(-1000.0f) );
 }
 
+TEST_CASE("Scroll offset clamping")
+{
+    raindrops::Conductor conductor {};
+
+    SUBCASE("Upper limit clamp")
+    {
+        conductor.setScrollOffset(std::numeric_limits<float>::max() + 10000.0f);
+        CHECK( conductor.getScrollOffset() == doctest::Approx(std::numeric_limits<float>::max()) );
+    }
+    SUBCASE("Lower limit clamp")
+    {
+        conductor.setScrollOffset(-20000.0f);
+        CHECK( conductor.getScrollOffset() == doctest::Approx(-1000.0f) );
+    }
+}
+
+TEST_CASE("Scroll speed clamping")
+{
+    raindrops::Conductor conductor {};
+
+    SUBCASE("Upper limit clamp")
+    {
+        conductor.setScrollSpeed(std::numeric_limits<float>::max() + 10000.0f);
+        CHECK( conductor.getScrollSpeed() == doctest::Approx(std::numeric_limits<float>::max()) );
+    }
+    SUBCASE("Lower limit clamp")
+    {
+        conductor.setScrollSpeed(-100.0f);
+        CHECK( conductor.getScrollSpeed() == doctest::Approx(0.0f) );
+    }
+}
+
 TEST_SUITE_END;

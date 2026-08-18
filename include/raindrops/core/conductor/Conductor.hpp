@@ -40,6 +40,8 @@ namespace raindrops
         float m_scrollOffset { 0.0f };
         float m_scrollSpeed { 100.0f };
         bool m_playing { false };
+
+        float m_songStartScrollBuffer { -1000.0f };
     };
 }
 
