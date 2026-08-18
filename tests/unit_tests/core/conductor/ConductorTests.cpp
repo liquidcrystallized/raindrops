@@ -125,6 +125,7 @@ TEST_CASE("Stops updating/scrolling if float limits are somehow hit")
 
     conductor.setScrollOffset(std::numeric_limits<float>::max() - 1000.0f);
     conductor.setScrollSpeed(100.0f);
+    conductor.resume();
 
     for (int i = 0; i < 20; i++)
     {
