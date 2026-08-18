@@ -21,6 +21,12 @@ namespace raindrops
         }
 
         m_scrollOffset += m_scrollSpeed * deltaTime;
+
+        if (m_scrollOffset >= std::numeric_limits<float>::max())
+        {
+            m_scrollSpeed = 0.0f;
+            m_scrollOffset = std::numeric_limits<float>::max();
+        }
     }
 
     void Conductor::pause()

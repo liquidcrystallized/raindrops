@@ -119,4 +119,19 @@ TEST_CASE("Scroll speed clamping")
     }
 }
 
+TEST_CASE("Stops updating/scrolling if float limits are somehow hit")
+{
+    raindrops::Conductor conductor {};
+
+    conductor.setScrollOffset(std::numeric_limits<float>::max() - 1000.0f);
+    conductor.setScrollSpeed(100.0f);
+
+    for (int i = 0; i < 20; i++)
+    {
+        conductor.update(1.0f);
+    }
+
+    CHECK( conductor.getScrollOffset() == doctest::Approx(std::numeric_limits<float>::max()) );
+}
+
 TEST_SUITE_END;
