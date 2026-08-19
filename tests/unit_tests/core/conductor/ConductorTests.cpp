@@ -119,6 +119,22 @@ TEST_CASE("Scroll speed clamping")
     }
 }
 
+TEST_CASE("Song start scroll buffer clamping")
+{
+    raindrops::Conductor conductor {};
+
+    SUBCASE("Upper limit clamp")
+    {
+        conductor.setSongStartScrollBuffer(1000.0f);
+        CHECK( conductor.getSongStartScrollBuffer() == doctest::Approx(0.0f) );
+    }
+    SUBCASE("Lower limit clamp")
+    {
+        conductor.setSongStartScrollBuffer(std::numeric_limits<float>::lowest() - 250000.0f);
+        CHECK( conductor.getSongStartScrollBuffer() == doctest::Approx(std::numeric_limits<float>::lowest()) );
+    }
+}
+
 TEST_CASE("Stops updating/scrolling if float limits are somehow hit")
 {
     raindrops::Conductor conductor {};

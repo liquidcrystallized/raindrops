@@ -70,6 +70,16 @@ namespace raindrops
         m_scrollSpeed = std::clamp(speed, 0.0f, std::numeric_limits<float>::max());
     }
 
+    float Conductor::getSongStartScrollBuffer() const
+    {
+        return m_songStartScrollBuffer;
+    }
+
+    void Conductor::setSongStartScrollBuffer(const float buffer)
+    {
+        m_songStartScrollBuffer = std::clamp(buffer, std::numeric_limits<float>::lowest(), 0.0f);
+    }
+
     void Conductor::reset()
     {
         m_playing = false;
