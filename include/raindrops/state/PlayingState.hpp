@@ -2,6 +2,7 @@
 #define RAINDROPS_PLAYINGSTATE_HPP
 
 #include "ApplicationConfig.hpp"
+#include "Conductor.hpp"
 #include "Staff.hpp"
 #include "State.hpp"
 #include "MusicSheet.hpp"
@@ -27,6 +28,10 @@ namespace raindrops
         std::string m_compositionTitle {};
 
         Staff m_staff {};
+        Conductor m_conductor {};
+        std::chrono::time_point<std::chrono::steady_clock> m_currentTime {};
+        std::chrono::time_point<std::chrono::steady_clock> m_previousTime {};
+        float m_deltaTime {};
 
         const ApplicationConfig& m_config;
         float m_staffLineBufferRatio {}; // How much (in percentage %) of the window height as top/bot buffer.

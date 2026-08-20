@@ -25,16 +25,19 @@ namespace raindrops
         }
 
         positionUIComponents();
+        m_currentTime = std::chrono::steady_clock::now();
+        m_previousTime = m_currentTime;
+        m_conductor.resume();
     }
 
     void PlayingState::pause()
     {
-        m_scrollSpeed = 0.0f;
+        m_conductor.pause();
     }
 
     void PlayingState::resume()
     {
-        m_scrollSpeed = 100.0f;
+        m_conductor.resume();
     }
 
     void PlayingState::update()
@@ -44,7 +47,11 @@ namespace raindrops
             m_stateMachine.lastState();
         }
 
-        updateScrollPosition();
+        m_currentTime = std::chrono::steady_clock::now();
+        m_deltaTime = std::chrono::duration<float>(m_currentTime - m_previousTime).count();
+        m_previousTime = m_currentTime;
+
+        m_conductor.update(m_deltaTime);
     }
 
     void PlayingState::draw()
@@ -84,7 +91,7 @@ namespace raindrops
         drawStaffLines();
         for (const auto& [index, measure] : m_musicSheet->getMeasures() | std::views::enumerate)
         {
-            const float measureX { static_cast<float>(index) * m_measureWidth - m_scrollOffset };
+            const float measureX { static_cast<float>(index) * m_measureWidth - m_conductor.getScrollOffset() };
 
             if (measureX + m_measureWidth < 0 || measureX > static_cast<float>(m_renderer.getWindowWidth()))
             {
