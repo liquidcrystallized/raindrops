@@ -7,15 +7,9 @@ namespace raindrops
         reset();
     }
 
-    void Conductor::setMusicSheet(std::unique_ptr<MusicSheet> musicSheet)
-    {
-        m_musicSheet = std::move(musicSheet);
-        reset();
-    }
-
     void Conductor::update(const float deltaTime)
     {
-        if (!m_playing || !m_musicSheet)
+        if (!m_playing)
         {
             return;
         }

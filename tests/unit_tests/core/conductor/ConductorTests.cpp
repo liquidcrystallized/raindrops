@@ -26,7 +26,6 @@ TEST_CASE("Updates scroll position based on delta time")
     }
     sheet->setMeasures(measures);
 
-    conductor.setMusicSheet(std::move(sheet));
     conductor.resume();
 
     conductor.setScrollSpeed(200.0f);
@@ -55,7 +54,6 @@ TEST_CASE("No updates when paused")
     }
     sheet->setMeasures(measures);
 
-    conductor.setMusicSheet(std::move(sheet));
     conductor.resume();
 
     conductor.setScrollSpeed(200.0f);
@@ -70,21 +68,6 @@ TEST_CASE("No updates when paused")
 
     conductor.update(2.0f);
     CHECK( conductor.getScrollOffset() == doctest::Approx(-800.0f) );
-}
-
-TEST_CASE("No updates without a loaded music sheet")
-{
-    raindrops::Conductor conductor {};
-
-    conductor.setScrollSpeed(200.0f);
-
-    CHECK( conductor.getScrollOffset() == doctest::Approx(-1000.0f) );
-    CHECK( conductor.getScrollSpeed() == doctest::Approx(200.0f) );
-
-    conductor.resume();
-    conductor.update(1.0f);
-
-    CHECK( conductor.getScrollOffset() == doctest::Approx(-1000.0f) );
 }
 
 TEST_CASE("Scroll offset clamping")

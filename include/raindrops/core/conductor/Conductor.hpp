@@ -13,8 +13,6 @@ namespace raindrops
     public:
         Conductor();
 
-        void setMusicSheet(std::unique_ptr<MusicSheet> musicSheet);
-
         /**
          * @brief Scrolling stuff happens here.
          */
@@ -38,8 +36,6 @@ namespace raindrops
         void reset();
 
     private:
-        std::unique_ptr<MusicSheet> m_musicSheet {};
-
         float m_scrollOffset { 0.0f };
         float m_scrollSpeed { 100.0f };
         float m_songStartScrollBuffer { -1000.0f };
