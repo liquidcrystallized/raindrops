@@ -117,9 +117,16 @@ namespace raindrops
 
     void PlayingState::drawMeasure(const Measure& measure, float positionX, float positionY)
     {
-        //TODO: Measure numbers for testing, but change it to actual vertical lines ||
         const std::string measureNumber { std::format("M{}", measure.getMeasureNumber()) };
         m_renderer.drawText(measureNumber, positionX, positionY, 12, Colour::grey);
+
+        m_renderer.drawLine(positionX, m_staff.getLine(0).getPositionY(),
+                            positionX, m_staff.getLine(4).getPositionY(),
+                            m_staffLineThickness, Colour::black);
+
+        m_renderer.drawLine(positionX, m_staff.getLine(11).getPositionY(),
+                            positionX, m_staff.getLine(15).getPositionY(),
+                            m_staffLineThickness, Colour::black);
     }
 
     void PlayingState::drawNote(int pitch, int duration, float positionX, float positionY)
