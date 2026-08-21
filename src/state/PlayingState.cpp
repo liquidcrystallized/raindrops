@@ -127,22 +127,6 @@ namespace raindrops
         //TODO
     }
 
-    void PlayingState::updateScrollPosition()
-    {
-        const std::chrono::time_point now { std::chrono::steady_clock::now() };
-        static std::chrono::time_point lastTime { now };
-        const float delta { std::chrono::duration<float>(now - lastTime).count() };
-        lastTime = now;
-
-        m_scrollOffset += m_scrollSpeed * delta;
-
-        float totalWidth { static_cast<float>(m_musicSheet->getMeasureCount()) * m_measureWidth };
-        if (m_scrollOffset > totalWidth + static_cast<float>(m_renderer.getWindowWidth()))
-        {
-            m_scrollOffset = 0.0f; // TODO: Loop back or could stop.
-        }
-    }
-
     void PlayingState::positionUIComponents()
     {
         // This mess is to try and position all the staff lines within window bounds + additional whitespace buffer.
