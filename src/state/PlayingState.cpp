@@ -25,8 +25,6 @@ namespace raindrops
         }
 
         positionUIComponents();
-        m_currentTime = std::chrono::steady_clock::now();
-        m_previousTime = m_currentTime;
         m_conductor.resume();
     }
 
@@ -47,11 +45,7 @@ namespace raindrops
             m_stateMachine.lastState();
         }
 
-        m_currentTime = std::chrono::steady_clock::now();
-        m_deltaTime = std::chrono::duration<float>(m_currentTime - m_previousTime).count();
-        m_previousTime = m_currentTime;
-
-        m_conductor.update(m_deltaTime);
+        m_conductor.update(m_timer.getDeltaTime());
     }
 
     void PlayingState::draw()

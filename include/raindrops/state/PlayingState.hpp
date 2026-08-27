@@ -3,6 +3,7 @@
 
 #include "ApplicationConfig.hpp"
 #include "Conductor.hpp"
+#include "Timer.hpp"
 #include "Staff.hpp"
 #include "State.hpp"
 #include "MusicSheet.hpp"
@@ -29,9 +30,7 @@ namespace raindrops
 
         Staff m_staff {};
         Conductor m_conductor {};
-        std::chrono::time_point<std::chrono::steady_clock> m_currentTime {};
-        std::chrono::time_point<std::chrono::steady_clock> m_previousTime {};
-        float m_deltaTime {};
+        Timer m_timer {};
 
         const ApplicationConfig& m_config;
         float m_staffLineBufferRatio {}; // How much (in percentage %) of the window height as top/bot buffer.

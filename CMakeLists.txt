@@ -54,6 +54,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/score/ScoreFactory.hpp
         include/raindrops/core/score/Staff.hpp
         include/raindrops/core/score/StaffLine.hpp
+        include/raindrops/core/timing/Timer.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
         include/raindrops/midi/MidiMessageList.hpp
@@ -89,6 +90,7 @@ set(RAINDROPS_SOURCES
         src/core/score/ScoreFactory.cpp
         src/core/score/Staff.cpp
         src/core/score/StaffLine.cpp
+        src/core/timing/Timer.cpp
         src/midi/MidiDevice.cpp
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.cpp
@@ -112,6 +114,7 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/core/file/musicxml
         include/raindrops/core/math
         include/raindrops/core/score
+        include/raindrops/core/timing
         include/raindrops/midi
         include/raindrops/render/controls
         include/raindrops/render/graphics
