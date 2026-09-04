@@ -40,9 +40,14 @@ namespace raindrops
 
     void PlayingState::update()
     {
+        //TODO: Don't directly rely on external libs  for inputs.
         if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
         {
             m_stateMachine.lastState();
+        }
+        else if (raylib::Keyboard::IsKeyPressed(KEY_P))
+        {
+            m_conductor.isPlaying() ? m_conductor.pause() : m_conductor.resume();
         }
 
         m_conductor.update(m_timer.getDeltaTime());
