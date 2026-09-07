@@ -14,7 +14,7 @@ namespace raindrops
         m_staffLineThicknessScaleFactor = 0.005f; //TODO: config.
         m_staffLineBufferRatio = 0.12f; //TODO: config.
 
-        std::unique_ptr<MusicSheet> selectedSong { stateMachine.getSelectedSong() };
+        std::unique_ptr selectedSong { stateMachine.getSelectedSong() };
         if (selectedSong)
         {
             loadMusicSheet(std::move(selectedSong));
