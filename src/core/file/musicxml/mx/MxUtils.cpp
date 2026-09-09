@@ -1,5 +1,7 @@
 #include "MxUtils.hpp"
 
+#include <ranges>
+
 namespace raindrops::MxUtils
 {
     int convertMxPitchDataToMidiKey(const mx::api::Step step, const int octave, const int alter)
@@ -44,11 +46,11 @@ namespace raindrops::MxUtils
 
     std::vector<Note> extractNotesFromMxStaff(const mx::api::StaffData& staff)
     {
-        std::vector<Note> notes;
+        std::vector<Note> notes {};
 
-        for (const auto& voice : staff.voices)
+        for (const auto& voice : staff.voices | std::views::values)
         {
-            for (const auto& mxNote : voice.second.notes)
+            for (const auto& mxNote : voice.notes)
             {
                 notes.push_back(createNoteFromMxNote(mxNote));
             }
