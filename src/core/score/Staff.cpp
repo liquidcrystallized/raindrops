@@ -30,6 +30,6 @@ namespace raindrops
 
     int Staff::getNumberOfLines() const
     {
-        return m_staffLines.size();
+        return static_cast<int>(m_staffLines.size());
     }
 }
