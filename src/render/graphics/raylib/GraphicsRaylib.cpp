@@ -54,12 +54,12 @@ namespace raindrops
         return m_window.IsResized();
     }
 
-    void GraphicsRaylib::drawLine(const float startX, const float startY, const float endX, const float endY, const int thickness, const Colour colour)
+    void GraphicsRaylib::drawLine(const float startX, const float startY, const float endX, const float endY, const float thickness, const Colour colour)
     {
         const raylib::Vector2 startPosition { startX, startY };
         const raylib::Vector2 endPosition { endX, endY };
         const raylib::Color lineColour { setColour(colour) };
-        lineColour.DrawLine(startPosition, endPosition, static_cast<float>(thickness));
+        lineColour.DrawLine(startPosition, endPosition, thickness);
     }
 
     void GraphicsRaylib::drawCircle(const float centreX, const float centreY, const float radius, const Colour colour)

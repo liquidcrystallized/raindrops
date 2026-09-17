@@ -30,7 +30,7 @@ namespace raindrops
         return m_windowResized;
     }
 
-    void GraphicsNull::drawLine(float startX, float startY, float endX, float endY, int thickness, Colour colour) { }
+    void GraphicsNull::drawLine(float startX, float startY, float endX, float endY, float thickness, Colour colour) { }
     void GraphicsNull::drawCircle(float centreX, float centreY, float radius, Colour colour) { }
     void GraphicsNull::drawText(std::string text, float positionX, float positionY, int fontSize, Colour colour) { }
 

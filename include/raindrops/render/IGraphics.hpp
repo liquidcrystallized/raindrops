@@ -34,7 +34,7 @@ namespace raindrops
          * Basic shape drawing functions.
          */
 
-        virtual void drawLine(float startX, float startY, float endX, float endY, int thickness, Colour colour) = 0;
+        virtual void drawLine(float startX, float startY, float endX, float endY, float thickness, Colour colour) = 0;
         virtual void drawCircle(float centreX, float centreY, float radius, Colour colour) = 0;
 
         /**

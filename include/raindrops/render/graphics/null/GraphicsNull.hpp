@@ -35,7 +35,7 @@ namespace raindrops
 
         [[nodiscard]] bool windowResized() const override;
 
-        void drawLine(float startX, float startY, float endX, float endY, int thickness, Colour colour) override;
+        void drawLine(float startX, float startY, float endX, float endY, float thickness, Colour colour) override;
         void drawCircle(float centreX, float centreY, float radius, Colour colour) override;
 
         void drawText(std::string text, float positionX, float positionY, int fontSize, Colour colour) override;
