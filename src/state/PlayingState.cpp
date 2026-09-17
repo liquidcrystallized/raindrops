@@ -107,8 +107,10 @@ namespace raindrops
         {
             if (staffLine.isVisible())
             {
-                m_renderer.drawLine(0, staffLine.getPositionY(),
-                    static_cast<float>(m_renderer.getWindowWidth()), staffLine.getPositionY(),
+                m_renderer.drawLine(0,
+                    static_cast<float>(staffLine.getPositionY()),
+                    static_cast<float>(m_renderer.getWindowWidth()),
+                    static_cast<float>(staffLine.getPositionY()),
                     m_staffLineThickness, Colour::black);
             }
         }
@@ -119,12 +121,12 @@ namespace raindrops
         const std::string measureNumber { std::format("M{}", measure.getMeasureNumber()) };
         m_renderer.drawText(measureNumber, positionX, positionY, 12, Colour::grey);
 
-        m_renderer.drawLine(positionX, m_staff.getLine(0).getPositionY(),
-                            positionX, m_staff.getLine(4).getPositionY(),
+        m_renderer.drawLine(positionX, static_cast<float>(m_staff.getLine(0).getPositionY()),
+                            positionX, static_cast<float>(m_staff.getLine(4).getPositionY()),
                             m_staffLineThickness, Colour::black);
 
-        m_renderer.drawLine(positionX, m_staff.getLine(11).getPositionY(),
-                            positionX, m_staff.getLine(15).getPositionY(),
+        m_renderer.drawLine(positionX, static_cast<float>(m_staff.getLine(11).getPositionY()),
+                            positionX, static_cast<float>(m_staff.getLine(15).getPositionY()),
                             m_staffLineThickness, Colour::black);
     }
 
@@ -138,7 +140,7 @@ namespace raindrops
         // This mess is to try and position all the staff lines within window bounds + additional whitespace buffer.
         const float buffer { static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineBufferRatio };
         const float staffLineDrawArea { static_cast<float>(m_renderer.getWindowHeight()) - 2.0f * buffer };
-        m_staffLineSpacing = staffLineDrawArea / (m_staff.getNumberOfLines() + 1);
+        m_staffLineSpacing = staffLineDrawArea / (static_cast<float>(m_staff.getNumberOfLines()) + 1);
         m_staffLineThickness = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineThicknessScaleFactor;
 
         for (int i = 0; i < m_staff.getNumberOfLines(); i++)
