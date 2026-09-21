@@ -18,7 +18,7 @@ namespace raindrops
         }
     }
 
-    StaffLine& Staff::getLine(const int lineNumber)
+    StaffLine& Staff::getLine(const std::size_t lineNumber)
     {
         return m_staffLines[lineNumber];
     }
