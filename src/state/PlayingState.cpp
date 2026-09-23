@@ -25,7 +25,7 @@ namespace raindrops
         }
 
         positionUIComponents();
-        m_conductor.resume();
+        resume();
     }
 
     void PlayingState::pause()
@@ -47,7 +47,7 @@ namespace raindrops
         }
         else if (raylib::Keyboard::IsKeyPressed(KEY_P))
         {
-            m_conductor.isPlaying() ? m_conductor.pause() : m_conductor.resume();
+            m_conductor.isPlaying() ? pause() : resume();
         }
 
         m_conductor.update(m_timer.getDeltaTime());
