@@ -22,6 +22,8 @@ namespace raindrops
         config.musicSheetDisplayConfig.noteWidth = 40.0f;
         config.musicSheetDisplayConfig.measureWidth = 150.0f;
         config.musicSheetDisplayConfig.staffSpacing = 30.0f;
+        config.musicSheetDisplayConfig.staffLineBufferRatio = 0.12f;
+        config.musicSheetDisplayConfig.staffLineThicknessScaleFactor = 0.005f;
         config.musicSheetDisplayConfig.fontSize = 16;
 
         return config;

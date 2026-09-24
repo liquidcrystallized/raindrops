@@ -11,8 +11,8 @@ namespace raindrops
     , m_config { ConfigManager::getInstance().getConfig() }
     {
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
-        m_staffLineThicknessScaleFactor = 0.005f; //TODO: config.
-        m_staffLineBufferRatio = 0.12f; //TODO: config.
+        m_staffLineBufferRatio = m_config.musicSheetDisplayConfig.staffLineBufferRatio;
+        m_staffLineThicknessScaleFactor = m_config.musicSheetDisplayConfig.staffLineThicknessScaleFactor;
 
         std::unique_ptr selectedSong { stateMachine.getSelectedSong() };
         if (selectedSong)

@@ -10,6 +10,8 @@ TEST_CASE("MusicSheetDisplayConfig default values")
     CHECK( config.noteWidth == 40.0f );
     CHECK( config.measureWidth == 150.0f );
     CHECK( config.staffSpacing == 30.0f );
+    CHECK( config.staffLineBufferRatio == 0.12f );
+    CHECK( config.staffLineThicknessScaleFactor == 0.005f );
     CHECK( config.fontSize == 16 );
 }
 
@@ -27,10 +29,20 @@ TEST_CASE("MusicSheetDisplayConfig can be modified")
         config.measureWidth = 200.0f;
         CHECK( config.measureWidth == 200.0f );
     }
-    SUBCASE("Set custom spacing")
+    SUBCASE("Set custom staff spacing")
     {
         config.staffSpacing = 40.0f;
         CHECK( config.staffSpacing == 40.0f );
+    }
+    SUBCASE("Set custom staff line buffer ratio")
+    {
+        config.staffLineBufferRatio = 0.4f;
+        CHECK( config.staffLineBufferRatio == 0.4f );
+    }
+    SUBCASE("Set custom staff line thickness scale factor")
+    {
+        config.staffLineThicknessScaleFactor = 0.01f;
+        CHECK( config.staffLineThicknessScaleFactor == 0.01f );
     }
     SUBCASE("Set custom font size")
     {
@@ -52,6 +64,8 @@ TEST_CASE("MusicSheetDisplayConfig validation")
         config.noteWidth = 35.0f;
         config.measureWidth = 125.0f;
         config.staffSpacing = 25.0f;
+        config.staffLineBufferRatio = 0.4f;
+        config.staffLineThicknessScaleFactor = 0.01f;
         config.fontSize = 10;
 
         CHECK( config.isValid() == true );
@@ -74,6 +88,26 @@ TEST_CASE("MusicSheetDisplayConfig validation")
     SUBCASE("Invalid staffSpacing - negative")
     {
         config.staffSpacing = -10.0f;
+        CHECK( config.isValid() == false );
+    }
+    SUBCASE("Invalid staffLineBufferRatio - zero")
+    {
+        config.staffLineBufferRatio = 0.0f;
+        CHECK( config.isValid() == false );
+    }
+    SUBCASE("Invalid staffLineBufferRatio - negative")
+    {
+        config.staffLineBufferRatio = -20.0f;
+        CHECK( config.isValid() == false );
+    }
+    SUBCASE("Invalid staffLineThicknessScaleFactor - zero")
+    {
+        config.staffLineThicknessScaleFactor = 0.0f;
+        CHECK( config.isValid() == false );
+    }
+    SUBCASE("Invalid staffLineThicknessScaleFactor - negative")
+    {
+        config.staffLineThicknessScaleFactor = -10.0f;
         CHECK( config.isValid() == false );
     }
     SUBCASE("Invalid measureWidth - zero")

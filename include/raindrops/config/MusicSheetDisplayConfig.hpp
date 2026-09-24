@@ -12,11 +12,18 @@ namespace raindrops
         float noteWidth { 40.0f };
         float measureWidth { 150.0f };
         float staffSpacing { 30.0f };
+        float staffLineBufferRatio { 0.12f };
+        float staffLineThicknessScaleFactor { 0.005f };
         int fontSize { 16 };
 
         [[nodiscard]] bool isValid() const
         {
-            return noteWidth > 0 && measureWidth > 0 && staffSpacing > 0 && fontSize > 0;
+            return noteWidth > 0
+            && measureWidth > 0
+            && staffSpacing > 0
+            && staffLineBufferRatio > 0
+            && staffLineThicknessScaleFactor > 0
+            && fontSize > 0;
         }
     };
 }
