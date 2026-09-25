@@ -49,8 +49,10 @@ namespace raindrops
         {
             m_conductor.isPlaying() ? pause() : resume();
         }
+        m_timer.tick();
+        const float dt = m_timer.getDeltaTime();
 
-        m_conductor.update(m_timer.getDeltaTime());
+        m_conductor.update(dt);
     }
 
     void PlayingState::draw()

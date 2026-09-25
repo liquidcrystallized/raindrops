@@ -9,10 +9,13 @@ namespace raindrops
     public:
         Timer();
 
-        float getDeltaTime();
+        [[nodiscard]] float getDeltaTime() const;
+
+        void tick();
 
     private:
         std::chrono::time_point<std::chrono::steady_clock> m_previous {};
+        float m_deltaTime {};
     };
 }
 
