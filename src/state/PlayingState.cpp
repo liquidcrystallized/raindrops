@@ -78,8 +78,6 @@ namespace raindrops
 
     void PlayingState::drawMusicSheet()
     {
-        const Vector2<float> labelSize { 800, 100 };
-
         if (!m_musicSheet)
         {
             m_renderer.drawText("No song loaded. Please select a song from the selection region", 100, 100, 16, Colour::black);
