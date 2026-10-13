@@ -175,11 +175,17 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/state/StateTests.cpp
 )
 
+set(RAINDROPS_TEST_MOCKS
+        tests/mocks/MockKeyboardInput.hpp
+        tests/mocks/MockKeyboardInput.cpp
+)
+
 add_executable(raindrops_tests
         ${RAINDROPS_HEADERS}
         ${RAINDROPS_SOURCES}
         ${RAINDROPS_INTEGRATION_TESTS_SOURCES}
         ${RAINDROPS_UNIT_TESTS_SOURCES}
+        ${RAINDROPS_TEST_MOCKS}
         tests/TestMain.cpp
 )
 
