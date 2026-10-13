@@ -55,6 +55,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/score/Staff.hpp
         include/raindrops/core/score/StaffLine.hpp
         include/raindrops/core/timing/Timer.hpp
+        include/raindrops/input/IKeyboardInput.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
         include/raindrops/midi/MidiMessageList.hpp
@@ -75,6 +76,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/Application.hpp
         include/raindrops/raygui-defguard.hpp
 )
+
 set(RAINDROPS_SOURCES
         src/config/ApplicationConfig.cpp
         src/config/ConfigManager.cpp
@@ -115,6 +117,7 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/core/math
         include/raindrops/core/score
         include/raindrops/core/timing
+        include/raindrops/input
         include/raindrops/midi
         include/raindrops/render/controls
         include/raindrops/render/graphics
