@@ -175,8 +175,11 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/state/StateTests.cpp
 )
 
-set(RAINDROPS_TEST_MOCKS
-        tests/mocks/MockKeyboardInput.hpp
+set(RAINDROPS_TEST_MOCK_INCLUDES
+        include/tests/mocks
+)
+
+set(RAINDROPS_TEST_MOCK_SOURCES
         tests/mocks/MockKeyboardInput.cpp
 )
 
@@ -185,12 +188,13 @@ add_executable(raindrops_tests
         ${RAINDROPS_SOURCES}
         ${RAINDROPS_INTEGRATION_TESTS_SOURCES}
         ${RAINDROPS_UNIT_TESTS_SOURCES}
-        ${RAINDROPS_TEST_MOCKS}
+        ${RAINDROPS_TEST_MOCK_SOURCES}
         tests/TestMain.cpp
 )
 
 target_include_directories(raindrops_tests PRIVATE
         ${RAINDROPS_INCLUDE_DIRECTORIES}
+        ${RAINDROPS_TEST_MOCK_INCLUDES}
 )
 
 #---------------------------------------------------------------------------------------
