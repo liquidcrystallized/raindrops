@@ -1,9 +1,9 @@
-#include "RaylibKeyboardInput.hpp"
+#include "KeyboardInputRaylib.hpp"
 #include <raylib-cpp.hpp>
 
 namespace raindrops
 {
-    bool RaylibKeyboardInput::isKeyPressed(const Key key) const
+    bool KeyboardInputRaylib::isKeyPressed(const Key key) const
     {
         switch (key)
         {

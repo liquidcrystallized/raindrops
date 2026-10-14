@@ -57,7 +57,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/timing/Timer.hpp
         include/raindrops/input/IKeyboardInput.hpp
         include/raindrops/input/InputMapper.hpp
-        include/raindrops/input/raylib/RaylibKeyboardInput.hpp
+        include/raindrops/input/raylib/KeyboardInputRaylib.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
         include/raindrops/midi/MidiMessageList.hpp
@@ -96,7 +96,7 @@ set(RAINDROPS_SOURCES
         src/core/score/Staff.cpp
         src/core/score/StaffLine.cpp
         src/core/timing/Timer.cpp
-        src/input/raylib/RaylibKeyboardInput.cpp
+        src/input/raylib/KeyboardInputRaylib.cpp
         src/midi/MidiDevice.cpp
         src/midi/MidiMonitor.cpp
         src/midi/MidiReceiver.cpp
