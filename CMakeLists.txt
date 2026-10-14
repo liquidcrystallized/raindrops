@@ -56,6 +56,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/core/score/StaffLine.hpp
         include/raindrops/core/timing/Timer.hpp
         include/raindrops/input/IKeyboardInput.hpp
+        include/raindrops/input/InputMapper.hpp
         include/raindrops/input/raylib/RaylibKeyboardInput.hpp
         include/raindrops/midi/IMidiInputListener.hpp
         include/raindrops/midi/MidiDevice.hpp
@@ -86,6 +87,7 @@ set(RAINDROPS_SOURCES
         src/core/file/musicxml/mx/MxReader.cpp
         src/core/file/musicxml/mx/MxUtils.cpp
         src/core/file/musicxml/MusicXmlReader.cpp
+        src/core/input/InputMapper.cpp
         src/core/math/Vector2.cpp
         src/core/score/Measure.cpp
         src/core/score/MusicSheet.cpp
@@ -159,6 +161,7 @@ set(RAINDROPS_UNIT_TESTS_SOURCES
         tests/unit_tests/core/conductor/ConductorTests.cpp
         tests/unit_tests/core/file/musicxml/mx/MxUtilsTests.cpp
         tests/unit_tests/core/file/musicxml/MusicXmlReaderTests.cpp
+        tests/unit_tests/core/input/InputMapperTests.cpp
         tests/unit_tests/core/math/Vector2Tests.cpp
         tests/unit_tests/core/score/MeasureTests.cpp
         tests/unit_tests/core/score/ModeTests.cpp
