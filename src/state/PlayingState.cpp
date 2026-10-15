@@ -9,6 +9,7 @@ namespace raindrops
     PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, keyboardInput, midiMonitor, replace, "PlayingState" }
     , m_config { ConfigManager::getInstance().getConfig() }
+    , m_inputMapper( keyboardInput )
     {
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
         m_staffLineBufferRatio = m_config.musicSheetDisplayConfig.staffLineBufferRatio;
@@ -40,18 +41,19 @@ namespace raindrops
 
     void PlayingState::update()
     {
-        //TODO: Don't directly rely on external libs  for inputs.
-        if (raylib::Keyboard::IsKeyPressed(KEY_ESCAPE))
+        const Action action = m_inputMapper.getTriggeredAction();
+        if (action == Action::Back)
         {
             m_stateMachine.lastState();
         }
-        else if (raylib::Keyboard::IsKeyPressed(KEY_P))
+        if (action == Action::Pause)
         {
             m_conductor.isPlaying() ? pause() : resume();
         }
-        m_timer.tick();
-        const float dt = m_timer.getDeltaTime();
 
+        m_timer.tick();
+
+        const float dt = m_timer.getDeltaTime();
         m_conductor.update(dt);
     }
 

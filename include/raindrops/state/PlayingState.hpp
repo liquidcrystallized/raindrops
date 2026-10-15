@@ -3,10 +3,11 @@
 
 #include "ApplicationConfig.hpp"
 #include "Conductor.hpp"
-#include "Timer.hpp"
+#include "InputMapper.hpp"
+#include "MusicSheet.hpp"
 #include "Staff.hpp"
 #include "State.hpp"
-#include "MusicSheet.hpp"
+#include "Timer.hpp"
 
 namespace raindrops
 {
@@ -39,6 +40,8 @@ namespace raindrops
         float m_staffLineThicknessScaleFactor {};
         float m_noteWidth {};
         float m_measureWidth {};
+
+        InputMapper m_inputMapper;
 
         void drawMusicSheet();
         void drawStaffLines();
