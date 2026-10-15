@@ -1,5 +1,6 @@
 #include "GraphicsNull.hpp"
 #include "MainMenuState.hpp"
+#include "MockKeyboardInput.hpp"
 #include "MidiMonitor.hpp"
 #include "StateMachine.hpp"
 #include <doctest.h>
@@ -10,11 +11,12 @@ TEST_CASE("Default State/Screen window centre is correct")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     raylib::Vector2 expectedDummyWindowCentre { 640 / 2.0f, 480 / 2.0f };
@@ -27,11 +29,12 @@ TEST_CASE("Arbitrary setting of new centre")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     float centreX { 500 };
@@ -46,12 +49,13 @@ TEST_CASE("State initialization and properties")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
     // Test default state properties
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     CHECK( stateMachine.getCurrentState()->isReplacing() == true );

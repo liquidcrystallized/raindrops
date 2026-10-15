@@ -11,7 +11,7 @@ namespace raindrops
 {
     class MidiSetupMenuState final : public State {
     public:
-        MidiSetupMenuState(StateMachine&, IGraphics&, MidiMonitor&, bool replace = true);
+        MidiSetupMenuState(StateMachine&, IGraphics&, IKeyboardInput&, MidiMonitor&, bool replace = true);
 
         void pause() override;
         void resume() override;

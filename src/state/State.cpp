@@ -3,9 +3,10 @@
 
 namespace raindrops
 {
-    State::State(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace, std::string stateName)
+    State::State(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace, std::string stateName)
     : m_stateMachine { stateMachine }
     , m_renderer { renderer }
+    , m_keyboardInput { keyboardInput }
     , m_windowCentrePosition {
         static_cast<float>(m_renderer.getWindowWidth()) / 2.0f,
         static_cast<float>(m_renderer.getWindowHeight()) / 2.0f

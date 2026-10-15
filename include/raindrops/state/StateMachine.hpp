@@ -3,6 +3,7 @@
 
 #include "MusicSheet.hpp"
 #include "IGraphics.hpp"
+#include "IKeyboardInput.hpp"
 #include "State.hpp"
 #include <raylib-cpp.hpp>
 #include <memory>
@@ -58,12 +59,13 @@ namespace raindrops
          * @tparam T The type of state to create.
          * @param stateMachine Reference to the state machine.
          * @param renderer Reference to the abstract renderer which handles drawing.
+         * @param keyboardInput Reference to the abstract input handler which handles keyboard stuff.
          * @param midiMonitor Reference to the midi monitor.
          * @param replace If true, the new state will replace the current one.
          * @return A unique_ptr to the newly created state.
          */
         template <typename T>
-        static std::unique_ptr<T> build(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, bool replace = true);
+        static std::unique_ptr<T> build(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, bool replace = true);
     private:
         std::stack<std::unique_ptr<State>> m_states;
         std::unique_ptr<MusicSheet> m_selectedSong; //TODO: Temporary to work on the PlayingScreen, handle this somewhere else.
@@ -73,13 +75,13 @@ namespace raindrops
     };
 
     template<typename T>
-    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, bool replace)
+    std::unique_ptr<T> StateMachine::build(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, bool replace)
     {
         auto newState = std::unique_ptr<T>{ nullptr };
 
         try
         {
-            newState = std::make_unique<T>(stateMachine, renderer, midiMonitor, replace);
+            newState = std::make_unique<T>(stateMachine, renderer, keyboardInput, midiMonitor, replace);
         }
         catch (const std::runtime_error& error)
         {

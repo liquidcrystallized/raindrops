@@ -5,8 +5,8 @@
 
 namespace raindrops
 {
-    SettingsMenuState::SettingsMenuState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
-    : State { stateMachine, renderer, midiMonitor, replace, "SettingsMenuState" }
+    SettingsMenuState::SettingsMenuState(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderer, keyboardInput, midiMonitor, replace, "SettingsMenuState" }
     {
         m_midiSetupMenuButtonText = "Midi Setup";
         m_backButtonText = "Back";
@@ -97,7 +97,7 @@ namespace raindrops
         m_midiSetupMenuButton.SetStyle(rgc::Style(rgc::Style::Position::CENTER, { 0, 0 }));
         m_midiSetupMenuButton.OnClick([this]
         {
-            m_next = StateMachine::build<MidiSetupMenuState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+            m_next = StateMachine::build<MidiSetupMenuState>(m_stateMachine, m_renderer, m_keyboardInput, m_midiMonitor, false);
         });
         m_verticalStackPanel.AddChild(rgc::ToComponent(&m_midiSetupMenuButton));
 

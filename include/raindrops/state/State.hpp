@@ -2,6 +2,7 @@
 #define RAINDROPS_STATE_HPP
 
 #include "IGraphics.hpp"
+#include "IKeyboardInput.hpp"
 #include "MidiMonitor.hpp"
 #include "core/math/Vector2.hpp"
 #include <raylib-cpp.hpp>
@@ -16,7 +17,7 @@ namespace raindrops
      */
     class State {
     public:
-        State(StateMachine&, IGraphics&, MidiMonitor&, bool replace = true, std::string stateName = "");
+        State(StateMachine&, IGraphics&, IKeyboardInput&, MidiMonitor&, bool replace = true, std::string stateName = "");
         virtual ~State() = default;
 
         State(const State&) = delete;
@@ -43,6 +44,7 @@ namespace raindrops
     protected:
         StateMachine& m_stateMachine;
         IGraphics& m_renderer;
+        IKeyboardInput& m_keyboardInput;
         Vector2<float> m_windowCentrePosition;
 
         MidiMonitor& m_midiMonitor;

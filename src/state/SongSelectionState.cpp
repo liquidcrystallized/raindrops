@@ -9,8 +9,8 @@
 
 namespace raindrops
 {
-    SongSelectionState::SongSelectionState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
-    : State { stateMachine, renderer, midiMonitor, replace, "SongSelectionState" }
+    SongSelectionState::SongSelectionState(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderer, keyboardInput, midiMonitor, replace, "SongSelectionState" }
     {
         m_songListViewText = "Lorem;Ipsum;Dolor;Sit;Amet;Consectetuer";
         m_songListViewScrollIndex = 1;
@@ -157,7 +157,7 @@ namespace raindrops
 
             if (loadSelectedSong(selectedSongPath))
             {
-                m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_midiMonitor, false);
+                m_next = StateMachine::build<PlayingState>(m_stateMachine, m_renderer, m_keyboardInput, m_midiMonitor, false);
             }
             else
             {

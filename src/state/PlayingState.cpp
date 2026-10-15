@@ -6,8 +6,8 @@
 
 namespace raindrops
 {
-    PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, MidiMonitor& midiMonitor, const bool replace)
-    : State { stateMachine, renderer, midiMonitor, replace, "PlayingState" }
+    PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace)
+    : State { stateMachine, renderer, keyboardInput, midiMonitor, replace, "PlayingState" }
     , m_config { ConfigManager::getInstance().getConfig() }
     {
         m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;

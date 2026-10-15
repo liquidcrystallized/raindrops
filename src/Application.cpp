@@ -5,13 +5,14 @@
 
 namespace raindrops
 {
-    Application::Application(IGraphics& renderer)
+    Application::Application(IGraphics& renderer, IKeyboardInput& keyboardInput)
     : m_renderer { renderer }
+    , m_keyboardInput { keyboardInput }
     , m_config { ConfigManager::getInstance().getConfig() }
     {
         setupMidi();
 
-        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderer, m_midiMonitor, true));
+        m_stateMachine.run(StateMachine::build<MainMenuState>(m_stateMachine, m_renderer, m_keyboardInput, m_midiMonitor, true));
 
         startApplication();
     }

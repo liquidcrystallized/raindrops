@@ -1,6 +1,7 @@
 #include "GraphicsNull.hpp"
 #include "StateMachine.hpp"
 #include "MainMenuState.hpp"
+#include "MockKeyboardInput.hpp"
 #include "PlayingState.hpp"
 #include <doctest.h>
 
@@ -10,11 +11,12 @@ TEST_CASE("State transitions")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     // Check initial state
@@ -22,7 +24,7 @@ TEST_CASE("State transitions")
     CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 
     // Check transition to playing state
-    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, renderer, midiMonitor, true);
+    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(playingState));
     CHECK( stateMachine.getCurrentState()->getName() == "PlayingState" );
 
@@ -36,11 +38,12 @@ TEST_CASE("State management")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     stateMachine.quit();
@@ -51,23 +54,24 @@ TEST_CASE("State transitions with replacement")
 {
     raindrops::StateMachine stateMachine;
     raindrops::GraphicsNull renderer {};
+    raindrops::MockKeyboardInput keyboardInput {};
     raindrops::MidiMonitor midiMonitor {};
     renderer.setWindowWidth(640);
     renderer.setWindowHeight(480);
 
     // Test state replacement
-    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenu = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenu));
 
     CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 
     // Replace with PlayingState
-    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, renderer, midiMonitor, true);
+    auto playingState = raindrops::StateMachine::build<raindrops::PlayingState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(playingState));
     CHECK( stateMachine.getCurrentState()->getName() == "PlayingState" );
 
     // Replace back to MainMenuState
-    auto mainMenuAgain = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, midiMonitor, true);
+    auto mainMenuAgain = raindrops::StateMachine::build<raindrops::MainMenuState>(stateMachine, renderer, keyboardInput, midiMonitor, true);
     stateMachine.run(std::move(mainMenuAgain));
     CHECK( stateMachine.getCurrentState()->getName() == "MainMenuState" );
 }

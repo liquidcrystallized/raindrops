@@ -1,6 +1,7 @@
 #include "Application.hpp"
 #include "ConfigManager.hpp"
 #include "GraphicsRaylib.hpp"
+#include "KeyboardInputRaylib.hpp"
 
 int main()
 {
@@ -16,8 +17,9 @@ int main()
         configManger.loadFromDefaultLocation();
     }
 
-    raindrops::GraphicsRaylib renderer {}; //TODO: Choose renderer based on config.
-    raindrops::Application application { renderer };
+    raindrops::GraphicsRaylib renderer {};
+    raindrops::KeyboardInputRaylib keyboardInput {};
+    raindrops::Application application { renderer, keyboardInput };
 
     return 0;
 }

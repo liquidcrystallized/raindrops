@@ -2,6 +2,7 @@
 #define RAINDROPS_APPLICATION_HPP
 
 #include "IGraphics.hpp"
+#include "IKeyboardInput.hpp"
 #include "ApplicationConfig.hpp"
 #include "MidiDevice.hpp"
 #include "MidiMonitor.hpp"
@@ -12,11 +13,12 @@ namespace raindrops
 {
     class Application {
     public:
-        explicit Application(IGraphics&);
+        explicit Application(IGraphics&, IKeyboardInput&);
         ~Application();
 
     private:
         IGraphics& m_renderer;
+        IKeyboardInput& m_keyboardInput;
         StateMachine m_stateMachine;
         std::vector<MidiDevice> m_midiDevices;
         MidiMonitor m_midiMonitor;
