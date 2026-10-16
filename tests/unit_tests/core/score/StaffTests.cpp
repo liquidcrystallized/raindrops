@@ -79,4 +79,17 @@ TEST_CASE("Staff can edit internally stored lines multi case + reference works")
     CHECK( staff.getLine(8).getPositionY() == 16 );
 }
 
+TEST_CASE("Staff read-only (const) access to internally stored lines")
+{
+    const raindrops::Staff staff {};
+
+    CHECK( staff.getLine(0).getPositionY() == 0 );
+    CHECK( staff.getLine(0).isVisible() == true );
+
+    const auto& lines = staff.getLines();
+
+    CHECK( lines.size() == 16 );
+    CHECK( lines[0].getPositionY() == 0 );
+}
+
 TEST_SUITE_END;

@@ -23,7 +23,17 @@ namespace raindrops
         return m_staffLines[lineNumber];
     }
 
+    const StaffLine& Staff::getLine(const std::size_t lineNumber) const
+    {
+        return m_staffLines[lineNumber];
+    }
+
     std::vector<StaffLine>& Staff::getLines()
+    {
+        return m_staffLines;
+    }
+
+    const std::vector<StaffLine>& Staff::getLines() const
     {
         return m_staffLines;
     }
