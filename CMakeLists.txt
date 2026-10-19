@@ -67,6 +67,7 @@ set(RAINDROPS_HEADERS
         include/raindrops/render/graphics/null/GraphicsNull.hpp
         include/raindrops/render/graphics/raylib/GraphicsRaylib.hpp
         include/raindrops/render/graphics/Colour.hpp
+        include/raindrops/render/score/MusicSheetRenderer.hpp
         include/raindrops/render/IGraphics.hpp
         include/raindrops/state/MainMenuState.hpp
         include/raindrops/state/MidiSetupMenuState.hpp
@@ -103,6 +104,7 @@ set(RAINDROPS_SOURCES
         src/render/controls/VerticalStackPanel.cpp
         src/render/graphics/null/GraphicsNull.cpp
         src/render/graphics/raylib/GraphicsRaylib.cpp
+        src/render/score/MusicSheetRenderer.cpp
         src/state/MainMenuState.cpp
         src/state/MidiSetupMenuState.cpp
         src/state/PlayingState.cpp
@@ -128,6 +130,7 @@ set(RAINDROPS_INCLUDE_DIRECTORIES
         include/raindrops/render/graphics
         include/raindrops/render/graphics/null
         include/raindrops/render/graphics/raylib
+        include/raindrops/render/score
         include/raindrops/render
         include/raindrops/state
         include/raindrops

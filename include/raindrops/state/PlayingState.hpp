@@ -1,11 +1,10 @@
 #ifndef RAINDROPS_PLAYINGSTATE_HPP
 #define RAINDROPS_PLAYINGSTATE_HPP
 
-#include "ApplicationConfig.hpp"
 #include "Conductor.hpp"
 #include "InputMapper.hpp"
 #include "MusicSheet.hpp"
-#include "Staff.hpp"
+#include "MusicSheetRenderer.hpp"
 #include "State.hpp"
 #include "Timer.hpp"
 
@@ -29,26 +28,11 @@ namespace raindrops
         std::string m_compositionComposer {};
         std::string m_compositionTitle {};
 
-        Staff m_staff {};
         Conductor m_conductor {};
         Timer m_timer {};
 
-        const ApplicationConfig& m_config;
-        float m_staffLineBufferRatio {}; // How much (in percentage %) of the window height as top/bot buffer.
-        float m_staffLineSpacing {};
-        float m_staffLineThickness {};
-        float m_staffLineThicknessScaleFactor {};
-        float m_noteWidth {};
-        float m_measureWidth {};
-
         InputMapper m_inputMapper;
-
-        void drawMusicSheet();
-        void drawStaffLines();
-        void drawMeasure(const Measure& measure, float positionX, float positionY);
-        void drawNote(int pitch, int duration, float positionX, float positionY);
-
-        void positionUIComponents();
+        MusicSheetRenderer m_sheetRenderer;
     };
 }
 

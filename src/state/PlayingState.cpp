@@ -1,20 +1,14 @@
 #include "PlayingState.hpp"
-#include "ConfigManager.hpp"
 #include "MainMenuState.hpp"
 #include "StateMachine.hpp"
-#include <ranges>
 
 namespace raindrops
 {
     PlayingState::PlayingState(StateMachine& stateMachine, IGraphics& renderer, IKeyboardInput& keyboardInput, MidiMonitor& midiMonitor, const bool replace)
     : State { stateMachine, renderer, keyboardInput, midiMonitor, replace, "PlayingState" }
-    , m_config { ConfigManager::getInstance().getConfig() }
-    , m_inputMapper( keyboardInput )
+    , m_inputMapper { keyboardInput }
+    , m_sheetRenderer { renderer }
     {
-        m_noteWidth = m_config.musicSheetDisplayConfig.noteWidth;
-        m_staffLineBufferRatio = m_config.musicSheetDisplayConfig.staffLineBufferRatio;
-        m_staffLineThicknessScaleFactor = m_config.musicSheetDisplayConfig.staffLineThicknessScaleFactor;
-
         std::unique_ptr selectedSong { stateMachine.getSelectedSong() };
         if (selectedSong)
         {
@@ -25,7 +19,7 @@ namespace raindrops
             std::println("Warning: No music sheet provided");
         }
 
-        positionUIComponents();
+        m_sheetRenderer.recalculateStaffElementSizes();
         resume();
     }
 
@@ -61,14 +55,17 @@ namespace raindrops
     {
         m_renderer.drawStart();
 
-        drawMusicSheet();
+        if (m_musicSheet)
+        {
+            m_sheetRenderer.render(*m_musicSheet, m_conductor);
+        }
 
         m_renderer.drawEnd();
     }
 
     void PlayingState::onWindowResize()
     {
-        positionUIComponents();
+        m_sheetRenderer.recalculateStaffElementSizes();
     }
 
     void PlayingState::loadMusicSheet(std::unique_ptr<MusicSheet> musicSheet)
@@ -76,81 +73,5 @@ namespace raindrops
         m_musicSheet = std::move(musicSheet);
         m_compositionComposer = m_musicSheet->getComposer();
         m_compositionTitle = m_musicSheet->getTitle();
-    }
-
-    void PlayingState::drawMusicSheet()
-    {
-        if (!m_musicSheet)
-        {
-            m_renderer.drawText("No song loaded. Please select a song from the selection region", 100, 100, 16, Colour::black);
-            return;
-        }
-
-        m_renderer.drawText(m_musicSheet->getTitle(), 100, 100, 20, Colour::black);
-
-        //TODO: Draw staves and measures.
-        drawStaffLines();
-        for (const auto& [index, measure] : m_musicSheet->getMeasures() | std::views::enumerate)
-        {
-            const float measureX { static_cast<float>(index) * m_measureWidth - m_conductor.getScrollOffset() };
-
-            if (measureX + m_measureWidth < 0 || measureX > static_cast<float>(m_renderer.getWindowWidth()))
-            {
-                continue;
-            }
-
-            drawMeasure(measure, measureX, 0);
-        }
-    }
-
-    void PlayingState::drawStaffLines()
-    {
-        for (StaffLine staffLine : m_staff.getLines())
-        {
-            if (staffLine.isVisible())
-            {
-                m_renderer.drawLine(0,
-                    static_cast<float>(staffLine.getPositionY()),
-                    static_cast<float>(m_renderer.getWindowWidth()),
-                    static_cast<float>(staffLine.getPositionY()),
-                    m_staffLineThickness, Colour::black);
-            }
-        }
-    }
-
-    void PlayingState::drawMeasure(const Measure& measure, float positionX, float positionY)
-    {
-        const std::string measureNumber { std::format("M{}", measure.getMeasureNumber()) };
-        m_renderer.drawText(measureNumber, positionX, positionY, 12, Colour::grey);
-
-        m_renderer.drawLine(positionX, static_cast<float>(m_staff.getLine(0).getPositionY()),
-                            positionX, static_cast<float>(m_staff.getLine(4).getPositionY()),
-                            m_staffLineThickness, Colour::black);
-
-        m_renderer.drawLine(positionX, static_cast<float>(m_staff.getLine(11).getPositionY()),
-                            positionX, static_cast<float>(m_staff.getLine(15).getPositionY()),
-                            m_staffLineThickness, Colour::black);
-    }
-
-    void PlayingState::drawNote(int pitch, int duration, float positionX, float positionY)
-    {
-        //TODO
-    }
-
-    void PlayingState::positionUIComponents()
-    {
-        // This mess is to try and position all the staff lines within window bounds + additional whitespace buffer.
-        const float buffer { static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineBufferRatio };
-        const float staffLineDrawArea { static_cast<float>(m_renderer.getWindowHeight()) - 2.0f * buffer };
-        m_staffLineSpacing = staffLineDrawArea / (static_cast<float>(m_staff.getNumberOfLines()) + 1);
-        m_staffLineThickness = static_cast<float>(m_renderer.getWindowHeight()) * m_staffLineThicknessScaleFactor;
-
-        for (int i = 0; i < m_staff.getNumberOfLines(); i++)
-        {
-            const float linePositionY { buffer + m_staffLineSpacing * static_cast<float>(i + 1) - m_staffLineThickness / 2.0f };
-            m_staff.getLine(i).setPositionY(static_cast<int>(linePositionY));
-        }
-
-        m_measureWidth = m_noteWidth * 8.0f; //TODO: Assuming ~8 notes per measure, do something else maybe.
     }
 }
