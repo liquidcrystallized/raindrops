@@ -9,8 +9,7 @@ namespace raindrops
     , m_inputMapper { keyboardInput }
     , m_sheetRenderer { renderer }
     {
-        std::unique_ptr selectedSong { stateMachine.getSelectedSong() };
-        if (selectedSong)
+        if (std::unique_ptr selectedSong { stateMachine.getSelectedSong() })
         {
             loadMusicSheet(std::move(selectedSong));
         }
