@@ -153,7 +153,7 @@ namespace raindrops
         m_playButton.SetStyle(rgc::Style(rgc::Style::Position::BOTTOM_CENTER, { m_buttonSize.GetWidth() / 5.0f, -m_verticalStackPanelSize.GetHeight() / 12.0f }));
         m_playButton.OnClick([this]
         {
-            std::string selectedSongPath { m_songList[m_songListView.GetActive()] };
+            std::string selectedSongPath { m_songList[static_cast<size_t>(m_songListView.GetActive())] };
 
             if (loadSelectedSong(selectedSongPath))
             {
