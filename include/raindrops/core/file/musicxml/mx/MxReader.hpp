@@ -34,8 +34,8 @@ namespace raindrops
         mx::api::ScoreData m_scoreData;
         std::string m_musicXmlVersion;
         std::string m_fileContents;
-        int numberOfMeasures;
-        int numberOfParts;
+        int numberOfMeasures {};
+        int numberOfParts {};
     };
 }
 
