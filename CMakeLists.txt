@@ -241,5 +241,4 @@ target_compile_options(raindrops PRIVATE
         -Wextra
         -Wsign-conversion
         -Wpedantic
-        #-Werror
 )
